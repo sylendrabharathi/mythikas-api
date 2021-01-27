@@ -1,6 +1,6 @@
-const router = require('express').Router()
+const router = require('express').Router();
 
-const studentCtrl = require('../controllers/student.controller')
+const studentCtrl = require('../controllers/student.controller');
 
 router.get(studentCtrl.getStudents);
 router.get(studentCtrl.getStudentById);
