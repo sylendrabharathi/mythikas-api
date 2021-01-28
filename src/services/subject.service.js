@@ -58,17 +58,6 @@ class SubjectService {
             console.log('err = ', err);
             return responseUtil.formBadRequestResponse(err.toString(), 'Error in subject status updating', utils.formErrorObj(err))
         })
-        // const subject = subjectModel.build(req.body);
-        // return subject.save().then(val => {
-        //     return responseUtil.formSuccessResponse('Subject saved successfully', val.toJSON());
-        // }).catch(err => {
-        //     const errObj = {};
-        //     err.errors.map(er => {
-        //         errObj[er.path] = er.message;
-        //     })
-        //     return responseUtil.formBadRequestResponse(err.toString(), 'Error in subject saving', errObj)
-        // })
-        res.send('');
     }
 
     getActiveSubjects(req) {
