@@ -1,16 +1,5 @@
 const router = require('express').Router();
 
-
-function studentRoutes() {
-    const studentCtrl = require('../controllers/student.controller');
-    const student = '/student';
-    router.get(`${student}/list`, studentCtrl.getStudents);
-    router.get(`${student}/:id`, studentCtrl.getStudentById);
-    router.post(`${student}`, studentCtrl.createStudent);
-    router.put(`${student}/:id`, studentCtrl.updateStudentById);
-    router.delete(`${student}/:id`, studentCtrl.deleteStudent);
-}
-
 function subjectRoutes() {
     const subjectCtrl = require('../controllers/subject.controller');
     const subject = '/subject';
@@ -18,7 +7,9 @@ function subjectRoutes() {
     router.get(`${subject}/:id`, subjectCtrl.getSubjectById);
     router.post(`${subject}`, subjectCtrl.saveSubject);
     router.put(`${subject}/:id`, subjectCtrl.updateSubject);
-    router.delete(`${subject}/:id`, subjectCtrl.deleteSubject);
+    router.put(`${subject}/:id/:status`, subjectCtrl.changeSubjectStatus);
+    router.get(`${subject}/list/active`, subjectCtrl.getActiveSubjects);
+    router.get(`${subject}/list/inactive`, subjectCtrl.getInActiveSubjects);
 }
 
 function init() {
@@ -31,7 +22,6 @@ function init() {
 
     // router.get('')
 
-    studentRoutes();
     subjectRoutes();
 }
 

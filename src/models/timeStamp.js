@@ -4,11 +4,13 @@ const { Sequelize, DataTypes } = require('sequelize');
 const timeStamp = {
     createdBy: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 1
     },
     updatedBy: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 1
     },
     createdAt: {
         type: DataTypes.DATE,
