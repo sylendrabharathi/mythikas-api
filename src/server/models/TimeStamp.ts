@@ -1,5 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
-// const sequelize = new Sequelize('sqlite::memory:');
+import { Sequelize, DataTypes, NOW } from 'sequelize';
 
 const timeStamp = {
     createdBy: {
@@ -15,13 +14,13 @@ const timeStamp = {
     createdAt: {
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.NOW
+        defaultValue: NOW
     },
     updatedAt: {
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: Sequelize.NOW
+        defaultValue: NOW
     }
 }
 
-module.exports = timeStamp;
+export default timeStamp;

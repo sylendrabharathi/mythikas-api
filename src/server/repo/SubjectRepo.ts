@@ -1,13 +1,10 @@
-const db = require('./../db/db');
-const table = require('./../db/table');
-const { Sequelize, DataTypes, QueryTypes } = require('sequelize');
-const config = require('./../config/config');
+import db from './../db/DbConfig';
+import table from '../db/Table';
+import { Sequelize, DataTypes, QueryTypes } from 'sequelize';
 
-const sequelize = new Sequelize(config.db.database, config.db.username, config.db.password, {
-    host: config.db.host,
-    dialect: config.db.dialect /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
-});
+import config from './../config/AppConfig';
 
+const sequelize = db.sequelize;
 class SubjectRepo {
 
     getSubjects() {
@@ -46,4 +43,4 @@ class SubjectRepo {
 
 const subjectRepo = new SubjectRepo();
 
-module.exports = subjectRepo;
+export default subjectRepo;

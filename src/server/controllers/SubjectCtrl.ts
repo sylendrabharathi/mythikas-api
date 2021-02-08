@@ -1,5 +1,5 @@
-const appCtrl = require('./app.ctrl');
-const subjectService = require('./../services/subject.service');
+import appCtrl from './AppCtrl';
+import subjectService from './../services/SubjectService';
 
 class SubjectCtrl {
 
@@ -33,4 +33,4 @@ class SubjectCtrl {
 }
 
 const subjectCtrl = new SubjectCtrl();
-module.exports = subjectCtrl;
+export default subjectCtrl;

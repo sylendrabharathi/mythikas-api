@@ -4,4 +4,4 @@ class Table {
 
 const table = new Table();
 
-module.exports = table;
+export default table;

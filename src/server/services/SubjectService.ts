@@ -1,8 +1,8 @@
-const responseUtil = require('./../utils/response.util');
-const subjectModel = require('./../models/subject');
-const subjectRepo = require('./../repo/subject.repo');
-const utils = require('./../utils/utils');
-const { Op } = require('sequelize');
+import responseUtil from '../utils/ResponseUtil';
+import Subject from '../models/SubjectModel';
+import subjectRepo from '../repo/SubjectRepo';
+import utils from '../utils/utils';
+import { Op } from 'sequelize';
 
 class SubjectService {
 
@@ -23,7 +23,7 @@ class SubjectService {
     }
 
     saveSubject(req) {
-        const subject = subjectModel.build(req.body);
+        const subject = Subject.build(req.body);
         return subject.save().then(val => {
             return responseUtil.formSuccessResponse('Subject saved successfully', val.toJSON());
         }).catch(err => {
@@ -33,7 +33,7 @@ class SubjectService {
 
     async updateSubject(req) {
         return subjectRepo.getSubjectById(req.params.id).then(val => {
-            return subjectModel.update(
+            return Subject.update(
                 { ...req.body },
                 { returning: true, where: { id: req.params.id } }
             ).then(res => {
@@ -49,7 +49,7 @@ class SubjectService {
     }
 
     changeSubjectStatus(req) {
-        return subjectModel.update(
+        return Subject.update(
             { status: req.params.status },
             { where: { id: req.params.id } }
         ).then(res => {
@@ -79,4 +79,4 @@ class SubjectService {
 
 const subjectService = new SubjectService();
 
-module.exports = subjectService;
+export default subjectService;

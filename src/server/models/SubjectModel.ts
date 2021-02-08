@@ -1,13 +1,11 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const config = require('./../config/config');
-const db = require('./../db/db');
+import { Sequelize, DataTypes } from 'sequelize';
+import config from '../config/AppConfig';
+import db from '../db/DbConfig';
+import {sequelize} from './Models';
 
-const sequelize = new Sequelize(config.db.database, config.db.username, config.db.password, {
-    host: config.db.host,
-    dialect: config.db.dialect /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
-});
-const timeStamp = require('./timeStamp');
-const table = require('../db/table');
+// const sequelize = db.getSequelize();
+import timeStamp from './TimeStamp';
+import table from '../db/Table';
 
 const Subject = sequelize.define('Subject', {
     // Model attributes are defined here
@@ -15,7 +13,7 @@ const Subject = sequelize.define('Subject', {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
     },
     name: {
         type: DataTypes.STRING,
@@ -38,4 +36,4 @@ const Subject = sequelize.define('Subject', {
     // Other model options go here
 });
 
-module.exports = Subject;
+export default Subject;

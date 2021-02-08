@@ -1,15 +1,17 @@
-const { Sequelize } = require('sequelize');
-const config = require('./../config/config');
+import {Sequelize} from 'sequelize';
+import config  from './../config/AppConfig';
 // const sequelize = new Sequelize("sqlite::memory:");
 
-const Subject = require('./../models/subject');
+import Subject from './../models/SubjectModel';
 
 class DBCONFIG {
+
+    sequelize = new Sequelize(config.db.database, config.db.username, config.db.password, {
+        host: config.db.host,
+        dialect: 'postgres' /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
+    });
     getSequelize() {
-        return new Sequelize(config.db.database, config.db.username, config.db.password, {
-            host: config.db.host,
-            dialect: config.db.dialect /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
-        });
+        return this.sequelize;
     }
 
     connectDB() {
@@ -18,7 +20,7 @@ class DBCONFIG {
             
             seq.authenticate();
             Subject.sync();
-            seq.models = {}
+            // seq.models = {}
             console.log('DB is Connected');
             return {error: null, status: 1};
         } catch (error) {
@@ -32,6 +34,5 @@ class DBCONFIG {
     }
 }
 
-const dbCon = new DBCONFIG();
-module.exports = dbCon;
+export default new DBCONFIG();
 

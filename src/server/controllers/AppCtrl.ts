@@ -1,6 +1,8 @@
+import { Response } from "express";
+
 class AppCtrl {
 
-    renderResponse(res, val) {
+    renderResponse(res:Response, val: any) {
         val.then(obj => {
             this.renderJSON(res, obj);
         }).catch(err => {
@@ -9,7 +11,7 @@ class AppCtrl {
 
     }
 
-    renderJSON(res, obj) {
+    renderJSON(res: Response, obj: any) {
         res.json(obj);
     }
 
@@ -18,6 +20,4 @@ class AppCtrl {
     }
 }
 
-const appCtrl = new AppCtrl();
-
-module.exports = appCtrl;
+export default new AppCtrl();

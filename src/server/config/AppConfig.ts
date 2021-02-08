@@ -12,8 +12,4 @@ class DBConfig {
     dialect = 'postgres';
 }
 
-
-
-const config = new Config();
-
-module.exports = config;
+export default new Config();
