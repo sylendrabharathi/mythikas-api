@@ -5,7 +5,7 @@ import {sequelize} from './../db/Sequelize';
 import timeStamp from './TimeStamp';
 import table from '../db/Table';
 
-const Subject = sequelize.define('Subject', {
+const Standard = sequelize.define('Standard', {
     // Model attributes are defined here
     id: {
         allowNull: false,
@@ -30,8 +30,8 @@ const Subject = sequelize.define('Subject', {
     ...timeStamp
 
 }, {
-    tableName: table.subject
+    tableName: table.standard
     // Other model options go here
 });
 
-export default Subject;
+export default Standard;

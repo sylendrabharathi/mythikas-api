@@ -1,33 +1,34 @@
 import appCtrl from './AppCtrl';
-import subjectService from './../services/SubjectService';
+import subjectService from '../services/SubjectService';
+import { Request, Response } from 'express';
 
 class SubjectCtrl {
 
-	async getSubjects(req, res) {
+	async getSubjects(req: Request, res: Response) {
 		appCtrl.renderResponse(res, subjectService.getSubjects(req));
 	}
 
-	async getSubjectById(req, res) {
+	async getSubjectById(req: Request, res: Response) {
 		appCtrl.renderResponse(res, subjectService.getSubjectById(req));
 	}
 
-	async saveSubject(req, res) {
+	async saveSubject(req: Request, res: Response) {
 		appCtrl.renderResponse(res, subjectService.saveSubject(req));
 	}
 
-	async updateSubject(req, res) {
+	async updateSubject(req: Request, res: Response) {
 		appCtrl.renderResponse(res, subjectService.updateSubject(req));
 	}
 
-	async getActiveSubjects(req, res) {
+	async getActiveSubjects(req: Request, res: Response) {
 		appCtrl.renderResponse(res, subjectService.getActiveSubjects(req));
 	}
 
-	async getInActiveSubjects(req, res) {
+	async getInActiveSubjects(req: Request, res: Response) {
 		appCtrl.renderResponse(res, subjectService.getInActiveSubjects(req));
 	}
 
-	async changeSubjectStatus(req, res) {
+	async changeSubjectStatus(req: Request, res: Response) {
 		appCtrl.renderResponse(res, subjectService.changeSubjectStatus(req));
 	}
 }

@@ -1,4 +1,4 @@
-class AppResponse {
+export class AppResponse {
     status: number;
     respStatus: number;
     error: any;

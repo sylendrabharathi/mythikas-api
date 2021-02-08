@@ -3,10 +3,11 @@ import Subject from '../models/SubjectModel';
 import subjectRepo from '../repo/SubjectRepo';
 import utils from '../utils/utils';
 import { Op } from 'sequelize';
+import { Request } from 'express';
 
 class SubjectService {
 
-    getSubjects(req) {
+    getSubjects(req: Request) {
         return subjectRepo.getSubjects().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
@@ -14,7 +15,7 @@ class SubjectService {
         })
     }
 
-    getSubjectById(req) {
+    getSubjectById(req: Request) {
         return subjectRepo.getSubjectById(req.params.id).then(val => {
             return responseUtil.formSuccessResponse('', val[0]);
         }).catch(err => {
@@ -22,7 +23,7 @@ class SubjectService {
         })
     }
 
-    saveSubject(req) {
+    saveSubject(req: Request) {
         const subject = Subject.build(req.body);
         return subject.save().then(val => {
             return responseUtil.formSuccessResponse('Subject saved successfully', val.toJSON());
@@ -31,7 +32,7 @@ class SubjectService {
         })
     }
 
-    async updateSubject(req) {
+    async updateSubject(req: Request) {
         return subjectRepo.getSubjectById(req.params.id).then(val => {
             return Subject.update(
                 { ...req.body },
@@ -48,7 +49,7 @@ class SubjectService {
         })
     }
 
-    changeSubjectStatus(req) {
+    changeSubjectStatus(req: Request) {
         return Subject.update(
             { status: req.params.status },
             { where: { id: req.params.id } }
@@ -60,7 +61,7 @@ class SubjectService {
         })
     }
 
-    getActiveSubjects(req) {
+    getActiveSubjects(req: Request) {
         return subjectRepo.getActiveSubjects().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
@@ -68,7 +69,7 @@ class SubjectService {
         })
     }
 
-    getInActiveSubjects(req) {
+    getInActiveSubjects(req: Request) {
         return subjectRepo.getInActiveSubjects().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {

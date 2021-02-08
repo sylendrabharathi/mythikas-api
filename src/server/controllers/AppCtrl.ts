@@ -1,10 +1,16 @@
 import { Response } from "express";
 
+import {AppResponse} from './../utils/ResponseUtil';
+
 class AppCtrl {
 
-    renderResponse(res:Response, val: any) {
+    renderResponse(res:Response, val: Promise<AppResponse>) {
         val.then(obj => {
-            this.renderJSON(res, obj);
+            if(obj.status === 200) {
+                this.renderJSON(res, obj);
+                return;
+            }
+            this.renderError(res, obj.status, obj);
         }).catch(err => {
             this.renderError(res, err.status, err);
         });

@@ -2,9 +2,7 @@ import db from './../db/DbConfig';
 import table from '../db/Table';
 import { Sequelize, DataTypes, QueryTypes } from 'sequelize';
 
-import config from './../config/AppConfig';
-
-const sequelize = db.sequelize;
+import {sequelize} from './../db/Sequelize';
 class SubjectRepo {
 
     getSubjects() {

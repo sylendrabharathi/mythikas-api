@@ -1,17 +1,15 @@
 import {Sequelize} from 'sequelize';
 import config  from './../config/AppConfig';
 // const sequelize = new Sequelize("sqlite::memory:");
-
+import {sequelize} from './Sequelize';
 import Subject from './../models/SubjectModel';
+import Standard from '../models/StandardModel';
 
 class DBCONFIG {
 
-    sequelize = new Sequelize(config.db.database, config.db.username, config.db.password, {
-        host: config.db.host,
-        dialect: 'postgres' /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
-    });
+    
     getSequelize() {
-        return this.sequelize;
+        return sequelize;
     }
 
     connectDB() {
@@ -19,7 +17,7 @@ class DBCONFIG {
         try {
             
             seq.authenticate();
-            Subject.sync();
+            this.sync();
             // seq.models = {}
             console.log('DB is Connected');
             return {error: null, status: 1};
@@ -30,7 +28,8 @@ class DBCONFIG {
     }
 
     sync() {
-
+        Subject.sync();
+        Standard.sync();
     }
 }
 
