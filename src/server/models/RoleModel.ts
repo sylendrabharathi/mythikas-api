@@ -1,11 +1,10 @@
 import { DataTypes } from 'sequelize';
 import {sequelize} from './../db/Sequelize';
 
-// const sequelize = db.getSequelize();
-import timeStamp from './TimeStamp';
 import table from '../db/Table';
+import timeStamp from './TimeStamp';
 
-const Standard = sequelize.define('Standard', {
+const Role = sequelize.define('Role', {
     // Model attributes are defined here
     id: {
         allowNull: false,
@@ -26,12 +25,10 @@ const Standard = sequelize.define('Standard', {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true
-    },
-    ...timeStamp
-
+    }
 }, {
-    tableName: table.standard
+    tableName: table.role
     // Other model options go here
 });
 
-export default Standard;
+export default Role;
