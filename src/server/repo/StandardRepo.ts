@@ -3,11 +3,14 @@ import table from '../db/Table';
 import { Sequelize, DataTypes, QueryTypes } from 'sequelize';
 
 import {sequelize} from './../db/Sequelize';
+import Standard from '../models/StandardModel';
 class StandardRepo {
 
-    getStandards() {
+    async getStandards() {
         const records = sequelize.query(`select * from ${table.standard}`, {
-            type: QueryTypes.SELECT
+            type: QueryTypes.SELECT,
+            mapToModel: true,
+            instance: Standard.build()
         });
 
         return records;
@@ -16,23 +19,29 @@ class StandardRepo {
     async getStandardById(id) {
         const records = sequelize.query(`select * from ${table.standard} where id = :id`, {
             replacements: {id},
-            type: QueryTypes.SELECT
+            type: QueryTypes.SELECT,
+            mapToModel: true,
+            instance: Standard.build()
         });
 
         return records;
     }
 
-    getActiveStandards() {
+    async getActiveStandards() {
         const records = sequelize.query(`select * from ${table.standard} where status = true`, {
-            type: QueryTypes.SELECT
+            type: QueryTypes.SELECT,
+            mapToModel: true,
+            instance: Standard.build()
         });
 
         return records;
     }
 
-    getInActiveStandards() {
+    async getInActiveStandards() {
         const records = sequelize.query(`select * from ${table.standard} where status = false`, {
-            type: QueryTypes.SELECT
+            type: QueryTypes.SELECT,
+            mapToModel: true,
+            instance: Standard.build()
         });
 
         return records;

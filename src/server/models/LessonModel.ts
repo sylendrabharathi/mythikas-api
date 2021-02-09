@@ -18,48 +18,37 @@ const Lesson = sequelize.define('Lesson', {
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false,
-        field: 'name'
+        allowNull: false
     },
     description: {
         type: DataTypes.TEXT,
-        allowNull: false,
-        field: 'description'
+        allowNull: true
     },
     status: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: true,
-        field: 'status'
+        defaultValue: true
     },
     standardId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: 'standard_id',
         references: {key: 'id', model: Standard}
     },
     subjectId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: 'subject_id',
         references: {key: 'id', model: Subject}
     },
     syllabus: {
         type: DataTypes.ENUM('CBSE', 'ICSE', 'STATE_BOARD'),
-        allowNull: false,
-        field: 'syllabus'
+        allowNull: false
     },
     ...timeStamp
 
 }, {
-    tableName: table.lesson
+    tableName: table.lesson,
+    underscored: true
     // Other model options go here
 });
-
-
-Lesson.hasOne(Standard);
-Lesson.hasOne(Subject);
-
-// Lesson.hasMany(LessonSection);
 
 export default Lesson;

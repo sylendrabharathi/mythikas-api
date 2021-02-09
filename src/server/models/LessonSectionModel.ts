@@ -17,48 +17,41 @@ const LessonSection = sequelize.define('LessonSection', {
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false,
-        field: 'name'
+        allowNull: false
     },
     description: {
         type: DataTypes.TEXT,
-        allowNull: false,
-        field: 'description'
+        allowNull: true
     },
     status: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: true,
-        field: 'status'
+        defaultValue: true
     },
     lessonId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: 'lesson_id',
         references: {key: 'id', model: Lesson}
     },
     url: {
         type: DataTypes.TEXT,
-        allowNull: false,
-        field: 'url'
+        allowNull: false
     },
     tag: {
         type: DataTypes.TEXT,
-        allowNull: false,
-        field: 'tag'
+        allowNull: false
     },
     label: {
         type: DataTypes.TEXT,
-        allowNull: false,
-        field: 'label'
+        allowNull: false
     },
     ...timeStamp
 
 }, {
-    tableName: table.lessonSection
+    tableName: table.lessonSection,
+    underscored: true
     // Other model options go here
 });
 
-LessonSection.belongsTo(Lesson);
 
 export default LessonSection;

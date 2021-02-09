@@ -16,38 +16,33 @@ const LessonQuestion = sequelize.define('LessonQuestion', {
     },
     name: {
         type: DataTypes.STRING,
-        allowNull: false,
-        field: 'name'
+        allowNull: false
     },
     description: {
         type: DataTypes.STRING,
-        allowNull: false,
-        field: 'description'
+        allowNull: true
     },
     status: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: true,
-        field: 'status'
+        defaultValue: true
     },
     lessonSectionId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: 'lesson_section_id',
         references: {key: 'id', model: LessonSection}
     },
     questions: {
         type: DataTypes.ARRAY(DataTypes.JSON),
-        allowNull: true,
-        field: 'questions'
+        allowNull: true
     },
     ...timeStamp
 
 }, {
-    tableName: table.lessonQuestion
+    tableName: table.lessonQuestion,
+    underscored: true
     // Other model options go here
 });
 
-LessonQuestion.belongsTo(LessonSection);
 
 export default LessonQuestion;

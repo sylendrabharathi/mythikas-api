@@ -1,6 +1,12 @@
 import * as express from 'express';
 import SubjectCtrl from './../controllers/SubjectCtrl';
 import StandardCtrl from './../controllers/StandardCtrl';
+import LessonCtrl from '../controllers/LessonCtrl';
+import LessonQuestionCtrl from '../controllers/LessonQuestionCtrl';
+import LessonSectionCtrl from '../controllers/LessonSectionCtrl';
+import StudentParentCtrl from '../controllers/StudentParentCtrl';
+import UserTeacherCtrl from '../controllers/UserTeacherCtrl';
+
 const router = express.Router();
 
 class AppRoutes {
@@ -10,8 +16,15 @@ class AppRoutes {
             console.log('Time: ', Date.now());
             next();
         });
+        this.lessonRoutes();
+        this.lessonQuestionRoutes();
+        this.lessonSectionRoutes();
+        this.roleRoutes();
+        this.studentParentRoutes();
+        this.userTeacherRoutes();
         this.subjectRoutes();
         this.standardRoutes();
+        this.loginRoutes();
     }
     
     subjectRoutes() {
@@ -34,6 +47,68 @@ class AppRoutes {
         router.put(`${standard}/:id/:status`, StandardCtrl.changeStandardStatus);
         router.get(`${standard}/list/active`, StandardCtrl.getActiveStandard);
         router.get(`${standard}/list/inactive`, StandardCtrl.getInActiveStandards);
+    }
+
+    lessonRoutes() {
+        const lesson = '/lesson';
+        router.get(`${lesson}/list`, LessonCtrl.getLessons);
+        router.get(`${lesson}/:id`, LessonCtrl.getLessonById);
+        router.post(`${lesson}`, LessonCtrl.saveLesson);
+        router.put(`${lesson}/:id`, LessonCtrl.updateLesson);
+        router.put(`${lesson}/:id/:status`, LessonCtrl.changeLessonStatus);
+        router.get(`${lesson}/list/active`, LessonCtrl.getActiveLesson);
+        router.get(`${lesson}/list/inactive`, LessonCtrl.getInActiveLessons);
+    }
+
+    lessonQuestionRoutes() {
+        const lessonQuestion = '/lessonQuestion';
+        router.get(`${lessonQuestion}/list`, LessonQuestionCtrl.getLessonQuestions);
+        router.get(`${lessonQuestion}/:id`, LessonQuestionCtrl.getLessonQuestionById);
+        router.post(`${lessonQuestion}`, LessonQuestionCtrl.saveLessonQuestion);
+        router.put(`${lessonQuestion}/:id`, LessonQuestionCtrl.updateLessonQuestion);
+        router.put(`${lessonQuestion}/:id/:status`, LessonQuestionCtrl.changeLessonQuestionStatus);
+        router.get(`${lessonQuestion}/list/active`, LessonQuestionCtrl.getActiveLessonQuestion);
+        router.get(`${lessonQuestion}/list/inactive`, LessonQuestionCtrl.getInActiveLessonQuestions);
+    }
+
+    lessonSectionRoutes() {
+        const lessonSection = '/lessonSection';
+        router.get(`${lessonSection}/list`, LessonSectionCtrl.getLessonSections);
+        router.get(`${lessonSection}/:id`, LessonSectionCtrl.getLessonSectionById);
+        router.post(`${lessonSection}`, LessonSectionCtrl.saveLessonSection);
+        router.put(`${lessonSection}/:id`, LessonSectionCtrl.updateLessonSection);
+        router.put(`${lessonSection}/:id/:status`, LessonSectionCtrl.changeLessonSectionStatus);
+        router.get(`${lessonSection}/list/active`, LessonSectionCtrl.getActiveLessonSection);
+        router.get(`${lessonSection}/list/inactive`, LessonSectionCtrl.getInActiveLessonSections);
+    }
+
+    studentParentRoutes() {
+        const studentParent = '/studentParent';
+        router.get(`${studentParent}/list`, StudentParentCtrl.getStudentParents);
+        router.get(`${studentParent}/:id`, StudentParentCtrl.getStudentParentById);
+        router.post(`${studentParent}`, StudentParentCtrl.saveStudentParent);
+        router.put(`${studentParent}/:id`, StudentParentCtrl.updateStudentParent);
+        router.put(`${studentParent}/:id/:status`, StudentParentCtrl.changeStudentParentStatus);
+        router.get(`${studentParent}/list/active`, StudentParentCtrl.getActiveStudentParent);
+        router.get(`${studentParent}/list/inactive`, StudentParentCtrl.getInActiveStudentParents);
+    }
+
+    userTeacherRoutes() {
+        const userTeacher = '/userTeacher';
+        router.get(`${userTeacher}/list`, UserTeacherCtrl.getUserTeachers);
+        router.get(`${userTeacher}/:id`, UserTeacherCtrl.getUserTeacherById);
+        router.post(`${userTeacher}`, UserTeacherCtrl.saveUserTeacher);
+        router.put(`${userTeacher}/:id`, UserTeacherCtrl.updateUserTeacher);
+        router.put(`${userTeacher}/:id/:status`, UserTeacherCtrl.changeUserTeacherStatus);
+        router.get(`${userTeacher}/list/active`, UserTeacherCtrl.getActiveUserTeacher);
+        router.get(`${userTeacher}/list/inactive`, UserTeacherCtrl.getInActiveUserTeachers);
+    }
+
+    loginRoutes() {
+    }
+
+    roleRoutes() {
+        const role = '/role';
     }
 }
 

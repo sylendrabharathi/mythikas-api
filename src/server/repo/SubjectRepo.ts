@@ -3,11 +3,14 @@ import table from '../db/Table';
 import { Sequelize, DataTypes, QueryTypes } from 'sequelize';
 
 import {sequelize} from './../db/Sequelize';
+import Subject from '../models/SubjectModel';
 class SubjectRepo {
 
-    getSubjects() {
+    async getSubjects() {
         const records = sequelize.query(`select * from ${table.subject}`, {
-            type: QueryTypes.SELECT
+            type: QueryTypes.SELECT,
+            mapToModel: true,
+            instance: Subject.build()
         });
 
         return records;
@@ -16,23 +19,29 @@ class SubjectRepo {
     async getSubjectById(id) {
         const records = sequelize.query(`select * from ${table.subject} where id = :id`, {
             replacements: {id},
-            type: QueryTypes.SELECT
+            type: QueryTypes.SELECT,
+            mapToModel: true,
+            instance: Subject.build()
         });
 
         return records;
     }
 
-    getActiveSubjects() {
+    async getActiveSubjects() {
         const records = sequelize.query(`select * from ${table.subject} where status = true`, {
-            type: QueryTypes.SELECT
+            type: QueryTypes.SELECT,
+            mapToModel: true,
+            instance: Subject.build()
         });
 
         return records;
     }
 
-    getInActiveSubjects() {
+    async getInActiveSubjects() {
         const records = sequelize.query(`select * from ${table.subject} where status = false`, {
-            type: QueryTypes.SELECT
+            type: QueryTypes.SELECT,
+            mapToModel: true,
+            instance: Subject.build()
         });
 
         return records;

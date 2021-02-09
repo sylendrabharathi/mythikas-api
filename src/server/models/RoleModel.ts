@@ -19,7 +19,7 @@ const Role = sequelize.define('Role', {
     },
     description: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     status: {
         type: DataTypes.BOOLEAN,
@@ -27,7 +27,8 @@ const Role = sequelize.define('Role', {
         defaultValue: true
     }
 }, {
-    tableName: table.role
+    tableName: table.role,
+    underscored: true
     // Other model options go here
 });
 

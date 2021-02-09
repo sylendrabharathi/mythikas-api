@@ -30,7 +30,8 @@ const Standard = sequelize.define('Standard', {
     ...timeStamp
 
 }, {
-    tableName: table.standard
+    tableName: table.standard,
+    underscored: true
     // Other model options go here
 });
 

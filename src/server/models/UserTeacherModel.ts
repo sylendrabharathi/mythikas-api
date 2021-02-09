@@ -16,50 +16,49 @@ const UserTeacher = sequelize.define('UserTeacher', {
     },
     firstName: {
         type: DataTypes.STRING,
-        allowNull: false,
-        field: 'first_name'
+        allowNull: false
     },
     lastName: {
         type: DataTypes.STRING,
-        allowNull: false,
-        field: 'last_name'
+        allowNull: false
     },
     gender: {
         type: DataTypes.STRING,
-        allowNull: false,
-        field: 'gender'
+        allowNull: false
     },
     phoneNumber: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
-        field: 'phone_number'
+        unique: true
     },
     emailId: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
-        field: 'email_id'
+        unique: true
     },
     dateOfBirth: {
         type: DataTypes.DATEONLY,
-        allowNull: true,
-        field: 'date_of_birth'
+        allowNull: true
     },
     role: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        field: 'role'
+        references: {key: 'id', model: Role}
+    },
+    status: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true
     },
     
     
     ...timeStamp
 
 }, {
-    tableName: table.userTeacher
+    tableName: table.userTeacher,
+    underscored: true
     // Other model options go here
 });
 
-UserTeacher.hasOne(Role, {foreignKey: 'role'});
 
 export default UserTeacher;

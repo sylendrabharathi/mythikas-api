@@ -17,60 +17,66 @@ const StudentParent = sequelize.define('StudentParent', {
     firstName: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'first_name'
+        // field: 'firstName'
+        
     },
     lastName: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'last_name'
+        // field: 'lastName'
     },
     gender: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'gender'
+        // field: 'gender'
     },
     phoneNumber: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        field: 'phone_number'
+        // field: 'phoneNumber'
     },
     emailId: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        field: 'email_id'
+        // field: 'emailId'
     },
     dateOfBirth: {
         type: DataTypes.DATEONLY,
         allowNull: true,
-        field: 'date_of_birth'
+        // field: 'dateOfBirth'
     },
     role: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.ENUM('STUDENT', 'PARENT'),
         allowNull: false,
-        field: 'role'
+        // field: 'role'
     },
     password: {
         type: DataTypes.TEXT,
         allowNull: false,
-        field: 'password'
+        // field: 'password'
     },
     otherFirstName: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'other_first_name'
+        // field: 'otherFirstName'
     },
     otherLastName: {
         type: DataTypes.STRING,
         allowNull: false,
-        field: 'other_last_name'
+        // field: 'otherLastName'
     },
-       
+    status: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true
+    },
     ...timeStamp
 
 }, {
-    tableName: table.studentParent
+    tableName: table.studentParent,
+    underscored: true
     // Other model options go here
 });
 

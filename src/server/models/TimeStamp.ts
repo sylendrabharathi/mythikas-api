@@ -6,29 +6,25 @@ const timeStamp =  {
     createdBy: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: 1,
-        field: 'created_by',
+        // defaultValue: 1,
         references: {key: 'id', model: UserTeacher}
         
     },
     updatedBy: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: 1,
-        field: 'updated_by',
+        // defaultValue: 1,
         references: {key: 'id', model: UserTeacher}
     },
     createdAt: {
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: NOW,
-        field: 'created_at'
+        defaultValue: NOW
     },
     updatedAt: {
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: NOW,
-        field: 'updated_at'
+        defaultValue: NOW
     }
 };
 

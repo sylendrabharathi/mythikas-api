@@ -19,7 +19,7 @@ const Privilege = sequelize.define('Privilege', {
     },
     description: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     status: {
         type: DataTypes.BOOLEAN,
@@ -27,7 +27,8 @@ const Privilege = sequelize.define('Privilege', {
         defaultValue: true
     }
 }, {
-    tableName: table.privilege
+    tableName: table.privilege,
+    underscored: true
     // Other model options go here
 });
 

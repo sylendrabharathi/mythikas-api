@@ -1,6 +1,8 @@
 import * as express from 'express';
 import * as cors from 'cors';
 
+import * as dotenv from 'dotenv';
+
 import  db from './server/db/DbConfig';
 import routes from './server/routes/Routes';
 
@@ -22,8 +24,10 @@ if(dbCon.status === 0) {
 
 app.use('/api/v1/', routes);
 
+dotenv.config();
 
 const PORT = process.env.PORT || appConfig.port;
 app.listen(PORT, () => {
-     console.log(`Mythikas API is running in http://localhost:${PORT}`)
+
+    console.log(`Mythikas API is running in http://localhost:${PORT}`)
 });

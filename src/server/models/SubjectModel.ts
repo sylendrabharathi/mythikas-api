@@ -30,7 +30,8 @@ const Subject = sequelize.define('Subject', {
     ...timeStamp
 
 }, {
-    tableName: table.subject
+    tableName: table.subject,
+    underscored: true
     // Other model options go here
 });
 
