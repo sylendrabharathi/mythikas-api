@@ -5,6 +5,8 @@ import {sequelize} from './../db/Sequelize';
 import timeStamp from './TimeStamp';
 import table from '../db/Table';
 import Role from './RoleModel';
+import Standard from './StandardModel';
+import Subject from './SubjectModel';
 
 const StudentParent = sequelize.define('StudentParent', {
     // Model attributes are defined here
@@ -48,6 +50,7 @@ const StudentParent = sequelize.define('StudentParent', {
         // field: 'dateOfBirth'
     },
     role: {
+        // type: DataTypes.ENUM('STUDENT', 'PARENT'),
         type: DataTypes.ENUM('STUDENT', 'PARENT'),
         allowNull: false,
         // field: 'role'
@@ -71,6 +74,21 @@ const StudentParent = sequelize.define('StudentParent', {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true
+    },
+    standardId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {key: 'id', model: Standard}
+    },
+    promoCode: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        // field: 'otherLastName'
+    },
+    syllabus: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        // field: 'otherLastName'
     },
     ...timeStamp
 

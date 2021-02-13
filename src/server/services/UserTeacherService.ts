@@ -10,7 +10,7 @@ class UserTeacherService {
         return userTeacherRepo.getUserTeachers().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get userTeachers', utils.formErrorObj(err));
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get users', utils.formErrorObj(err));
         })
     }
 
@@ -23,16 +23,18 @@ class UserTeacherService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get userTeacher by id', utils.formErrorObj(err));
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get user by id', utils.formErrorObj(err));
         })
     }
 
     saveUserTeacher(req: Request) {
         const userTeacher = UserTeacher.build(req.body);
         return userTeacher.save().then(val => {
-            return responseUtil.formSuccessResponse('userTeacher saved successfully', val.toJSON());
+            return responseUtil.formSuccessResponse('User saved successfully', val.toJSON());
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in userTeacher saving', utils.formErrorObj(err))
+            console.log('err = ', err);
+            
+            return responseUtil.formBadRequestResponse(err.toString(), 'Error in user saving', utils.formErrorObj(err))
         })
     }
 
@@ -42,14 +44,14 @@ class UserTeacherService {
                 { ...req.body },
                 { returning: true, where: { id: req.params.id } }
             ).then(res => {
-                return responseUtil.formSuccessResponse('userTeacher updated successfully', res);
+                return responseUtil.formSuccessResponse('User updated successfully', res);
             }).catch(err => {
                 console.log('err = ', err);
-                return responseUtil.formBadRequestResponse(err.toString(), 'Error in userTeacher updating', utils.formErrorObj(err))
+                return responseUtil.formBadRequestResponse(err.toString(), 'Error in user updating', utils.formErrorObj(err))
             })
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get userTeacher by id', utils.formErrorObj(err));
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get user by id', utils.formErrorObj(err));
         })
     }
 
@@ -58,7 +60,7 @@ class UserTeacherService {
             { status: req.params.status },
             { where: { id: req.params.id } }
         ).then(res => {
-            return responseUtil.formSuccessResponse('userTeacher status updated successfully', res);
+            return responseUtil.formSuccessResponse(`User ${req.params.status !== 'false' ? 'activated' : 'deleted'} successfully`, res);
         }).catch(err => {
             console.log('err = ', err);
             return responseUtil.formBadRequestResponse(err.toString(), 'Error in userTeacher status updating', utils.formErrorObj(err))

@@ -6,7 +6,7 @@ import {sequelize} from './../db/Sequelize';
 import Role from '../models/RoleModel';
 class RoleRepo {
 
-    async getStandards() {
+    async getRoles() {
         const records = sequelize.query(`select * from ${table.role}`, {
             type: QueryTypes.SELECT,
             mapToModel: true,

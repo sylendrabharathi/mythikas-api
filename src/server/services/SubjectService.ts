@@ -54,7 +54,7 @@ class SubjectService {
             { status: req.params.status },
             { where: { id: req.params.id } }
         ).then(res => {
-            return responseUtil.formSuccessResponse('Subject status updated successfully', res);
+            return responseUtil.formSuccessResponse(`Subject ${req.params.status !== 'false' ? 'activated' : 'deleted'} successfully`, res);
         }).catch(err => {
             console.log('err = ', err);
             return responseUtil.formBadRequestResponse(err.toString(), 'Error in subject status updating', utils.formErrorObj(err))

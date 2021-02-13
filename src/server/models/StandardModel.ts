@@ -20,7 +20,7 @@ const Standard = sequelize.define('Standard', {
     },
     description: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     status: {
         type: DataTypes.BOOLEAN,

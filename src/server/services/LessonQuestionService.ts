@@ -11,7 +11,7 @@ class LessonQuestionService {
         return lessonQuestionRepo.getLessonQuestions().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get LessonQuestions', utils.formErrorObj(err));
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Questions', utils.formErrorObj(err));
         })
     }
 
@@ -24,16 +24,16 @@ class LessonQuestionService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get LessonQuestion by id', utils.formErrorObj(err));
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Question by id', utils.formErrorObj(err));
         })
     }
 
     saveLessonQuestion(req: Request) {
         const lessonQuestion = LessonQuestion.build(req.body);
         return lessonQuestion.save().then(val => {
-            return responseUtil.formSuccessResponse('LessonQuestion saved successfully', val.toJSON());
+            return responseUtil.formSuccessResponse('Question saved successfully', val.toJSON());
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in LessonQuestion saving', utils.formErrorObj(err))
+            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Question saving', utils.formErrorObj(err))
         })
     }
 
@@ -43,14 +43,14 @@ class LessonQuestionService {
                 { ...req.body },
                 { returning: true, where: { id: req.params.id } }
             ).then(res => {
-                return responseUtil.formSuccessResponse('LessonQuestion updated successfully', res);
+                return responseUtil.formSuccessResponse('Question updated successfully', res);
             }).catch(err => {
                 console.log('err = ', err);
-                return responseUtil.formBadRequestResponse(err.toString(), 'Error in LessonQuestion updating', utils.formErrorObj(err))
+                return responseUtil.formBadRequestResponse(err.toString(), 'Error in Question updating', utils.formErrorObj(err))
             })
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get LessonQuestion by id', utils.formErrorObj(err));
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Question by id', utils.formErrorObj(err));
         })
     }
 
@@ -59,10 +59,10 @@ class LessonQuestionService {
             { status: req.params.status },
             { where: { id: req.params.id } }
         ).then(res => {
-            return responseUtil.formSuccessResponse('LessonQuestion status updated successfully', res);
+            return responseUtil.formSuccessResponse(`Question ${req.params.status !== 'false' ? 'activated' : 'deleted'} successfully`, res);
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in LessonQuestion status updating', utils.formErrorObj(err))
+            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Question status updating', utils.formErrorObj(err))
         })
     }
 
@@ -70,7 +70,7 @@ class LessonQuestionService {
         return lessonQuestionRepo.getActiveLessonQuestions().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active LessonQuestions', err);
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active Questions', err);
         })
     }
 

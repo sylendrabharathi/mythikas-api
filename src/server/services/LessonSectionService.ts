@@ -11,7 +11,7 @@ class LessonSectionService {
         return lessonSectionRepo.getLessonSections().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get LessonSections', utils.formErrorObj(err));
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Sections', utils.formErrorObj(err));
         })
     }
 
@@ -24,16 +24,16 @@ class LessonSectionService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get LessonSection by id', utils.formErrorObj(err));
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Section by id', utils.formErrorObj(err));
         })
     }
 
     saveLessonSection(req: Request) {
         const lessonSection = LessonSection.build(req.body);
         return lessonSection.save().then(val => {
-            return responseUtil.formSuccessResponse('LessonSection saved successfully', val.toJSON());
+            return responseUtil.formSuccessResponse('Section saved successfully', val.toJSON());
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in LessonSection saving', utils.formErrorObj(err))
+            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Section saving', utils.formErrorObj(err))
         })
     }
 
@@ -43,14 +43,14 @@ class LessonSectionService {
                 { ...req.body },
                 { returning: true, where: { id: req.params.id } }
             ).then(res => {
-                return responseUtil.formSuccessResponse('LessonSection updated successfully', res);
+                return responseUtil.formSuccessResponse('Section updated successfully', res);
             }).catch(err => {
                 console.log('err = ', err);
-                return responseUtil.formBadRequestResponse(err.toString(), 'Error in LessonSection updating', utils.formErrorObj(err))
+                return responseUtil.formBadRequestResponse(err.toString(), 'Error in Section updating', utils.formErrorObj(err))
             })
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get LessonSection by id', utils.formErrorObj(err));
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Section by id', utils.formErrorObj(err));
         })
     }
 
@@ -59,10 +59,10 @@ class LessonSectionService {
             { status: req.params.status },
             { where: { id: req.params.id } }
         ).then(res => {
-            return responseUtil.formSuccessResponse('LessonSection status updated successfully', res);
+            return responseUtil.formSuccessResponse(`Section ${req.params.status !== 'false' ? 'activated' : 'deleted'} successfully`, res);
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in LessonSection status updating', utils.formErrorObj(err))
+            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Section status updating', utils.formErrorObj(err))
         })
     }
 
@@ -70,7 +70,7 @@ class LessonSectionService {
         return lessonSectionRepo.getActiveLessonSections().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active LessonSections', err);
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active Sections', err);
         })
     }
 
@@ -79,6 +79,14 @@ class LessonSectionService {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
             return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive LessonSections', err);
+        })
+    }
+
+    getLessonSectionsByLessonId(req: Request) {
+        return lessonSectionRepo.findAllByActiveAndLessonId(parseInt(req.params.lessonId)).then(val => {
+            return responseUtil.formSuccessResponse('', val);
+        }).catch(err => {
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active LessonSections', err);
         })
     }
 }

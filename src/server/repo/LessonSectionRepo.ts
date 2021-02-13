@@ -37,6 +37,17 @@ class LessonSectionRepo {
         return records;
     }
 
+    async findAllByActiveAndLessonId(lessonId: number) {
+        const records = sequelize.query(`select * from ${table.lessonSection} where status = true and lesson_id = :lessonId`, {
+            type: QueryTypes.SELECT,
+            replacements: {lessonId},
+            mapToModel: true,
+            instance: LessonSection.build()
+        });
+
+        return records;
+    }
+
     async getInActiveLessonSections() {
         const records = sequelize.query(`select * from ${table.lessonSection} where status = false`, {
             type: QueryTypes.SELECT,

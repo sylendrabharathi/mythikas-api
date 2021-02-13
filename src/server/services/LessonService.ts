@@ -59,7 +59,7 @@ class LessonService {
             { status: req.params.status },
             { where: { id: req.params.id } }
         ).then(res => {
-            return responseUtil.formSuccessResponse('Lesson status updated successfully', res);
+            return responseUtil.formSuccessResponse(`Lesson ${req.params.status !== 'false' ? 'activated' : 'deleted'} successfully`, res);
         }).catch(err => {
             console.log('err = ', err);
             return responseUtil.formBadRequestResponse(err.toString(), 'Error in Lesson status updating', utils.formErrorObj(err))

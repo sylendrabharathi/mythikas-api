@@ -20,7 +20,7 @@ const Subject = sequelize.define('Subject', {
     },
     description: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     status: {
         type: DataTypes.BOOLEAN,

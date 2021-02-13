@@ -1,0 +1,83 @@
+import responseUtil from '../utils/ResponseUtil';
+import Role from '../models/RoleModel';
+import roleRepo from '../repo/RoleRepo';
+import utils from '../utils/utils';
+import { Op } from 'sequelize';
+import { Request } from 'express';
+
+class RoleService {
+
+    getRoles(req: Request) {
+        return roleRepo.getRoles().then(val => {
+            return responseUtil.formSuccessResponse('', val);
+        }).catch(err => {
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get roles', utils.formErrorObj(err));
+        })
+    }
+
+    getRoleById(req: Request) {
+        return roleRepo.getRoleById(req.params.id).then(val => {
+            return responseUtil.formSuccessResponse('', val[0]);
+        }).catch(err => {
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get role by id', utils.formErrorObj(err));
+        })
+    }
+
+    saveRole(req: Request) {
+        const role = Role.build(req.body);
+        return role.save().then(val => {
+            return responseUtil.formSuccessResponse('Role saved successfully', val.toJSON());
+        }).catch(err => {
+            return responseUtil.formBadRequestResponse(err.toString(), 'Error in role saving', utils.formErrorObj(err))
+        })
+    }
+
+    async updateRole(req: Request) {
+        return roleRepo.getRoleById(req.params.id).then(val => {
+            return Role.update(
+                { ...req.body },
+                { returning: true, where: { id: req.params.id } }
+            ).then(res => {
+                return responseUtil.formSuccessResponse('Role updated successfully', res);
+            }).catch(err => {
+                console.log('err = ', err);
+                return responseUtil.formBadRequestResponse(err.toString(), 'Error in role updating', utils.formErrorObj(err))
+            })
+        }).catch(err => {
+            console.log('err = ', err);
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get role by id', utils.formErrorObj(err));
+        })
+    }
+
+    changeRoleStatus(req: Request) {
+        return Role.update(
+            { status: req.params.status },
+            { where: { id: req.params.id } }
+        ).then(res => {
+            return responseUtil.formSuccessResponse('Role status updated successfully', res);
+        }).catch(err => {
+            console.log('err = ', err);
+            return responseUtil.formBadRequestResponse(err.toString(), 'Error in role status updating', utils.formErrorObj(err))
+        })
+    }
+
+    getActiveRoles(req: Request) {
+        return roleRepo.getActiveRoles().then(val => {
+            return responseUtil.formSuccessResponse('', val);
+        }).catch(err => {
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active roles', err);
+        })
+    }
+
+    getInActiveRoles(req: Request) {
+        return roleRepo.getInActiveRoles().then(val => {
+            return responseUtil.formSuccessResponse('', val);
+        }).catch(err => {
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive roles', err);
+        })
+    }
+}
+
+const roleService = new RoleService();
+
+export default roleService;

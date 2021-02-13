@@ -31,6 +31,10 @@ class LessonSectionCtrl {
 	async changeLessonSectionStatus(req: Request, res: Response) {
 		appCtrl.renderResponse(res, lessonSectionService.changeLessonSectionStatus(req));
 	}
+
+	async getLessonSectionsByLessonId(req: Request, res: Response) {
+		appCtrl.renderResponse(res, lessonSectionService.getLessonSectionsByLessonId(req));
+	}
 }
 
 const lessonSectionCtrl = new LessonSectionCtrl();

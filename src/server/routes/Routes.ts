@@ -6,6 +6,7 @@ import LessonQuestionCtrl from '../controllers/LessonQuestionCtrl';
 import LessonSectionCtrl from '../controllers/LessonSectionCtrl';
 import StudentParentCtrl from '../controllers/StudentParentCtrl';
 import UserTeacherCtrl from '../controllers/UserTeacherCtrl';
+import RoleCtrl from '../controllers/RoleCtrl';
 
 const router = express.Router();
 
@@ -80,6 +81,7 @@ class AppRoutes {
         router.put(`${lessonSection}/:id/:status`, LessonSectionCtrl.changeLessonSectionStatus);
         router.get(`${lessonSection}/list/active`, LessonSectionCtrl.getActiveLessonSection);
         router.get(`${lessonSection}/list/inactive`, LessonSectionCtrl.getInActiveLessonSections);
+        router.get(`${lessonSection}/:lessonId/list`, LessonSectionCtrl.getLessonSectionsByLessonId);
     }
 
     studentParentRoutes() {
@@ -104,11 +106,18 @@ class AppRoutes {
         router.get(`${userTeacher}/list/inactive`, UserTeacherCtrl.getInActiveUserTeachers);
     }
 
-    loginRoutes() {
-    }
-
     roleRoutes() {
         const role = '/role';
+        router.get(`${role}/list`, RoleCtrl.getRoles);
+        router.get(`${role}/:id`, RoleCtrl.getRoleById);
+        router.post(`${role}`, RoleCtrl.saveRole);
+        router.put(`${role}/:id`, RoleCtrl.updateRole);
+        router.put(`${role}/:id/:status`, RoleCtrl.changeRoleStatus);
+        router.get(`${role}/list/active`, RoleCtrl.getActiveRole);
+        router.get(`${role}/list/inactive`, RoleCtrl.getInActiveRoles);
+    }
+
+    loginRoutes() {
     }
 }
 
