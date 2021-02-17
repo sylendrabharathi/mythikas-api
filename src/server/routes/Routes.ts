@@ -7,6 +7,7 @@ import LessonSectionCtrl from '../controllers/LessonSectionCtrl';
 import StudentParentCtrl from '../controllers/StudentParentCtrl';
 import UserTeacherCtrl from '../controllers/UserTeacherCtrl';
 import RoleCtrl from '../controllers/RoleCtrl';
+import LoginCtrl from '../controllers/LoginCtrl';
 
 const router = express.Router();
 
@@ -59,6 +60,7 @@ class AppRoutes {
         router.put(`${lesson}/:id/:status`, LessonCtrl.changeLessonStatus);
         router.get(`${lesson}/list/active`, LessonCtrl.getActiveLesson);
         router.get(`${lesson}/list/inactive`, LessonCtrl.getInActiveLessons);
+        router.post(`${lesson}/list/filter`, LessonCtrl.filterLessonList);
     }
 
     lessonQuestionRoutes() {
@@ -118,6 +120,7 @@ class AppRoutes {
     }
 
     loginRoutes() {
+        router.post('/userLogin', LoginCtrl.userLogin)
     }
 }
 

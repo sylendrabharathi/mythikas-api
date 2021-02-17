@@ -19,29 +19,28 @@ const StudentParent = sequelize.define('StudentParent', {
     firstName: {
         type: DataTypes.STRING,
         allowNull: false,
-        // field: 'firstName'
+        unique: 'student_parent_unique'
         
     },
     lastName: {
         type: DataTypes.STRING,
         allowNull: false,
-        // field: 'lastName'
+        unique: 'student_parent_unique'
     },
     gender: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM('M', 'F'),
         allowNull: false,
         // field: 'gender'
     },
     phoneNumber: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
-        // field: 'phoneNumber'
+        unique: 'student_parent_unique'
     },
     emailId: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
+        allowNull: true,
+        validate: { isEmail: true}
         // field: 'emailId'
     },
     dateOfBirth: {
@@ -50,8 +49,7 @@ const StudentParent = sequelize.define('StudentParent', {
         // field: 'dateOfBirth'
     },
     role: {
-        // type: DataTypes.ENUM('STUDENT', 'PARENT'),
-        type: DataTypes.ENUM('STUDENT', 'PARENT'),
+        type: DataTypes.ENUM('S', 'P'),
         allowNull: false,
         // field: 'role'
     },
@@ -89,6 +87,10 @@ const StudentParent = sequelize.define('StudentParent', {
         type: DataTypes.STRING,
         allowNull: false,
         // field: 'otherLastName'
+    },
+    address: {
+        type: DataTypes.TEXT,
+        allowNull: true
     },
     ...timeStamp
 

@@ -12,6 +12,7 @@ import StudentParent from '../models/StudentParentModel';
 import Lesson from '../models/LessonModel';
 import LessonSection from '../models/LessonSectionModel';
 import LessonQuestion from '../models/LessonQuestionModel';
+import PasswordUtil from '../utils/PasswordUtil';
 
 class DBCONFIG {
 
@@ -81,7 +82,7 @@ class DBCONFIG {
         const users = [
             {id: 1, firstName: 'Admin', lastName: '', gender: 'M',
                 phoneNumber: '9597035766', emailId: 'admin@mythikas.com',
-                role: 1}
+                roleId: 1, password: PasswordUtil.encryptText('Welcome@321')}
         ];
         for(const user of users) {
             const userIns = UserTeacher.build(user);

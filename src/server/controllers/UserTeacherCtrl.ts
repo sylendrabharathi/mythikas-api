@@ -17,7 +17,12 @@ class UserTeacherCtrl {
 	}
 
 	async updateUserTeacher(req: Request, res: Response) {
-		appCtrl.renderResponse(res, userTeacherService.updateUserTeacher(req));
+		try {
+			appCtrl.renderResponse(res, userTeacherService.updateUserTeacher(req));
+		} catch (e) {
+			console.log('error in url: ', req.url, 'err = ', e);
+			
+		}
 	}
 
 	async getActiveUserTeacher(req: Request, res: Response) {

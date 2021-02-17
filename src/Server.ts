@@ -26,6 +26,12 @@ app.use('/api/v1/', routes);
 
 dotenv.config();
 
+app.use(function(err, req: express.Request, res, next) {
+    // This is error handler
+    console.log('error in ',req.url, ', err = ', err);
+    
+  });
+
 const PORT = process.env.PORT || appConfig.port;
 app.listen(PORT, () => {
 

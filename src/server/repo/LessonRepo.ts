@@ -4,6 +4,9 @@ import { Sequelize, DataTypes, QueryTypes } from 'sequelize';
 
 import {sequelize} from './../db/Sequelize';
 import Lesson from '../models/LessonModel';
+import Standard from '../models/StandardModel';
+import Subject from '../models/SubjectModel';
+
 class LessonRepo {
 
     async getLessons() {
@@ -17,31 +20,80 @@ class LessonRepo {
     }
 
     async getLessonById(id) {
-        const records = sequelize.query(`select * from ${table.lesson} where id = :id`, {
-            replacements: {id},
-            type: QueryTypes.SELECT,
-            mapToModel: true,
-            instance: Lesson.build()
+        const record = Lesson.findOne({
+            where: {
+                id
+            },
+            include: [
+                {
+                    model: Standard,
+                    as: 'standard'
+                },
+                {
+                    model: Subject,
+                    as: 'subject'
+                }
+            ]
         });
 
-        return records;
+        return record;
     }
 
     async getActiveLessons() {
-        const records = sequelize.query(`select * from ${table.lesson} where status = true`, {
-            type: QueryTypes.SELECT,
-            mapToModel: true,
-            instance: Lesson.build()
+        const records = Lesson.findAll({
+            where: {
+                status: true
+            },
+            include: [
+                {
+                    model: Standard,
+                    as: 'standard'
+                },
+                {
+                    model: Subject,
+                    as: 'subject'
+                }
+            ]
         });
 
         return records;
     }
 
     async getInActiveLessons() {
-        const records = sequelize.query(`select * from ${table.lesson} where status = false`, {
-            type: QueryTypes.SELECT,
-            mapToModel: true,
-            instance: Lesson.build()
+        const records = Lesson.findAll({
+            where: {
+                status: false
+            },
+            include: [
+                {
+                    model: Standard,
+                    as: 'standard'
+                },
+                {
+                    model: Subject,
+                    as: 'subject'
+                }
+            ]
+        });
+
+        return records;
+    }
+
+    async filterLessonList(filterObj: any) {
+        const records = Lesson.findAll({
+            where: {
+                ...filterObj
+            },
+            include: [
+                {
+                    model: Standard,
+                    as: 'standard'
+                },
+                {
+                    model: Subject,
+                    as: 'subject'
+                }
+            ]
         });
 
         return records;

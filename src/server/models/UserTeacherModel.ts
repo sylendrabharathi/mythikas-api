@@ -1,4 +1,4 @@
-import { DataTypes } from 'sequelize';
+import { DataTypes, ModelCtor, NOW } from 'sequelize';
 import {sequelize} from './../db/Sequelize';
 
 // const sequelize = db.getSequelize();
@@ -6,7 +6,7 @@ import timeStamp from './TimeStamp';
 import table from '../db/Table';
 import Role from './RoleModel';
 
-const UserTeacher = sequelize.define('UserTeacher', {
+const UserTeacher: ModelCtor<any> = sequelize.define('UserTeacher', {
     // Model attributes are defined here
     id: {
         allowNull: false,
@@ -40,7 +40,7 @@ const UserTeacher = sequelize.define('UserTeacher', {
         type: DataTypes.DATEONLY,
         allowNull: true
     },
-    role: {
+    roleId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {key: 'id', model: Role}
@@ -50,8 +50,14 @@ const UserTeacher = sequelize.define('UserTeacher', {
         allowNull: false,
         defaultValue: true
     },
-    
-    
+    password: {
+        type: DataTypes.TEXT,
+        allowNull: false
+    },
+    lastLoginAt: {
+        type: DataTypes.DATE,
+        allowNull: true
+    },
     ...timeStamp
 
 }, {
@@ -59,6 +65,8 @@ const UserTeacher = sequelize.define('UserTeacher', {
     underscored: true
     // Other model options go here
 });
+
+UserTeacher.belongsTo(Role, {as: 'role', foreignKey: 'role_id'});
 
 
 export default UserTeacher;

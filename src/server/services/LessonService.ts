@@ -17,10 +17,10 @@ class LessonService {
 
     getLessonById(req: Request) {
         return lessonRepo.getLessonById(req.params.id).then(val => {
-            if(!val[0]) {
+            if(!val) {
                 return responseUtil.formNotFoundResponse('not found', 'record not found', null);
             }
-            return responseUtil.formSuccessResponse('', val[0]);
+            return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
             console.log('err = ', err);
             
@@ -76,6 +76,22 @@ class LessonService {
 
     getInActiveLessons(req: Request) {
         return lessonRepo.getInActiveLessons().then(val => {
+            return responseUtil.formSuccessResponse('', val);
+        }).catch(err => {
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive Lessons', err);
+        })
+    }
+
+    filterLessonList(req: Request) {
+        console.log(req.body);
+        const filterObj: any = {};
+        for(const k in req.body) {
+            if(req.body[k] === '' || req.body[k] === undefined || req.body[k] === null) {
+                continue;
+            }
+            filterObj[k] = req.body[k];
+        }
+        return lessonRepo.filterLessonList(filterObj).then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
             return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive Lessons', err);

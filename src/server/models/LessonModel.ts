@@ -51,4 +51,7 @@ const Lesson = sequelize.define('Lesson', {
     // Other model options go here
 });
 
+Lesson.belongsTo(Standard, {as: 'standard', foreignKey: 'standard_id'});
+Lesson.belongsTo(Subject, {as: 'subject', foreignKey: 'subject_id'});
+
 export default Lesson;

@@ -2,6 +2,7 @@ import responseUtil from '../utils/ResponseUtil';
 import UserTeacher from '../models/UserTeacherModel';
 import userTeacherRepo from '../repo/UserTeacherRepo';
 import utils from '../utils/utils';
+import passwordUtil from '../utils/PasswordUtil';
 import { Request } from 'express';
 
 class UserTeacherService {
@@ -16,10 +17,10 @@ class UserTeacherService {
 
     getUserTeacherById(req: Request) {
         return userTeacherRepo.getUserTeacherById(req.params.id).then(val => {
-            if(!val[0]) {
+            if(!val) {
                 return responseUtil.formNotFoundResponse('not found', 'record not found', null);
             }
-            return responseUtil.formSuccessResponse('', val[0]);
+            return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
             console.log('err = ', err);
             
@@ -28,6 +29,7 @@ class UserTeacherService {
     }
 
     saveUserTeacher(req: Request) {
+        req.body.password = passwordUtil.encryptText(req.body.password);
         const userTeacher = UserTeacher.build(req.body);
         return userTeacher.save().then(val => {
             return responseUtil.formSuccessResponse('User saved successfully', val.toJSON());
@@ -39,9 +41,20 @@ class UserTeacherService {
     }
 
     async updateUserTeacher(req: Request) {
+        
+        const userObj: any = {};
+        for(const k in req.body) {
+            userObj[k] = req.body[k];
+        }
+        delete userObj['password'];
+        delete userObj['confirmPassword'];
+        
         return userTeacherRepo.getUserTeacherById(req.params.id).then(val => {
+            const updateObj = { ...val, ...userObj };
+            console.log('update obj = ', updateObj);
+            
             return UserTeacher.update(
-                { ...req.body },
+                updateObj,
                 { returning: true, where: { id: req.params.id } }
             ).then(res => {
                 return responseUtil.formSuccessResponse('User updated successfully', res);

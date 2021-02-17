@@ -4,6 +4,7 @@ import { Sequelize, DataTypes, QueryTypes } from 'sequelize';
 
 import {sequelize} from './../db/Sequelize';
 import UserTeacher from '../models/UserTeacherModel';
+import Role from '../models/RoleModel';
 class UserTeacherRepo {
 
     async getUserTeachers() {
@@ -17,34 +18,60 @@ class UserTeacherRepo {
     }
 
     async getUserTeacherById(id) {
-        const records = sequelize.query(`select * from ${table.userTeacher} where id = :id`, {
-            replacements: {id},
-            type: QueryTypes.SELECT,
-            mapToModel: true,
-            instance: UserTeacher.build()
-        });
+        const record = UserTeacher.findOne({
+            where: {
+                id
+            },
+            include: {
+                model: Role,
+                as: 'role'
+            }
+        })
 
-        return records;
+        return record;
     }
 
     async getActiveUserTeachers() {
-        const records = sequelize.query(`select * from ${table.userTeacher} where status = true`, {
-            type: QueryTypes.SELECT,
-            mapToModel: true,
-            instance: UserTeacher.build()
+        const records = UserTeacher.findAll({
+            where: {
+                status: true
+            },
+            include: {
+                model: Role,
+                as: 'role'
+            },
         });
 
         return records;
     }
 
     async getInActiveUserTeachers() {
-        const records = sequelize.query(`select * from ${table.userTeacher} where status = false`, {
+        const records = UserTeacher.findAll({
+            where: {
+                status: false
+            },
+            include: {
+                model: Role,
+                as: 'role'
+            },
+        })
+
+        return records;
+    }
+
+    async userLogin(username: string, password: string) {
+        const record = sequelize.query(`select * from ${table.userTeacher} ut where (ut.email_id = :username or ut.phone_number = :username) and ut."password" = :password`, {
+            replacements: {
+                username,
+                password
+            },
             type: QueryTypes.SELECT,
             mapToModel: true,
             instance: UserTeacher.build()
         });
 
-        return records;
+
+        return record;
     }
 }
 

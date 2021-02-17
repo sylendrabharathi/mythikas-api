@@ -31,6 +31,10 @@ class LessonCtrl {
 	async changeLessonStatus(req: Request, res: Response) {
 		appCtrl.renderResponse(res, lessonService.changeLessonStatus(req));
 	}
+
+	async filterLessonList(req: Request, res: Response) {
+		appCtrl.renderResponse(res, lessonService.filterLessonList(req));
+	}
 }
 
 const lessonCtrl = new LessonCtrl();
