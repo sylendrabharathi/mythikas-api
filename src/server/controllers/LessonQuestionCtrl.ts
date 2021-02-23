@@ -31,6 +31,11 @@ class LessonQuestionCtrl {
 	async changeLessonQuestionStatus(req: Request, res: Response) {
 		appCtrl.renderResponse(res, lessonQuestionService.changeLessonQuestionStatus(req));
 	}
+
+	async getActiveLessonQuestionsBySectionId(req: Request, res: Response) {
+		appCtrl.renderResponse(res, lessonQuestionService.getActiveLessonQuestionsBySectionId(req));
+	}
+
 }
 
 const lessonQuestionCtrl = new LessonQuestionCtrl();

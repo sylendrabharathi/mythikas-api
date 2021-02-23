@@ -72,6 +72,7 @@ class AppRoutes {
         router.put(`${lessonQuestion}/:id/:status`, LessonQuestionCtrl.changeLessonQuestionStatus);
         router.get(`${lessonQuestion}/list/active`, LessonQuestionCtrl.getActiveLessonQuestion);
         router.get(`${lessonQuestion}/list/inactive`, LessonQuestionCtrl.getInActiveLessonQuestions);
+        router.get(`${lessonQuestion}/:sectionId/list`, LessonQuestionCtrl.getActiveLessonQuestionsBySectionId);
     }
 
     lessonSectionRoutes() {

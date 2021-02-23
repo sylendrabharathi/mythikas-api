@@ -46,6 +46,17 @@ class LessonQuestionRepo {
 
         return records;
     }
+
+    async getActiveLessonQuestionsBySectionId(sectionId) {
+        const records = sequelize.query(`select * from ${table.lessonQuestion} where status = true and lesson_section_id = :sectionId`, {
+            replacements: {sectionId},
+            type: QueryTypes.SELECT,
+            mapToModel: true,
+            instance: LessonQuestion.build()
+        });
+
+        return records;
+    }
 }
 
 const lessonQuestionRepo = new LessonQuestionRepo();

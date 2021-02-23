@@ -81,6 +81,14 @@ class LessonQuestionService {
             return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive LessonQuestions', err);
         })
     }
+
+    getActiveLessonQuestionsBySectionId(req: Request) {
+        return lessonQuestionRepo.getActiveLessonQuestionsBySectionId(req.params.sectionId).then(val => {
+            return responseUtil.formSuccessResponse('', val);
+        }).catch(err => {
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active Questions', err);
+        })
+    }
 }
 
 const lessonQuestionService = new LessonQuestionService();
