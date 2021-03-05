@@ -25,6 +25,10 @@ const Privilege = sequelize.define('Privilege', {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true
+    },
+    group: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 }, {
     tableName: table.privilege,

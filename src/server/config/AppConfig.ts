@@ -5,7 +5,7 @@ class Config {
 }
 
 class DBConfig {
-    database = 'mythikas';
+    database = 'brain_beat';
     username = 'postgres';
     password = 'postgres';
     host = 'localhost';

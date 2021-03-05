@@ -1,6 +1,7 @@
 import responseUtil from '../utils/ResponseUtil';
 import UserTeacher from '../models/UserTeacherModel';
 import userTeacherRepo from '../repo/UserTeacherRepo';
+import rolePrivilegeRepo from '../repo/RolePrivilegeRepo';
 import utils from '../utils/utils';
 import passwordUtil from '../utils/PasswordUtil';
 import { Request } from 'express';
@@ -94,6 +95,14 @@ class UserTeacherService {
         }).catch(err => {
             return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive userTeachers', err);
         })
+    }
+
+    async getUserRolePrivileges(req: Request) {
+        const user = await userTeacherRepo.getUserTeacherById(req.params.id);
+        const userObj = user.toJSON();      
+        const records: any = await rolePrivilegeRepo.getDistinctPrivileges(user.roleId);        
+        userObj.privileges = records && records[0] && records[0].privileges ? records[0].privileges : [];
+        return responseUtil.formSuccessResponse('', userObj);
     }
 }
 

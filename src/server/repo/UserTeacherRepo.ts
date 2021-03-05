@@ -73,6 +73,20 @@ class UserTeacherRepo {
 
         return record;
     }
+
+    async getUserRolePrivileges(id) {
+        const record = sequelize.query(`select * from ${table.userTeacher} ut inner join role_privilege rp on rp.role_id = ut.role_id
+        inner join privilege p on p.id = rp.privilege_id
+        where ut.id = :id`, {
+            replacements: {
+                id
+            },
+            type: QueryTypes.SELECT
+        });
+
+
+        return record;
+    }
 }
 
 const userTeacherRepo = new UserTeacherRepo();

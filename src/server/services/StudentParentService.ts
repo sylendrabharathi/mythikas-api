@@ -11,7 +11,7 @@ class StudentParentService {
         return studentParentRepo.getStudentParents().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Student/Parents', utils.formErrorObj(err));
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Students', utils.formErrorObj(err));
         })
     }
 
@@ -24,7 +24,7 @@ class StudentParentService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Student/Parent by id', utils.formErrorObj(err));
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Student by id', utils.formErrorObj(err));
         })
     }
 
@@ -33,11 +33,11 @@ class StudentParentService {
         return studentParent.save().then(val => {
             console.log('save success');
             
-            return responseUtil.formSuccessResponse('Student/Parent saved successfully', val.toJSON());
+            return responseUtil.formSuccessResponse('Student saved successfully', val.toJSON());
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Student/Parent saving', utils.formErrorObj(err))
+            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Student saving', utils.formErrorObj(err))
         })
     }
 
@@ -47,14 +47,14 @@ class StudentParentService {
                 { ...req.body },
                 { returning: true, where: { id: req.params.id } }
             ).then(res => {
-                return responseUtil.formSuccessResponse('Student/Parent updated successfully', res);
+                return responseUtil.formSuccessResponse('Student updated successfully', res);
             }).catch(err => {
                 console.log('err = ', err);
-                return responseUtil.formBadRequestResponse(err.toString(), 'Error in Student/Parent updating', utils.formErrorObj(err))
+                return responseUtil.formBadRequestResponse(err.toString(), 'Error in Student updating', utils.formErrorObj(err))
             })
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Student/Parent by id', utils.formErrorObj(err));
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Student by id', utils.formErrorObj(err));
         })
     }
 
@@ -63,10 +63,10 @@ class StudentParentService {
             { status: req.params.status },
             { where: { id: req.params.id } }
         ).then(res => {
-            return responseUtil.formSuccessResponse(`Student/Parent ${req.params.status !== 'false' ? 'activated' : 'deleted'} successfully`, res);
+            return responseUtil.formSuccessResponse(`Student ${req.params.status !== 'false' ? 'activated' : 'deleted'} successfully`, res);
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Student/Parent status updating', utils.formErrorObj(err))
+            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Student status updating', utils.formErrorObj(err))
         })
     }
 
@@ -74,7 +74,7 @@ class StudentParentService {
         return studentParentRepo.getActiveStudentParents().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active Student/Parents', err);
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active Students', err);
         })
     }
 
@@ -82,7 +82,7 @@ class StudentParentService {
         return studentParentRepo.getInActiveStudentParents().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive Student/Parents', err);
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive Students', err);
         })
     }
 }

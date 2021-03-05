@@ -23,7 +23,6 @@ const RolePrivilege = sequelize.define('RolePrivilege', {
     },
     status: {
         allowNull: false,
-        primaryKey: true,
         type: DataTypes.BOOLEAN,
         defaultValue: false
 
@@ -35,5 +34,9 @@ const RolePrivilege = sequelize.define('RolePrivilege', {
     underscored: true
     // Other model options go here
 });
+
+RolePrivilege.belongsTo(Privilege, {as: 'privilege', foreignKey: 'privilege_id'});
+RolePrivilege.belongsTo(Role, {as: 'role', foreignKey: 'role_id'});
+
 
 export default RolePrivilege;

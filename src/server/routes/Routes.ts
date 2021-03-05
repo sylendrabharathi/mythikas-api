@@ -15,7 +15,7 @@ class AppRoutes {
 
     constructor() {
         router.use(function timeLog(req: express.Request, res: express.Response, next: express.NextFunction) {
-            console.log('Time: ', Date.now());
+            console.log(req.url, '- Time: ', Date.now());
             next();
         });
         this.lessonRoutes();
@@ -27,6 +27,7 @@ class AppRoutes {
         this.subjectRoutes();
         this.standardRoutes();
         this.loginRoutes();
+        this.rolePrivilege();
     }
     
     subjectRoutes() {
@@ -107,6 +108,7 @@ class AppRoutes {
         router.put(`${userTeacher}/:id/:status`, UserTeacherCtrl.changeUserTeacherStatus);
         router.get(`${userTeacher}/list/active`, UserTeacherCtrl.getActiveUserTeacher);
         router.get(`${userTeacher}/list/inactive`, UserTeacherCtrl.getInActiveUserTeachers);
+        router.get(`${userTeacher}/:id/rolePrivileges`, UserTeacherCtrl.getUserRolePrivileges);
     }
 
     roleRoutes() {
@@ -118,6 +120,12 @@ class AppRoutes {
         router.put(`${role}/:id/:status`, RoleCtrl.changeRoleStatus);
         router.get(`${role}/list/active`, RoleCtrl.getActiveRole);
         router.get(`${role}/list/inactive`, RoleCtrl.getInActiveRoles);
+        router.get(`${role}/:roleId/rolePrivileges`, RoleCtrl.getRolePrivilegesByRoleId);
+        // router.put(`${role}/privileges/update`, RoleCtrl.updateRolePrivileges);
+    }
+
+    rolePrivilege() {
+        router.put(`/rolePrivilege`, RoleCtrl.updateRolePrivileges);
     }
 
     loginRoutes() {

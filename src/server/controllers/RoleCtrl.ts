@@ -31,6 +31,14 @@ class RoleCtrl {
 	async changeRoleStatus(req: Request, res: Response) {
 		appCtrl.renderResponse(res, roleService.changeRoleStatus(req));
 	}
+
+	async getRolePrivilegesByRoleId(req: Request, res: Response) {
+		appCtrl.renderResponse(res, roleService.getRolePriviligesByRoleId(req));
+	}
+
+	async updateRolePrivileges(req: Request, res: Response) {		
+		appCtrl.renderResponse(res, roleService.updateRolePrivileges(req));
+	}
 }
 
 const roleCtrl = new RoleCtrl();

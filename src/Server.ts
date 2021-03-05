@@ -28,6 +28,8 @@ dotenv.config();
 
 app.use(function(err, req: express.Request, res, next) {
     // This is error handler
+    console.error(err.stack);
+    
     console.log('error in ',req.url, ', err = ', err);
     
   });

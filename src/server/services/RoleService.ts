@@ -1,6 +1,8 @@
 import responseUtil from '../utils/ResponseUtil';
 import Role from '../models/RoleModel';
+import RolePrivilege from '../models/RolePrivilegeModel';
 import roleRepo from '../repo/RoleRepo';
+import rolePrivilegeRepo from '../repo/RolePrivilegeRepo';
 import utils from '../utils/utils';
 import { Op } from 'sequelize';
 import { Request } from 'express';
@@ -75,6 +77,28 @@ class RoleService {
         }).catch(err => {
             return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive roles', err);
         })
+    }
+
+    async getRolePriviligesByRoleId(req: Request) {
+        return rolePrivilegeRepo.getRolePrivilegeByRoleId(req.params.roleId).then(val => {
+            return responseUtil.formSuccessResponse('', val);
+        }).catch(err => {
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get getRolePriviligesByRoleId', err);
+        })
+    }
+
+    async updateRolePrivileges(req: Request) {
+        const records = req.body;        
+        for(const r of records) {
+            const rp = RolePrivilege.build(r);
+            const s = await RolePrivilege.update(
+                { ...r },
+                { returning: true, where: { roleId: r.roleId, privilegeId: r.privilegeId } }
+            );
+            
+        }
+
+        return responseUtil.formSuccessResponse('', 'Role & Privilege(s) updated successfully');
     }
 }
 

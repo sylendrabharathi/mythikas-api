@@ -36,6 +36,10 @@ class UserTeacherCtrl {
 	async changeUserTeacherStatus(req: Request, res: Response) {
 		appCtrl.renderResponse(res, userTeacherService.changeUserTeacherStatus(req));
 	}
+
+	async getUserRolePrivileges(req: Request, res: Response) {
+		appCtrl.renderResponse(res, userTeacherService.getUserRolePrivileges(req));
+	}
 }
 
 const userTeacherCtrl = new UserTeacherCtrl();
