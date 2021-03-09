@@ -1,7 +1,7 @@
 import responseUtil from '../utils/ResponseUtil';
 import StudentParent from '../models/StudentParentModel';
 import studentParentRepo from '../repo/StudentParentRepo';
-import utils from '../utils/utils';
+import utils from '../utils/Utils';
 import { Op } from 'sequelize';
 import { Request } from 'express';
 

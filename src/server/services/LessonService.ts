@@ -1,7 +1,7 @@
 import responseUtil from '../utils/ResponseUtil';
 import Lesson from '../models/LessonModel';
 import lessonRepo from '../repo/LessonRepo';
-import utils from '../utils/utils';
+import utils from '../utils/Utils';
 import { Op } from 'sequelize';
 import { Request } from 'express';
 

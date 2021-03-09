@@ -1,7 +1,7 @@
 import responseUtil from '../utils/ResponseUtil';
 import Subject from '../models/SubjectModel';
 import subjectRepo from '../repo/SubjectRepo';
-import utils from '../utils/utils';
+import utils from '../utils/Utils';
 import { Op } from 'sequelize';
 import { Request } from 'express';
 

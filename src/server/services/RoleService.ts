@@ -3,7 +3,7 @@ import Role from '../models/RoleModel';
 import RolePrivilege from '../models/RolePrivilegeModel';
 import roleRepo from '../repo/RoleRepo';
 import rolePrivilegeRepo from '../repo/RolePrivilegeRepo';
-import utils from '../utils/utils';
+import utils from '../utils/Utils';
 import { Op } from 'sequelize';
 import { Request } from 'express';
 

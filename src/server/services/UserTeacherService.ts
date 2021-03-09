@@ -2,7 +2,7 @@ import responseUtil from '../utils/ResponseUtil';
 import UserTeacher from '../models/UserTeacherModel';
 import userTeacherRepo from '../repo/UserTeacherRepo';
 import rolePrivilegeRepo from '../repo/RolePrivilegeRepo';
-import utils from '../utils/utils';
+import utils from '../utils/Utils';
 import passwordUtil from '../utils/PasswordUtil';
 import { Request } from 'express';
 
