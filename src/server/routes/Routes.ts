@@ -14,10 +14,10 @@ const router = express.Router();
 class AppRoutes {
 
     constructor() {
-        router.use(function timeLog(req: express.Request, res: express.Response, next: express.NextFunction) {
-            console.log(req.url, '- Time: ', Date.now());
-            next();
-        });
+        // router.use(function timeLog(req: express.Request, res: express.Response, next: express.NextFunction) {
+        //     console.log(req.url, '- Time: ', Date.now());
+        //     next();
+        // });
         this.lessonRoutes();
         this.lessonQuestionRoutes();
         this.lessonSectionRoutes();

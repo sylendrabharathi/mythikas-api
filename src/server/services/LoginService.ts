@@ -14,10 +14,8 @@ class LoginService {
                 return responseUtil.formBadRequestResponse('not found', 'Invalid Credential', null);
             }
             return responseUtil.formSuccessResponse('LoggedIn Successfully', val[0]);
-        }).catch(err => {
-            console.log('err = ', err);
-            
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Lesson by id', utils.formErrorObj(err));
+        }).catch(err => {            
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in login', utils.formErrorObj(err));
         });
     }
 }

@@ -5,6 +5,8 @@ import { Request, Response } from 'express';
 class StandardCtrl {
 
 	async getStandards(req: Request, res: Response) {
+		const p = null;
+		p.log = 'p'
 		appCtrl.renderResponse(res, standardService.getStandards(req));
 	}
 

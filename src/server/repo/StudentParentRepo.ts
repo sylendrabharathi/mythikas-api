@@ -2,7 +2,7 @@ import db from './../db/DbConfig';
 import table from '../db/Table';
 import { Sequelize, DataTypes, QueryTypes, Model } from 'sequelize';
 
-import {sequelize} from './../db/Sequelize';
+import { sequelize } from './../db/Sequelize';
 import StudentParent from '../models/StudentParentModel';
 class StudentParentRepo {
 
@@ -18,7 +18,7 @@ class StudentParentRepo {
 
     async getStudentParentById(id) {
         const records = sequelize.query(`select * from ${table.studentParent} where id = :id`, {
-            replacements: {id},
+            replacements: { id },
             type: QueryTypes.SELECT,
             mapToModel: true,
             instance: StudentParent.build()
@@ -40,6 +40,18 @@ class StudentParentRepo {
     async getInActiveStudentParents() {
         const records = sequelize.query(`select * from ${table.studentParent} where status = false`, {
             type: QueryTypes.SELECT,
+            mapToModel: true,
+            instance: StudentParent.build()
+        });
+
+        return records;
+    }
+
+    async login(phoneNumber: string, password: string) {
+        const records = sequelize.query(`select * from ${table.studentParent} where status = true and phone_number = :phoneNumber and 
+                    password = :password`, {
+            type: QueryTypes.SELECT,
+            replacements: { phoneNumber, password },
             mapToModel: true,
             instance: StudentParent.build()
         });

@@ -2,8 +2,8 @@ import responseUtil from '../utils/ResponseUtil';
 import StudentParent from '../models/StudentParentModel';
 import studentParentRepo from '../repo/StudentParentRepo';
 import utils from '../utils/Utils';
-import { Op } from 'sequelize';
 import { Request } from 'express';
+import passwordUtil from '../utils/PasswordUtil';
 
 class StudentParentService {
 
@@ -29,6 +29,7 @@ class StudentParentService {
     }
 
     saveStudentParent(req: Request) {
+        req.body.password = passwordUtil.encryptText(req.body.password);
         const studentParent = StudentParent.build(req.body);
         return studentParent.save().then(val => {
             console.log('save success');
