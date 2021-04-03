@@ -32,6 +32,13 @@ class MobileAppService {
 
     }
 
+    async getLessonSectionFullDetailBySectionId(req: Request): Promise<AppResponse> {
+       
+        const records = await lessonRepo.getLessonSectionFullDetailBySectionId(parseInt(req.params.sectionId.toString()));
+        return Promise.resolve(responseUtil.formSuccessResponse('', records));
+
+    }
+
 }
 
 export default new MobileAppService();

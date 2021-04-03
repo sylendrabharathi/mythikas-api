@@ -133,35 +133,39 @@ class LessonRepo {
         return records;
     }
 
-    async getLessonsByStudentAndSubjectId(standardId: number, syllabus: string, subjectId?: number) {
-        const records = sequelize.query(`select json_build_object(
-            'id', l.id,
-            'name', l."name",
-            'subject', s."name",
-            'sections', sections
-        ) from ${table.lesson} l
-        left join (
-            select ls.lesson_id as lessonId , json_agg(
+    async getLessonSectionFullDetailBySectionId(sectionId: number) {
+        const records = sequelize.query(`select ls.id as id, ls."label" as "label", ls."name" as "name", ls.tag as tag, 
+        ls.url as url, ut.first_name as createdBy, 
+        lesson as lesson,
+        questions as questions
+        from ${table.lessonSection} ls 
+        left join(
+            select lq.lesson_section_id as lessonSectionId, json_agg(
                 json_build_object(
-                    'id', ls.id,
-                    'name', ls."name",
-                    'label', ls."label",
-                    'description', ls.description,
-                    'url', ls.url,
-                    'tag', ls.tag,
-                    'updatedBy', ut.first_name
+                    'id', lq.id,
+                    'description', lq.description,
+                    'questions', lq.questions 
                 ) 
-            ) sections from ${table.lessonSection} ls 
-            inner join ${table.userTeacher} ut on ut.id = ls.updated_by 
-            where ls.status = true
-            group by ls.lesson_id 
-        ) c on c.lessonId = l.id 
-        inner join ${table.subject} s ON s.id = l.subject_id and s.status = true
-        where l.status = true and l.standard_id = :standardId and 
-        l.syllabus = :syllabus and l.subject_id = :subjectId;`, {
+            ) questions from ${table.lessonQuestion} lq  where lq.status = true
+            group by lq.lesson_section_id 
+        ) c on c.lessonSectionId = ls.id
+        inner join (
+             select l.id as lessonId, json_build_object(
+                            'id', l.id,
+                            'name', l."name",
+                            'subject', s."name",
+                            'standard', s2."name",
+                            'syllabus', l.syllabus,
+                            'createdOn', l.created_at 
+                        ) lesson from ${table.lesson} l
+                inner join ${table.subject} s ON s.id = l.subject_id and s.status = true
+                inner join ${table.standard} s2 on s2.id = l.standard_id and s2.status = true
+        ) less on less.lessonId = ls.lesson_id 
+        inner join ${table.userTeacher} ut on ut.id = ls.updated_by
+        where ls.id = :sectionId and ls.status = true;`, {
             type: QueryTypes.SELECT,
             replacements: {
-                standardId, syllabus, subjectId
+                sectionId
             }
 
         });

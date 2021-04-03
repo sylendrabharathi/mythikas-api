@@ -8,6 +8,7 @@ class MobileAppRoutes {
     constructor(){
         this.loginRoutes();
         this.getLessonRoutes();
+        this.getSectionRoutes();
     }
 
     loginRoutes() {
@@ -16,6 +17,10 @@ class MobileAppRoutes {
 
     getLessonRoutes() {
         router.get('/student/:studentId/lessons', MobileAppCtrl.getLessonsByStudentAndStandard);
+    }
+
+    getSectionRoutes() {
+        router.get('/section/:sectionId/detail', MobileAppCtrl.getLessonSectionFullDetailBySectionId);
     }
 }
 

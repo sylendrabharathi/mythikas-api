@@ -10,6 +10,10 @@ class MobileAppCtrl {
 	async getLessonsByStudentAndStandard(req: Request, res: Response) {
 		appCtrl.renderResponse(res, MobileAppService.getLessonsByStudentAndStandard(req));
 	}
+
+	async getLessonSectionFullDetailBySectionId(req: Request, res: Response) {
+		appCtrl.renderResponse(res, MobileAppService.getLessonSectionFullDetailBySectionId(req));
+	}
 }
 
 export default new MobileAppCtrl();
