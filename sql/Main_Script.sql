@@ -2,6 +2,16 @@
 
 -- USE brain_beats;
 
+CREATE TYPE enum_lesson_syllabus AS ENUM (
+	'CBSE',
+	'ICSE',
+	'STATE_BOARD');
+
+	
+CREATE TYPE enum_student_parent_gender AS ENUM (
+	'M',
+	'F');
+
 -- Role Table
 CREATE TABLE IF NOT EXISTS public.brain_beats."role" (
 	id serial NOT NULL,

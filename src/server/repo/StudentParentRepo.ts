@@ -58,6 +58,15 @@ class StudentParentRepo {
 
         return records;
     }
+
+    async findStudentParentById(id) {
+        const records = sequelize.query(`select * from ${table.studentParent} where id = :id`, {
+            replacements: { id },
+            type: QueryTypes.SELECT,
+        });
+
+        return records;
+    }
 }
 
 const studentParentRepo = new StudentParentRepo();

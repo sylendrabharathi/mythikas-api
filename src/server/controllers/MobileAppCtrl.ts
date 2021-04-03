@@ -6,6 +6,10 @@ class MobileAppCtrl {
     async login(req: Request, res: Response) {
 		appCtrl.renderResponse(res, MobileAppService.login(req));
 	}
+
+	async getLessonsByStudentAndStandard(req: Request, res: Response) {
+		appCtrl.renderResponse(res, MobileAppService.getLessonsByStudentAndStandard(req));
+	}
 }
 
 export default new MobileAppCtrl();

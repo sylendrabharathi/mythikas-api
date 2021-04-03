@@ -7,10 +7,15 @@ class MobileAppRoutes {
 
     constructor(){
         this.loginRoutes();
+        this.getLessonRoutes();
     }
 
     loginRoutes() {
         router.post('/studentLogin', MobileAppCtrl.login);
+    }
+
+    getLessonRoutes() {
+        router.get('/student/:studentId/lessons', MobileAppCtrl.getLessonsByStudentAndStandard);
     }
 }
 
