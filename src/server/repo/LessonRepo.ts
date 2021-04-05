@@ -135,7 +135,7 @@ class LessonRepo {
 
     async getLessonSectionFullDetailBySectionId(sectionId: number) {
         const records = sequelize.query(`select ls.id as id, ls."label" as "label", ls."name" as "name", ls.tag as tag, 
-        ls.url as url, ut.first_name as createdBy, 
+        ls.url as url, ut.first_name as createdBy, ls.description as "description", ls.created_at as createdOn,
         lesson as lesson,
         questions as questions
         from ${table.lessonSection} ls 
