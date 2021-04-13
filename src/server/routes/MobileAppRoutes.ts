@@ -17,6 +17,9 @@ class MobileAppRoutes {
 
     getLessonRoutes() {
         router.get('/student/:studentId/lessons', MobileAppCtrl.getLessonsByStudentAndStandard);
+        router.get('/student/:studentId/:lessonId/relatedLessons', MobileAppCtrl.getRelatedLessons);
+        router.post('/lesson/watching', MobileAppCtrl.upsertLessonWatching);
+        router.get('/student/:studentId/lastWatching', MobileAppCtrl.getLastWatchingByStudentAndStandard);
     }
 
     getSectionRoutes() {

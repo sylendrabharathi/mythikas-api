@@ -8,6 +8,7 @@ import StudentParentCtrl from '../controllers/StudentParentCtrl';
 import UserTeacherCtrl from '../controllers/UserTeacherCtrl';
 import RoleCtrl from '../controllers/RoleCtrl';
 import LoginCtrl from '../controllers/LoginCtrl';
+import LessonAssessmentCtrl from '../controllers/LessonAssessmentCtrl';
 
 const router = express.Router();
 
@@ -28,6 +29,7 @@ class AppRoutes {
         this.standardRoutes();
         this.loginRoutes();
         this.rolePrivilege();
+        this.lessonAssessmentRoutes();
     }
     
     subjectRoutes() {
@@ -131,6 +133,20 @@ class AppRoutes {
     loginRoutes() {
         router.post('/userLogin', LoginCtrl.userLogin)
     }
+
+    lessonAssessmentRoutes() {
+        const lessonAssessment = '/lessonAssessment';
+        router.get(`${lessonAssessment}/list`, LessonAssessmentCtrl.getLessonAssessments);
+        router.get(`${lessonAssessment}/:id`, LessonAssessmentCtrl.getLessonAssessmentById);
+        router.post(`${lessonAssessment}`, LessonAssessmentCtrl.saveLessonAssessment);
+        router.put(`${lessonAssessment}/:id`, LessonAssessmentCtrl.updateLessonAssessment);
+        router.put(`${lessonAssessment}/:id/:status`, LessonAssessmentCtrl.changeLessonAssessmentStatus);
+        router.get(`${lessonAssessment}/list/active`, LessonAssessmentCtrl.getActiveLessonAssessment);
+        router.get(`${lessonAssessment}/list/inactive`, LessonAssessmentCtrl.getInActiveLessonAssessments);
+        router.get(`${lessonAssessment}/:lessonId/list`, LessonAssessmentCtrl.getActiveLessonAssessmentsByLessonId);
+    }
+
+
 }
 
 new AppRoutes();

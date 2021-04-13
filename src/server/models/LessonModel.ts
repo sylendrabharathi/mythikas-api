@@ -43,6 +43,10 @@ const Lesson = sequelize.define('Lesson', {
         type: DataTypes.ENUM('CBSE', 'ICSE', 'STATE_BOARD'),
         allowNull: false
     },
+    tag: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
     ...timeStamp
 
 }, {

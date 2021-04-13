@@ -14,6 +14,18 @@ class MobileAppCtrl {
 	async getLessonSectionFullDetailBySectionId(req: Request, res: Response) {
 		appCtrl.renderResponse(res, MobileAppService.getLessonSectionFullDetailBySectionId(req));
 	}
+
+	async getRelatedLessons(req: Request, res: Response) {
+		appCtrl.renderResponse(res, MobileAppService.getRelatedLessonsByStudentAndLesson(req));
+	}
+
+	async upsertLessonWatching(req: Request, res: Response) {
+		appCtrl.renderResponse(res, MobileAppService.upsertLastWatching(req));
+	}
+
+	async getLastWatchingByStudentAndStandard(req: Request, res: Response) {
+		appCtrl.renderResponse(res, MobileAppService.getLastWatchingByStudentAndStandard(req));
+	}
 }
 
 export default new MobileAppCtrl();

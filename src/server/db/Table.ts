@@ -9,6 +9,8 @@ class Table {
     lesson = 'lesson';
     lessonSection = 'lesson_section';
     lessonQuestion = 'lesson_question';
+    lessonAssessment = 'lesson_assessment';
+    lessonWatching = 'lesson_watching';
 }
 
 const table = new Table();

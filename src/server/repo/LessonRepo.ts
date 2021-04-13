@@ -101,7 +101,7 @@ class LessonRepo {
 
     async getLessonsByStudentAndStandardAndSubject(standardId: number, syllabus: string, subjectId?: number) {
         const records = sequelize.query(`select l.id as id, l."name" as name, s."name" as subject, 
-        s2.name as standard, sections as sections, l.syllabus as syllabus
+        s2.name as standard, sections as sections, l.syllabus as syllabus, l.tag as tag 
         from ${table.lesson} l
         left join (
             select ls.lesson_id as lessonId , json_agg(
@@ -156,7 +156,8 @@ class LessonRepo {
                             'subject', s."name",
                             'standard', s2."name",
                             'syllabus', l.syllabus,
-                            'createdOn', l.created_at 
+                            'createdOn', l.created_at,
+                            'tag', l.tag
                         ) lesson from ${table.lesson} l
                 inner join ${table.subject} s ON s.id = l.subject_id and s.status = true
                 inner join ${table.standard} s2 on s2.id = l.standard_id and s2.status = true
@@ -166,6 +167,77 @@ class LessonRepo {
             type: QueryTypes.SELECT,
             replacements: {
                 sectionId
+            }
+
+        });
+        
+        return records;
+    }
+
+    async getRelatedLessonsByStudentAndStandardAndSubject(standardId: number, syllabus: string, 
+            subjectId: number, tag: string, lessonId: number) {
+        const records = sequelize.query(`select l.id as id, l."name" as name, s."name" as subject, 
+        s2.name as standard, sections as sections, l.syllabus as syllabus, l.tag as tag 
+        from ${table.lesson} l
+        left join (
+            select ls.lesson_id as lessonId , json_agg(
+                json_build_object(
+                    'id', ls.id,
+                    'name', ls."name",
+                    'label', ls."label",
+                    'description', ls.description,
+                    'url', ls.url,
+                    'tag', ls.tag,
+                    'updatedBy', ut.first_name
+                ) 
+            ) sections from ${table.lessonSection} ls 
+            inner join ${table.userTeacher} ut on ut.id = ls.updated_by 
+            where ls.status = true
+            group by ls.lesson_id 
+        ) c on c.lessonId = l.id 
+        inner join ${table.subject} s ON s.id = l.subject_id and s.status = true
+        inner join ${table.standard} s2 on s2.id = l.standard_id and s2.status = true
+        where l.status = true and l.standard_id = :standardId and 
+        l.syllabus = :syllabus and l.subject_id = :subjectId and l.tag = :tag and l.id != :lessonId;`, {
+            type: QueryTypes.SELECT,
+            replacements: {
+                standardId, syllabus, subjectId, lessonId, tag
+            }
+
+        });
+        
+        return records;
+    }
+
+    async getLastWatchingByStudentAndStandardAndSubject(standardId: number, syllabus: string, subjectId?: number) {
+        const records = sequelize.query(`select l.id as id, l."name" as name, s."name" as subject, 
+        s2.name as standard, sections as sections, l.syllabus as syllabus, l.tag as tag 
+        from ${table.lesson} l
+        left join (
+            select ls.lesson_id as lessonId , json_agg(
+                json_build_object(
+                    'id', ls.id,
+                    'name', ls."name",
+                    'label', ls."label",
+                    'description', ls.description,
+                    'url', ls.url,
+                    'tag', ls.tag,
+                    'updatedBy', ut.first_name
+                ) 
+            ) sections from ${table.lessonSection} ls 
+            inner join ${table.userTeacher} ut on ut.id = ls.updated_by
+            inner join ${table.lessonWatching} lw on lw.section_id = ls.id and lw.status = 'IN-PROGRESS' 
+            where ls.status = true
+            group by ls.lesson_id 
+        ) c on c.lessonId = l.id 
+        inner join ${table.subject} s ON s.id = l.subject_id and s.status = true
+        inner join ${table.standard} s2 on s2.id = l.standard_id and s2.status = true
+        where l.status = true and l.standard_id = :standardId and 
+        l.syllabus = :syllabus and ((:subjectId is NULL ) OR (l.subject_id = :subjectId)) and
+        l.id in (select distinct(lw3.lesson_id) from ${table.lessonWatching} lw3 where lw3.status = 'IN-PROGRESS');`, {
+            type: QueryTypes.SELECT,
+            replacements: {
+                standardId, syllabus, subjectId
             }
 
         });

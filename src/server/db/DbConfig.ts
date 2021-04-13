@@ -12,6 +12,8 @@ import StudentParent from '../models/StudentParentModel';
 import Lesson from '../models/LessonModel';
 import LessonSection from '../models/LessonSectionModel';
 import LessonQuestion from '../models/LessonQuestionModel';
+import LessonAssessment from '../models/LessonAssessmentModel';
+import LessonWatching from '../models/LessonWatchingModel';
 import PasswordUtil from '../utils/PasswordUtil';
 
 class DBCONFIG {
@@ -29,6 +31,8 @@ class DBCONFIG {
             // seq.sync({force: true});
             // this.sync();
             // this.initDB();
+            // LessonAssessment.sync();
+            // LessonWatching.sync();
             console.log('DB is Connected');
             return { error: null, status: 1 };
         } catch (error) {
