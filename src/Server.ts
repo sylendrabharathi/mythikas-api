@@ -41,8 +41,8 @@ function init() {
 
     });
 
-    app.use('/api/v1/', routes);
-    app.use('/api/v1/mobile/', mobileAppRoutes);
+    app.use('/api/v1/', cors(), routes);
+    app.use('/api/v1/mobile/', cors(), mobileAppRoutes);
 
     dotenv.config();
 
