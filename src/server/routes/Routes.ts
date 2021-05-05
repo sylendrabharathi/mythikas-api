@@ -99,6 +99,7 @@ class AppRoutes {
         router.put(`${studentParent}/:id/:status`, StudentParentCtrl.changeStudentParentStatus);
         router.get(`${studentParent}/list/active`, StudentParentCtrl.getActiveStudentParent);
         router.get(`${studentParent}/list/inactive`, StudentParentCtrl.getInActiveStudentParents);
+        router.put(`${studentParent}/:id/approval/:isApproved`, StudentParentCtrl.changeStudentParentApproval);
     }
 
     userTeacherRoutes() {

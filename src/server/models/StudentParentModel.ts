@@ -65,6 +65,11 @@ const StudentParent = sequelize.define('StudentParent', {
         allowNull: false,
         defaultValue: true
     },
+    isApproved: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+    },
     standardId: {
         type: DataTypes.INTEGER,
         allowNull: false,
