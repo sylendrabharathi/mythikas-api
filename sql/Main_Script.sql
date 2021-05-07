@@ -137,6 +137,7 @@ CREATE TABLE IF NOT EXISTS public.student_parent (
 	parent_first_name varchar(255) NOT NULL,
 	parent_last_name varchar(255) NOT NULL,
 	status bool NOT NULL DEFAULT true,
+	is_approved bool NOT NULL DEFAULT false,
 	standard_id int4 NOT NULL,
 	promo_code varchar(255) NULL,
 	syllabus varchar(255) NOT NULL,

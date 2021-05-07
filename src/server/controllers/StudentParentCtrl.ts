@@ -31,6 +31,10 @@ class StudentParentCtrl {
 	async changeStudentParentStatus(req: Request, res: Response) {
 		appCtrl.renderResponse(res, studentParentService.changeStudentParentStatus(req));
 	}
+
+	async changeStudentParentApproval(req: Request, res: Response) {
+		appCtrl.renderResponse(res, studentParentService.changeStudentParentApproval(req));
+	}
 }
 
 const studentParentCtrl = new StudentParentCtrl();

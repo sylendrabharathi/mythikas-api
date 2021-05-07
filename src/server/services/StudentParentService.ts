@@ -86,6 +86,18 @@ class StudentParentService {
             return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive Students', err);
         })
     }
+
+    changeStudentParentApproval(req: Request) {
+        return StudentParent.update(
+            { isApproved: req.params.isApproved },
+            { where: { id: req.params.id } }
+        ).then(res => {
+            return responseUtil.formSuccessResponse(`Student ${req.params.isApproved !== 'false' ? 'Approved' : 'Refused'} successfully`, res);
+        }).catch(err => {
+            console.log('err = ', err);
+            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Student approval updating', utils.formErrorObj(err))
+        })
+    }
 }
 
 const studentParentService = new StudentParentService();
