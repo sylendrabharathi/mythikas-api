@@ -92,7 +92,7 @@ class StudentParentService {
             { isApproved: req.params.isApproved },
             { where: { id: req.params.id } }
         ).then(res => {
-            return responseUtil.formSuccessResponse(`Student ${req.params.isApproved !== 'false' ? 'Approved' : 'Refused'} successfully`, res);
+            return responseUtil.formSuccessResponse(`Student registration ${req.params.isApproved !== 'false' ? 'Approved' : 'Denied'} successfully`, res);
         }).catch(err => {
             console.log('err = ', err);
             return responseUtil.formBadRequestResponse(err.toString(), 'Error in Student approval updating', utils.formErrorObj(err))
