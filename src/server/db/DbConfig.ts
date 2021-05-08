@@ -16,6 +16,7 @@ import LessonAssessment from '../models/LessonAssessmentModel';
 import LessonWatching from '../models/LessonWatchingModel';
 import PasswordUtil from '../utils/PasswordUtil';
 import SectionTest from '../models/SectionTestModel';
+import AssessmentTest from '../models/AssessmentTestModel';
 
 class DBCONFIG {
 
@@ -35,6 +36,7 @@ class DBCONFIG {
             // LessonAssessment.sync();
             // LessonWatching.sync();
             // SectionTest.sync();
+            // AssessmentTest.sync();
             console.log('DB is Connected');
             return { error: null, status: 1 };
         } catch (error) {
@@ -55,6 +57,7 @@ class DBCONFIG {
         LessonSection.sync();
         LessonQuestion.sync();
         SectionTest.sync();
+        AssessmentTest.sync();
     }
 
     initDB() {

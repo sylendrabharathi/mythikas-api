@@ -1354,6 +1354,32 @@
 			"name": "LessonAssessment",
 			"item": [
 				{
+					"name": "SaveLessonAssessment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Assessment Test 1\",\n    \"description\": \"DESC\",\n    \"lessonId\": 1,\n    \"assessmentType\": \"pre\",\n    \"questions\": [\n        {\n            \"question\": \"Question One?\",\n            \"optionA\": \"a\",\n            \"optionB\": \"b\",\n            \"optionC\": \"c\",\n            \"optionD\": \"All the above\",\n            \"answer\": \"a\",\n            \"studentAnswer\": \"a\",\n            \"mark\": 2\n        },\n        {\n            \"question\": \"Question Two?\",\n            \"optionA\": \"a\",\n            \"optionB\": \"b\",\n            \"optionC\": \"c\",\n            \"optionD\": \"d\",\n            \"answer\": \"b\",\n            \"studentAnswer\": \"b\"\n        }\n    ],\n    \"createdBy\": 1,\n    \"updatedBy\": 1\n}"
+						},
+						"url": {
+							"raw": "{{apiURL}}/lessonAssessment",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonAssessment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "LessonAssessmentList",
 					"request": {
 						"method": "GET",
@@ -1366,32 +1392,6 @@
 							"path": [
 								"lessonAssessment",
 								"list"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "SaveLessonAssessment",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Test 2\",\n\t\"description\": \"DESC\",\n\t\"lessonId\": 3,\n\t\"questions\": [\n\t\t{\n\t\t\t\"question\": \"What is your name ?\",\n\t\t\t\"optionA\": \"SB\",\n\t\t\t\"optionB\": \"SC\",\n\t\t\t\"optionC\": \"CSB\",\n\t\t\t\"optionD\": \"All the above\",\n\t\t\t\"answer\": \"optionA\"\n\t\t}],\n\t\t\"createdBy\": 1,\n\t\t\"updatedBy\": 1,\n\t\t\"assessmentType\": \"pre\"\n}"
-						},
-						"url": {
-							"raw": "{{apiURL}}/lessonAssessment",
-							"host": [
-								"{{apiURL}}"
-							],
-							"path": [
-								"lessonAssessment"
 							]
 						}
 					},
@@ -1528,7 +1528,7 @@
 			"name": "SectionTest",
 			"item": [
 				{
-					"name": "SaveSectionTest",
+					"name": "saveSectionTest",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -1713,6 +1713,121 @@
 								},
 								{
 									"key": "lessonId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AssessmentTest",
+			"item": [
+				{
+					"name": "saveAssessmentTest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"studentId\": 1,\r\n    \"lessonAssessmentId\": 1,\r\n    \"questionAnswers\": [\r\n        {\r\n            \"question\": \"Question One?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"All the above\",\r\n            \"answer\": \"a\",\r\n            \"studentAnswer\": \"a\",\r\n            \"mark\": 2\r\n        },\r\n        {\r\n            \"question\": \"Question Two?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"d\",\r\n            \"answer\": \"b\",\r\n            \"studentAnswer\": \"b\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiURL}}/assessmentTest",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"assessmentTest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAssessmentTests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiURL}}/assessmentTest/list",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"assessmentTest",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAssessmentTestsByStudentId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiURL}}/assessmentTest/student/1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"assessmentTest",
+								"student",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAssessmentTestsByLessonAssessmentId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiURL}}/assessmentTest/lessonAssessment/1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"assessmentTest",
+								"lessonAssessment",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAssessmentTestByStudentIdAndLessonAssessmentId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiURL}}/assessmentTest/get?studentId=1&lessonAssessmentId=1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"assessmentTest",
+								"get"
+							],
+							"query": [
+								{
+									"key": "studentId",
+									"value": "1"
+								},
+								{
+									"key": "lessonAssessmentId",
 									"value": "1"
 								}
 							]

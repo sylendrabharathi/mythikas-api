@@ -11,7 +11,7 @@ class SectionTestService {
         return sectionTestRepo.getSectionTests().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Sections', utils.formErrorObj(err));
+            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Section Tests', utils.formErrorObj(err));
         })
     }
 
@@ -86,13 +86,13 @@ class SectionTestService {
             return responseUtil.formSuccessResponse('Section Test saved successfully', val.toJSON());
         }).catch(err => {
             if (err.toString().includes("SequelizeUniqueConstraintError")) {
-                return this.updateStudentParent(req);
+                return this.updateSectionTest(req);
             }
             return responseUtil.formBadRequestResponse(err.toString(), 'Error in Section Test saving', utils.formErrorObj(err))
         })
     }
    
-    async updateStudentParent(req: Request) {
+    async updateSectionTest(req: Request) {
         return SectionTest.update(
             { ...req.body },
             { returning: true, where: { studentId: req.body.studentId, lessonSectionId: req.body.lessonSectionId, lessonId: req.body.lessonId } }
