@@ -450,24 +450,6 @@
 			"name": "StudentParent",
 			"item": [
 				{
-					"name": "GetActiveStudentParents",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{apiURL}}studentParent/list/active",
-							"host": [
-								"{{apiURL}}studentParent"
-							],
-							"path": [
-								"list",
-								"active"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "SaveStudentParent",
 					"request": {
 						"method": "POST",
@@ -485,6 +467,24 @@
 							"raw": "{{apiURL}}studentParent",
 							"host": [
 								"{{apiURL}}studentParent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetActiveStudentParents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{apiURL}}studentParent/list/active",
+							"host": [
+								"{{apiURL}}studentParent"
+							],
+							"path": [
+								"list",
+								"active"
 							]
 						}
 					},
@@ -1226,6 +1226,41 @@
 								"v1",
 								"mobile",
 								"studentLogin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "StudentSignUp",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ3d3cuZXVjb24uY29tIiwiaWF0IjoxNjE2MjUzODc1LCJleHAiOjE2MTg4NDU4NzUsImF1ZCI6Ind3dy5ldWNvbi5jb20iLCJzdWIiOiJQUENERU1PIiwiZGIiOiJDUE1fQzhfREVWIiwiY291bnRyeSI6IlVTIiwiY3VycmVuY3kiOiJVU0QiLCJ1c2VySUQiOjMzNCwidXNlck5hbWUiOiJCYWxhIFJhanUifQ.vB0QXiygu6gzK1dHCjwZKk-Evna-HoJKiAKdone7iBw"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Sylendran\",\n    \"lastName\": \"Bharathi\",\n    \"gender\": \"M\",\n    \"phoneNumber\": \"8600534263\",\n    \"emailId\": \"sylendran@mythikas.com\",\n    \"parentFirstName\": \"ChandraSekaran\",\n    \"parentLastName\": \"Venkatachalam\",\n    \"password\": \"welcome123\",\n    \"standardId\": 1,\n    \"syllabus\": \"CBSC\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8081/api/v1/mobile/studentSignUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"mobile",
+								"studentSignUp"
 							]
 						}
 					},

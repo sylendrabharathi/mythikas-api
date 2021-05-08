@@ -102,5 +102,10 @@ const StudentParent = sequelize.define('StudentParent', {
     // Other model options go here
 });
 
+StudentParent.prototype.toJSON =  function () {
+    var values = Object.assign({}, this.get());
+    delete values.password;
+    return values;
+}
 
 export default StudentParent;
