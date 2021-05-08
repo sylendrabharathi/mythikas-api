@@ -22,6 +22,8 @@ CREATE TYPE enum_student_parent_gender AS ENUM (
 	'M',
 	'F');
 
+CREATE TYPE enum_student_parent_registration_type AS ENUM('ADMIN', 'SELF');
+
 -- Role Table
 CREATE TABLE IF NOT EXISTS public."role" (
 	id serial NOT NULL,
@@ -142,6 +144,7 @@ CREATE TABLE IF NOT EXISTS public.student_parent (
 	promo_code varchar(255) NULL,
 	syllabus varchar(255) NOT NULL,
 	address text NULL,
+	registration_type enum_student_parent_registration_type NOT NULL DEFAULT 'ADMIN',
 	created_by int4 NOT NULL,
 	updated_by int4 NOT NULL,
 	created_at timestamptz NOT NULL,

@@ -28,3 +28,7 @@ CREATE TABLE IF NOT EXISTS "assessment_test" (
     "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL,
     PRIMARY KEY ("student_id","lesson_assessment_id")
 );
+
+CREATE TYPE enum_student_parent_registration_type AS ENUM('ADMIN', 'SELF');
+
+ALTER TABLE public.student_parent ADD registration_type enum_student_parent_registration_type NOT NULL DEFAULT 'ADMIN';

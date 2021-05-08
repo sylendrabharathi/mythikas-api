@@ -89,6 +89,11 @@ const StudentParent = sequelize.define('StudentParent', {
         type: DataTypes.TEXT,
         allowNull: true
     },
+    registrationType: {
+        type: DataTypes.ENUM('ADMIN', 'SELF'),
+        allowNull: false,
+        defaultValue: 'ADMIN'
+    },
     ...timeStamp
 
 }, {
