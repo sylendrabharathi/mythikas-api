@@ -11,6 +11,8 @@ class Table {
     lessonQuestion = 'lesson_question';
     lessonAssessment = 'lesson_assessment';
     lessonWatching = 'lesson_watching';
+    sectionTest = 'section_test';
+    assessmentTest = "assessment_test";
 }
 
 const table = new Table();

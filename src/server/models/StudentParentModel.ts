@@ -65,6 +65,11 @@ const StudentParent = sequelize.define('StudentParent', {
         allowNull: false,
         defaultValue: true
     },
+    isApproved: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+    },
     standardId: {
         type: DataTypes.INTEGER,
         allowNull: false,
@@ -84,6 +89,11 @@ const StudentParent = sequelize.define('StudentParent', {
         type: DataTypes.TEXT,
         allowNull: true
     },
+    registrationType: {
+        type: DataTypes.ENUM('ADMIN', 'SELF'),
+        allowNull: false,
+        defaultValue: 'ADMIN'
+    },
     ...timeStamp
 
 }, {
@@ -92,5 +102,10 @@ const StudentParent = sequelize.define('StudentParent', {
     // Other model options go here
 });
 
+StudentParent.prototype.toJSON =  function () {
+    var values = Object.assign({}, this.get());
+    delete values.password;
+    return values;
+}
 
 export default StudentParent;

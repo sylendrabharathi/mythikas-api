@@ -22,6 +22,8 @@ CREATE TYPE enum_student_parent_gender AS ENUM (
 	'M',
 	'F');
 
+CREATE TYPE enum_student_parent_registration_type AS ENUM('ADMIN', 'SELF');
+
 -- Role Table
 CREATE TABLE IF NOT EXISTS public."role" (
 	id serial NOT NULL,
@@ -137,10 +139,12 @@ CREATE TABLE IF NOT EXISTS public.student_parent (
 	parent_first_name varchar(255) NOT NULL,
 	parent_last_name varchar(255) NOT NULL,
 	status bool NOT NULL DEFAULT true,
+	is_approved bool NOT NULL DEFAULT false,
 	standard_id int4 NOT NULL,
 	promo_code varchar(255) NULL,
 	syllabus varchar(255) NOT NULL,
 	address text NULL,
+	registration_type enum_student_parent_registration_type NOT NULL DEFAULT 'ADMIN',
 	created_by int4 NOT NULL,
 	updated_by int4 NOT NULL,
 	created_at timestamptz NOT NULL,
@@ -280,6 +284,32 @@ ALTER TABLE public.lesson_watching ADD CONSTRAINT lesson_watching_lesson_id_fkey
 ALTER TABLE public.lesson_watching ADD CONSTRAINT lesson_watching_section_id_fkey FOREIGN KEY (section_id) REFERENCES lesson_section(id);
 ALTER TABLE public.lesson_watching ADD CONSTRAINT lesson_watching_student_id_fkey FOREIGN KEY (student_id) REFERENCES student_parent(id);    
 
+-- Create Section Test table
+CREATE TABLE IF NOT EXISTS "section_test" (
+    "student_id" INTEGER NOT NULL  REFERENCES "student_parent" ("id"),
+    "lesson_id" INTEGER NOT NULL  REFERENCES "lesson" ("id"),
+    "lesson_section_id" INTEGER NOT NULL  REFERENCES "lesson_section" ("id"),
+    "date" TIMESTAMP WITH TIME ZONE NOT NULL,
+	"question_answers" JSON[],
+    "total_marks" INTEGER NOT NULL DEFAULT 0,
+    "student_marks" INTEGER NOT NULL DEFAULT 0,
+    "created_at" TIMESTAMP WITH TIME ZONE NOT NULL,
+    "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL,
+    PRIMARY KEY ("student_id","lesson_id","lesson_section_id")
+);
+
+-- Create Assessment Test table
+CREATE TABLE IF NOT EXISTS "assessment_test" (
+    "student_id" INTEGER NOT NULL  REFERENCES "student_parent" ("id"),
+    "lesson_assessment_id" INTEGER NOT NULL  REFERENCES "lesson_assessment" ("id"),
+    "date" TIMESTAMP WITH TIME ZONE NOT NULL,
+    "question_answers" JSON[],
+    "total_marks" INTEGER NOT NULL DEFAULT 0,
+    "student_marks" INTEGER NOT NULL DEFAULT 0,
+    "created_at" TIMESTAMP WITH TIME ZONE NOT NULL,
+    "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL,
+    PRIMARY KEY ("student_id","lesson_assessment_id")
+);
 
 -- Insert Data
 

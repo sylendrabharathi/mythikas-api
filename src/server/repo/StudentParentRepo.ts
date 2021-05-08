@@ -48,7 +48,7 @@ class StudentParentRepo {
     }
 
     async login(phoneNumber: string, password: string) {
-        const records = sequelize.query(`select * from ${table.studentParent} where status = true and phone_number = :phoneNumber and 
+        const records = sequelize.query(`select * from ${table.studentParent} where status = true and is_approved = true and phone_number = :phoneNumber and 
                     password = :password`, {
             type: QueryTypes.SELECT,
             replacements: { phoneNumber, password },

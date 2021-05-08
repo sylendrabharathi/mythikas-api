@@ -13,6 +13,7 @@ class MobileAppRoutes {
 
     loginRoutes() {
         router.post('/studentLogin', MobileAppCtrl.login);
+        router.post('/studentSignUp', MobileAppCtrl.signUpStudentParent);
     }
 
     getLessonRoutes() {

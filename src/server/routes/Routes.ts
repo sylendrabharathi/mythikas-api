@@ -10,6 +10,8 @@ import RoleCtrl from '../controllers/RoleCtrl';
 import LoginCtrl from '../controllers/LoginCtrl';
 import LessonAssessmentCtrl from '../controllers/LessonAssessmentCtrl';
 import * as multer from 'multer';
+import SectionTestCtrl from '../controllers/SectionTestCtrl';
+import AssessmentTestCtrl from '../controllers/AssessmentTestCtrl';
 
 const router = express.Router();
 
@@ -31,6 +33,8 @@ class AppRoutes {
         this.loginRoutes();
         this.rolePrivilege();
         this.lessonAssessmentRoutes();
+        this.sectionTestRoutes();
+        this.assessmentTestRoutes();
     }
 
     getMulter() {
@@ -120,6 +124,7 @@ class AppRoutes {
         router.put(`${studentParent}/:id/:status`, StudentParentCtrl.changeStudentParentStatus);
         router.get(`${studentParent}/list/active`, StudentParentCtrl.getActiveStudentParent);
         router.get(`${studentParent}/list/inactive`, StudentParentCtrl.getInActiveStudentParents);
+        router.put(`${studentParent}/:id/approval/:isApproved`, StudentParentCtrl.changeStudentParentApproval);
     }
 
     userTeacherRoutes() {
@@ -167,6 +172,24 @@ class AppRoutes {
         router.get(`${lessonAssessment}/:lessonId/list`, LessonAssessmentCtrl.getActiveLessonAssessmentsByLessonId);
     }
 
+    sectionTestRoutes() {
+        const sectionTest = '/sectionTest';
+        router.get(`${sectionTest}/list`, SectionTestCtrl.getSectionTests);
+        router.get(`${sectionTest}/student/:studentId`, SectionTestCtrl.getSectionTestsByStudentId);
+        router.get(`${sectionTest}/lessonSection/:lessonSectionId`, SectionTestCtrl.getSectionTestsByLessonSectionId);
+        router.get(`${sectionTest}/lesson/:lessonId`, SectionTestCtrl.getSectionTestsByLessonId);
+        router.post(`${sectionTest}`, SectionTestCtrl.saveSectionTest);
+        router.get(`${sectionTest}/get`, SectionTestCtrl.getSectionTestByStudentIdAndLessonSectionIdAndLessonId);
+    }
+
+    assessmentTestRoutes() {
+        const assessmentTest = '/assessmentTest';
+        router.get(`${assessmentTest}/list`, AssessmentTestCtrl.getAssessmentTests);
+        router.get(`${assessmentTest}/student/:studentId`, AssessmentTestCtrl.getAssessmentTestsByStudentId);
+        router.get(`${assessmentTest}/lessonAssessment/:lessonAssessmentId`, AssessmentTestCtrl.getAssessmentTestsByLessonAssessmentId);
+        router.post(`${assessmentTest}`, AssessmentTestCtrl.saveAssessmentTest);
+        router.get(`${assessmentTest}/get`, AssessmentTestCtrl.getAssessmentTestByStudentIdAndLessonAssessmentId);
+    }
 
 }
 
