@@ -1,6 +1,10 @@
 import appCtrl from './AppCtrl';
 import lessonSectionService from '../services/LessonSectionService';
 import { Request, Response } from 'express';
+import * as Formidable from 'formidable';
+import * as multer from 'multer';
+
+const upload = multer({ dest: 'uploads/' });
 
 class LessonSectionCtrl {
 
@@ -34,6 +38,18 @@ class LessonSectionCtrl {
 
 	async getLessonSectionsByLessonId(req: Request, res: Response) {
 		appCtrl.renderResponse(res, lessonSectionService.getLessonSectionsByLessonId(req));
+	}
+
+	uploadFile(req: Request, res: Response) {
+
+		try {
+			appCtrl.renderResponse(res, lessonSectionService.uploadSectionFile(req));
+		} catch(e) {
+			console.log(e);
+			res.status(500);
+			res.send(e);
+		}
+
 	}
 }
 

@@ -9,6 +9,7 @@ import UserTeacherCtrl from '../controllers/UserTeacherCtrl';
 import RoleCtrl from '../controllers/RoleCtrl';
 import LoginCtrl from '../controllers/LoginCtrl';
 import LessonAssessmentCtrl from '../controllers/LessonAssessmentCtrl';
+import * as multer from 'multer';
 
 const router = express.Router();
 
@@ -31,7 +32,26 @@ class AppRoutes {
         this.rolePrivilege();
         this.lessonAssessmentRoutes();
     }
-    
+
+    getMulter() {
+        //server.js
+
+
+        // SET STORAGE
+        // const storage = multer.diskStorage({
+        //     destination: function (req, file, cb) {
+        //         cb(null, 'uploads')
+        //     },
+        //     filename: function (req, file, cb) {
+        //         cb(null, file.fieldname + '-' + Date.now())
+        //     }
+        // })
+
+        // return multer({ storage: storage });
+        
+        return multer();
+    }
+
     subjectRoutes() {
         const subject = '/subject';
         router.get(`${subject}/list`, SubjectCtrl.getSubjects);
@@ -88,6 +108,7 @@ class AppRoutes {
         router.get(`${lessonSection}/list/active`, LessonSectionCtrl.getActiveLessonSection);
         router.get(`${lessonSection}/list/inactive`, LessonSectionCtrl.getInActiveLessonSections);
         router.get(`${lessonSection}/:lessonId/list`, LessonSectionCtrl.getLessonSectionsByLessonId);
+        router.post(`${lessonSection}/:sectionId/upload`, this.getMulter().single('video_file'), LessonSectionCtrl.uploadFile);
     }
 
     studentParentRoutes() {
