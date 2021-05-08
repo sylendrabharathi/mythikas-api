@@ -281,6 +281,18 @@ ALTER TABLE public.lesson_watching ADD CONSTRAINT lesson_watching_lesson_id_fkey
 ALTER TABLE public.lesson_watching ADD CONSTRAINT lesson_watching_section_id_fkey FOREIGN KEY (section_id) REFERENCES lesson_section(id);
 ALTER TABLE public.lesson_watching ADD CONSTRAINT lesson_watching_student_id_fkey FOREIGN KEY (student_id) REFERENCES student_parent(id);    
 
+-- Create Section Test table
+CREATE TABLE IF NOT EXISTS "section_test" (
+    "student_id" INTEGER NOT NULL  REFERENCES "student_parent" ("id"),
+    "lesson_id" INTEGER NOT NULL  REFERENCES "lesson" ("id"),
+    "lesson_section_id" INTEGER NOT NULL  REFERENCES "lesson_section" ("id"),
+    "date" TIMESTAMP WITH TIME ZONE NOT NULL, "question_answers" JSON[],
+    "total_marks" INTEGER NOT NULL DEFAULT 0,
+    "student_marks" INTEGER NOT NULL DEFAULT 0,
+    "created_at" TIMESTAMP WITH TIME ZONE NOT NULL,
+    "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL,
+    PRIMARY KEY ("student_id","lesson_id","lesson_section_id")
+);
 
 -- Insert Data
 

@@ -9,6 +9,7 @@ import UserTeacherCtrl from '../controllers/UserTeacherCtrl';
 import RoleCtrl from '../controllers/RoleCtrl';
 import LoginCtrl from '../controllers/LoginCtrl';
 import LessonAssessmentCtrl from '../controllers/LessonAssessmentCtrl';
+import SectionTestCtrl from '../controllers/SectionTestCtrl';
 
 const router = express.Router();
 
@@ -30,6 +31,7 @@ class AppRoutes {
         this.loginRoutes();
         this.rolePrivilege();
         this.lessonAssessmentRoutes();
+        this.sectionTestRoutes();
     }
     
     subjectRoutes() {
@@ -147,6 +149,15 @@ class AppRoutes {
         router.get(`${lessonAssessment}/:lessonId/list`, LessonAssessmentCtrl.getActiveLessonAssessmentsByLessonId);
     }
 
+    sectionTestRoutes() {
+        const sectionTest = '/sectionTest';
+        router.get(`${sectionTest}/list`, SectionTestCtrl.getSectionTests);
+        router.get(`${sectionTest}/student/:studentId`, SectionTestCtrl.getSectionTestsByStudentId);
+        router.get(`${sectionTest}/lessonSection/:lessonSectionId`, SectionTestCtrl.getSectionTestsByLessonSectionId);
+        router.get(`${sectionTest}/lesson/:lessonId`, SectionTestCtrl.getSectionTestsByLessonId);
+        router.post(`${sectionTest}`, SectionTestCtrl.saveSectionTest);
+        router.get(`${sectionTest}/get`, SectionTestCtrl.getSectionTestByStudentIdAndLessonSectionIdAndLessonId);
+    }
 
 }
 
