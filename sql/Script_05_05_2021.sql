@@ -32,3 +32,5 @@ CREATE TABLE IF NOT EXISTS "assessment_test" (
 CREATE TYPE enum_student_parent_registration_type AS ENUM('ADMIN', 'SELF');
 
 ALTER TABLE public.student_parent ADD registration_type enum_student_parent_registration_type NOT NULL DEFAULT 'ADMIN';
+
+ALTER TABLE public.lesson_section ALTER COLUMN tag DROP NOT NULL;

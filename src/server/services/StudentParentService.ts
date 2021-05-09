@@ -45,7 +45,7 @@ class StudentParentService {
     async updateStudentParent(req: Request) {
         return studentParentRepo.getStudentParentById(req.params.id).then(val => {
             return StudentParent.update(
-                { ...req.body },
+                {  ...val[0], ...req.body },
                 { returning: true, where: { id: req.params.id } }
             ).then(res => {
                 return responseUtil.formSuccessResponse('Student updated successfully', res);

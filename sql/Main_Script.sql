@@ -192,7 +192,7 @@ CREATE TABLE IF NOT EXISTS public.lesson_section (
 	status bool NOT NULL DEFAULT true,
 	lesson_id int4 NOT NULL,
 	url text NOT NULL,
-	tag text NOT NULL,
+	tag text NULL,
 	"label" text NOT NULL,
 	created_by int4 NOT NULL,
 	updated_by int4 NOT NULL,

@@ -39,7 +39,7 @@ const LessonSection = sequelize.define('LessonSection', {
     },
     tag: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: true
     },
     label: {
         type: DataTypes.TEXT,
