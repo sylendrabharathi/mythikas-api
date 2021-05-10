@@ -2,19 +2,18 @@ import * as AWS from 'aws-sdk';
 import * as stream from 'stream';
 class AWSUtils {
 
-    private id = 'AKIAZKTPJHNATAEX6Q3Q';
-    private secret = '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';
+    private id = 'AKIA2O4DJVTOAZEJSUPC';
+    private secret = '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';
 
     // 'http://brain-beat.s3.amazonaws.com/'
-    bucket = 'brain-beat';
+    bucket = 'brainbeat';
 
     uploadFile(file: any) {
         const s3 = this.getS3();
         const obj: AWS.S3.PutObjectRequest = {
             Bucket: this.bucket,
             Key: `section-${file.originalname}`,
-            Body: this.bufferToStream(file.buffer),
-            ACL: 'public-read'
+            Body: this.bufferToStream(file.buffer)
         };
         // console.log('upload s3 = ', obj);
         return s3.upload(obj);
@@ -67,8 +66,6 @@ class AWSUtils {
                 console.log(err);
                 return;
             }
-
-            console.log(data.Buckets);
             if(data.Buckets && data.Buckets.length) {
                 let isFind = false;
                 for(const bucket of data.Buckets) {
