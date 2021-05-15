@@ -1357,6 +1357,30 @@
 					"response": []
 				},
 				{
+					"name": "GetLessonWatchingHistoryByStudent",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{apiURL}}mobile/student/1/watchHistory",
+							"host": [
+								"{{apiURL}}mobile"
+							],
+							"path": [
+								"student",
+								"1",
+								"watchHistory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "UpsertLastWatchingOfStudent",
 					"request": {
 						"method": "POST",
@@ -1368,7 +1392,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"studentId\": 3,\n\t\"lessonId\": 3,\n\t\"sectionId\": 6,\n\t\"status\": \"IN-PROGRESS\"\n}"
+							"raw": "{\n\t\"studentId\": 1,\n\t\"lessonId\": 1,\n\t\"sectionId\": 1,\n\t\"status\": \"IN-PROGRESS\",\n    \"watchedSeconds\": 45\n}"
 						},
 						"url": {
 							"raw": "{{apiURL}}mobile/lesson/watching",
