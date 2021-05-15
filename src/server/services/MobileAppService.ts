@@ -62,9 +62,11 @@ class MobileAppService {
     }
 
     async upsertLastWatching(req: Request): Promise<AppResponse> {
-        const lessonWatching = LessonWatching.build(req.body);
-        return lessonWatching.save().then(val => {
-            return responseUtil.formSuccessResponse('Lesson saved successfully', val.toJSON());
+        return LessonWatching.upsert(
+            { ...req.body },
+            { returning: true}
+        ).then(val => {
+            return responseUtil.formSuccessResponse('Lesson saved successfully', val[0]);
         }).catch(err => {
             return responseUtil.formBadRequestResponse(err.toString(), 'Error in Lesson saving', utils.formErrorObj(err))
         })

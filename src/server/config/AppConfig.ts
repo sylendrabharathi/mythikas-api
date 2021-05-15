@@ -7,7 +7,7 @@ class Config {
 class DBConfig {
     database = 'brain_beat';
     username = 'postgres';
-    password = 'postgres';
+    password = 'admin@123';
     host = 'localhost';
     dialect = 'postgres';
 }

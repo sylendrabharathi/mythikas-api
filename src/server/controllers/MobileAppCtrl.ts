@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import appCtrl from './AppCtrl';
 import MobileAppService from './../services/MobileAppService';
 import studentParentService from '../services/StudentParentService';
+import lessonWatchingService from '../services/LessonWatchingService';
 class MobileAppCtrl {
 
     async login(req: Request, res: Response) {
@@ -30,6 +31,10 @@ class MobileAppCtrl {
 
 	async signUpStudentParent(req: Request, res: Response) {
 		appCtrl.renderResponse(res, studentParentService.signUpStudentParent(req));
+	}
+
+	async getLastWatchingHistoryByStudentId(req: Request, res: Response) {
+		appCtrl.renderResponse(res, lessonWatchingService.getLastWatchingHistoryByStudentId(req));
 	}
 	
 }
