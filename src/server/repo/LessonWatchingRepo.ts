@@ -13,7 +13,15 @@ class LessonWatchingRepo {
       as status 
       from (select lw.lesson_id as lessonId,
       les.name as lessonName,
-      jsonb_agg(distinct to_jsonb(ls)) as sections,
+      jsonb_agg(distinct jsonb_build_object(
+          'id', ls.id,
+          'name', ls."name",
+          'url', ls."url",
+          'tag', ls."tag",
+          'label', ls."label",
+          'description', ls."description"
+        )
+      ) as sections,
       count(distinct(lw.section_id, lw.status)) filter (where lw.status = 'DONE') as doneCount
       from ${table.lessonWatching} lw
       left join ${table.lessonSection} ls on ls.lesson_id = lw.lesson_id
