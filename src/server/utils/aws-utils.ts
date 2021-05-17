@@ -30,6 +30,15 @@ class AWSUtils {
         // return Promise.resolve(upload);
     }
 
+    getFiles() {
+        const s3 = this.getS3();
+        const obj: AWS.S3.ListObjectsRequest = {
+            Bucket: this.bucket
+        };
+        return s3.listObjects(obj);
+    }
+
+
     bufferToStream(file) {
         const ds = new stream.Duplex();
         ds.push(file);

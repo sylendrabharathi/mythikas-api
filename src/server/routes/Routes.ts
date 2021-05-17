@@ -12,6 +12,7 @@ import LessonAssessmentCtrl from '../controllers/LessonAssessmentCtrl';
 import * as multer from 'multer';
 import SectionTestCtrl from '../controllers/SectionTestCtrl';
 import AssessmentTestCtrl from '../controllers/AssessmentTestCtrl';
+import UploadFileCtrl from '../controllers/UploadFileCtrl';
 
 const router = express.Router();
 
@@ -35,6 +36,7 @@ class AppRoutes {
         this.lessonAssessmentRoutes();
         this.sectionTestRoutes();
         this.assessmentTestRoutes();
+        this.uploadFileRoutes();
     }
 
     getMulter() {
@@ -112,7 +114,6 @@ class AppRoutes {
         router.get(`${lessonSection}/list/active`, LessonSectionCtrl.getActiveLessonSection);
         router.get(`${lessonSection}/list/inactive`, LessonSectionCtrl.getInActiveLessonSections);
         router.get(`${lessonSection}/:lessonId/list`, LessonSectionCtrl.getLessonSectionsByLessonId);
-        router.post(`${lessonSection}/:sectionId/upload`, this.getMulter().single('video_file'), LessonSectionCtrl.uploadFile);
     }
 
     studentParentRoutes() {
@@ -189,6 +190,14 @@ class AppRoutes {
         router.get(`${assessmentTest}/lessonAssessment/:lessonAssessmentId`, AssessmentTestCtrl.getAssessmentTestsByLessonAssessmentId);
         router.post(`${assessmentTest}`, AssessmentTestCtrl.saveAssessmentTest);
         router.get(`${assessmentTest}/get`, AssessmentTestCtrl.getAssessmentTestByStudentIdAndLessonAssessmentId);
+    }
+
+    uploadFileRoutes() {
+        const uploadFile = '/uploadFile'
+        router.post(`${uploadFile}`, this.getMulter().single('video_file'), UploadFileCtrl.uploadFile);
+        router.get(`${uploadFile}/list`, UploadFileCtrl.list);
+        router.post(`${uploadFile}/student`, this.getMulter().single('student_excel'), UploadFileCtrl.studentExcel);
+
     }
 
 }

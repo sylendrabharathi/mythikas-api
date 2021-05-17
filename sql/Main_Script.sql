@@ -336,6 +336,8 @@ INSERT INTO privilege(id,code,description,status,"group",created_at,updated_at) 
 INSERT INTO privilege(id,code,description,status,"group",created_at,updated_at) VALUES (16,'DUST','Delete User/Teacher','true','USER/TEACHER','2021-03-04 11:34:39','2021-03-04 11:34:39');
 INSERT INTO privilege(id,code,description,status,"group",created_at,updated_at) VALUES (17,'VROP','View Role & Privilege(s)','true','ROLE & PRIVILEGE','2021-03-04 11:34:39','2021-03-04 11:34:39');
 INSERT INTO privilege(id,code,description,status,"group",created_at,updated_at) VALUES (18,'MROP','Add/Edit Role & Privilege','true','ROLE & PRIVILEGE','2021-03-04 11:34:39','2021-03-04 11:34:39');
+INSERT INTO privilege(id,code,description,status,"group",created_at,updated_at) VALUES (19,'VS3F','View S3 Files','true','S3 Files','2021-03-04 11:34:39','2021-03-04 11:34:39');
+INSERT INTO privilege(id,code,description,status,"group",created_at,updated_at) VALUES (20,'ES3F','Add/Edit S3 Files','true','S3 Files','2021-03-04 11:34:39','2021-03-04 11:34:39');
 
 -- Insert User/Teacher
 INSERT INTO user_teacher(id,first_name,last_name,gender,phone_number,email_id,date_of_birth,role_id,status,password,last_login_at,created_at,updated_at) VALUES (1,'Admin','A','M',9597035766,'admin@mythikas.com',NULL,1,'true','c15d4484b0e2f74d1a5baf1d48a2a0fdc01b9f8b0c6c11d380d2dbf2c83bd087',NULL,'2021-03-04 11:35:02','2021-03-04 11:35:02');
@@ -358,6 +360,9 @@ INSERT INTO role_privilege(role_id,privilege_id,status,created_by,updated_by,cre
 INSERT INTO role_privilege(role_id,privilege_id,status,created_by,updated_by,created_at,updated_at) VALUES (1,16,'true',1,1,'2021-03-04 11:35:02','2021-03-04 11:35:02');
 INSERT INTO role_privilege(role_id,privilege_id,status,created_by,updated_by,created_at,updated_at) VALUES (1,17,'true',1,1,'2021-03-04 11:35:02','2021-03-04 11:35:02');
 INSERT INTO role_privilege(role_id,privilege_id,status,created_by,updated_by,created_at,updated_at) VALUES (1,18,'true',1,1,'2021-03-04 11:35:02','2021-03-04 11:35:02');
+INSERT INTO role_privilege(role_id,privilege_id,status,created_by,updated_by,created_at,updated_at) VALUES (1,19,'true',1,1,'2021-03-04 11:35:02','2021-03-04 11:35:02');
+INSERT INTO role_privilege(role_id,privilege_id,status,created_by,updated_by,created_at,updated_at) VALUES (1,20,'true',1,1,'2021-03-04 11:35:02','2021-03-04 11:35:02');
+
 INSERT INTO role_privilege(role_id,privilege_id,status,created_by,updated_by,created_at,updated_at) VALUES (2,2,'true',1,1,'2021-03-04 11:35:02','2021-03-04 11:35:02');
 INSERT INTO role_privilege(role_id,privilege_id,status,created_by,updated_by,created_at,updated_at) VALUES (2,4,'false',1,1,'2021-03-04 11:35:02','2021-03-04 11:35:02');
 INSERT INTO role_privilege(role_id,privilege_id,status,created_by,updated_by,created_at,updated_at) VALUES (2,5,'true',1,1,'2021-03-04 11:35:02','2021-03-04 11:35:02');

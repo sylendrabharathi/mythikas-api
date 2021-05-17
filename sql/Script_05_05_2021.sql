@@ -34,3 +34,9 @@ CREATE TYPE enum_student_parent_registration_type AS ENUM('ADMIN', 'SELF');
 ALTER TABLE public.student_parent ADD registration_type enum_student_parent_registration_type NOT NULL DEFAULT 'ADMIN';
 
 ALTER TABLE public.lesson_section ALTER COLUMN tag DROP NOT NULL;
+
+INSERT INTO privilege(id,code,description,status,"group",created_at,updated_at) VALUES (19,'VS3F','View S3 Files','true','S3 Files','2021-03-04 11:34:39','2021-03-04 11:34:39');
+INSERT INTO privilege(id,code,description,status,"group",created_at,updated_at) VALUES (20,'ES3F','Add/Edit S3 Files','true','S3 Files','2021-03-04 11:34:39','2021-03-04 11:34:39');
+
+INSERT INTO role_privilege(role_id,privilege_id,status,created_by,updated_by,created_at,updated_at) VALUES (1,19,'true',1,1,'2021-03-04 11:35:02','2021-03-04 11:35:02');
+INSERT INTO role_privilege(role_id,privilege_id,status,created_by,updated_by,created_at,updated_at) VALUES (1,20,'true',1,1,'2021-03-04 11:35:02','2021-03-04 11:35:02');

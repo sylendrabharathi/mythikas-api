@@ -90,29 +90,6 @@ class LessonSectionService {
             return responseUtil.formBadRequestResponse(err.toString(), 'error in get active LessonSections', err);
         })
     }
-
-    uploadSectionFile(req: Request){
-        // const file: any = req['file'];
-        // const s3 = awsUtils.getS3();
-        // const obj: AWS.S3.PutObjectRequest = {
-        //     Bucket: awsUtils.bucket,
-        //     Key: `section-${file.originalname}`,
-        //     Body: awsUtils.bufferToStream(file.buffer)
-        // };
-        return awsUtils.uploadFile(req['file'])
-        .promise().then((data) => {
-            console.log('data = ', data);
-            return responseUtil.formSuccessResponse('', data);
-        }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in file uploading', err);
-        });
-        // console.log('resp = ', resp);
-        // if(!resp) {
-        //     return Promise.reject(responseUtil.formBadRequestResponse(400, 'File not uploading', null));
-        // }
-        // return Promise.resolve(responseUtil.formSuccessResponse('', resp));
-        
-    }
 }
 
 const lessonSectionService = new LessonSectionService();
