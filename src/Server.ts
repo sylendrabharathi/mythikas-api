@@ -62,7 +62,7 @@ function init() {
 
     dotenv.config();
 
-    awsUtils.checkAndCreateBucket();
+    // awsUtils.checkAndCreateBucket();
 
     // app.get('/', function (req, res, next) {
     //     Promise.resolve().then(function () {

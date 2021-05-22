@@ -7,6 +7,7 @@ import responseUtil, { AppResponse } from '../utils/ResponseUtil';
 import studentRepo from './../repo/StudentParentRepo';
 import lessonRepo from './../repo/LessonRepo';
 import LessonWatching from "../models/LessonWatchingModel";
+import LessonSectionRepo from "../repo/LessonSectionRepo";
 
 class MobileAppService {
 
@@ -35,7 +36,8 @@ class MobileAppService {
 
     async getLessonSectionFullDetailBySectionId(req: Request): Promise<AppResponse> {
        
-        const records = await lessonRepo.getLessonSectionFullDetailBySectionId(parseInt(req.params.sectionId.toString()));
+        const records = await lessonRepo.getLessonSectionFullDetailBySectionId(parseInt(req.params.sectionId.toString()), 
+                parseInt(req.headers.userid.toString()));
         return Promise.resolve(responseUtil.formSuccessResponse('', records));
 
     }
@@ -83,6 +85,13 @@ class MobileAppService {
             (student.standard_id, student.syllabus, req.query.subjectId ? parseInt(req.query.subjectId.toString()) : null);
         return Promise.resolve(responseUtil.formSuccessResponse('', records));
 
+    }
+
+    async getLessonSectionsByLessonIdForStudent(req: Request): Promise<AppResponse> {
+        const records = await LessonSectionRepo.getSectionsByLessonIdForStudent(parseInt(req.params.lessonId.toString()), 
+        parseInt(req.headers.userid.toString()));
+
+        return Promise.resolve(responseUtil.formSuccessResponse('', records));
     }
 
 }

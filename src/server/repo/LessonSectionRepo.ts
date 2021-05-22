@@ -57,6 +57,22 @@ class LessonSectionRepo {
 
         return records;
     }
+
+    async getSectionsByLessonIdForStudent(lessonId: number, studentId: number) {
+        const records = sequelize.query(`select ls.*, lw.status as completedStatus from lesson_section ls
+        left join lesson_watching lw on lw.section_id = ls.id and lw.student_id = :studentId
+        where ls.status = true and ls.lesson_id = :lessonId;`, {
+            type: QueryTypes.SELECT,
+            replacements: {
+                lessonId,
+                studentId
+            }
+
+        });
+        
+        return records;
+        
+    }
 }
 
 const lessonSectionRepo = new LessonSectionRepo();

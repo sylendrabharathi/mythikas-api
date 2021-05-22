@@ -36,6 +36,10 @@ class MobileAppCtrl {
 	async getLastWatchingHistoryByStudentId(req: Request, res: Response) {
 		appCtrl.renderResponse(res, lessonWatchingService.getLastWatchingHistoryByStudentId(req));
 	}
+
+	async getLessonSectionsByLessonIdForStudent(req: Request, res: Response) {
+		appCtrl.renderResponse(res, MobileAppService.getLessonSectionsByLessonIdForStudent(req));
+	}
 	
 }
 

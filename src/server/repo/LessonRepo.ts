@@ -133,9 +133,10 @@ class LessonRepo {
         return records;
     }
 
-    async getLessonSectionFullDetailBySectionId(sectionId: number) {
+    async getLessonSectionFullDetailBySectionId(sectionId: number, studentId: number) {
         const records = sequelize.query(`select ls.id as id, ls."label" as "label", ls."name" as "name", ls.tag as tag, 
         ls.url as url, ut.first_name as createdBy, ls.description as "description", ls.created_at as createdOn,
+        lw.status as status, lw.watched_seconds as seconds,
         lesson as lesson,
         questions as questions
         from ${table.lessonSection} ls 
@@ -163,10 +164,12 @@ class LessonRepo {
                 inner join ${table.standard} s2 on s2.id = l.standard_id and s2.status = true
         ) less on less.lessonId = ls.lesson_id 
         inner join ${table.userTeacher} ut on ut.id = ls.updated_by
+        left join ${table.lessonWatching} lw on lw.section_id = ls.id and lw.student_id = :studentId
         where ls.id = :sectionId and ls.status = true;`, {
             type: QueryTypes.SELECT,
             replacements: {
-                sectionId
+                sectionId,
+                studentId
             }
 
         });

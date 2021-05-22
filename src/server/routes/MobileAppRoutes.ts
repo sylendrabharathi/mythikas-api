@@ -26,6 +26,7 @@ class MobileAppRoutes {
 
     getSectionRoutes() {
         router.get('/section/:sectionId/detail', MobileAppCtrl.getLessonSectionFullDetailBySectionId);
+        router.get('/lessonSection/:lessonId/list', MobileAppCtrl.getLessonSectionsByLessonIdForStudent);
     }
 }
 
