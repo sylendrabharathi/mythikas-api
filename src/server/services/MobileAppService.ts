@@ -8,6 +8,8 @@ import studentRepo from './../repo/StudentParentRepo';
 import lessonRepo from './../repo/LessonRepo';
 import LessonWatching from "../models/LessonWatchingModel";
 import LessonSectionRepo from "../repo/LessonSectionRepo";
+import LessonWatchingRepo from "../repo/LessonWatchingRepo";
+import assessmentTestRepo from "../repo/AssessmentTestRepo";
 
 class MobileAppService {
 
@@ -92,6 +94,29 @@ class MobileAppService {
         parseInt(req.headers.userid.toString()));
 
         return Promise.resolve(responseUtil.formSuccessResponse('', records));
+    }
+
+    async getLessonDetailsByStudentIdAndLessonId(req: Request): Promise<AppResponse> {
+        const studentId = parseInt(req.params.studentId);
+        const lessonId = parseInt(req.params.lessonId);
+
+        const lesson = await lessonRepo.getLessonById(lessonId);
+        if(!lesson) {
+            return Promise.reject(responseUtil.formNotFoundResponse('not found', 'Invalid Credential', null));
+        }
+
+        var result = lesson.toJSON();
+
+        const lessonWatch = await LessonWatchingRepo.getLastWatchingHistoryByStudentIdAndLessonId(studentId, lessonId);
+        if (lessonWatch && lessonWatch.length) {
+            result["watchStatus"] = lessonWatch[0]["status"];
+            result["sections"] = lessonWatch[0]["sections"];
+        }
+
+        const assessmentTests = await assessmentTestRepo.getAssessmentTestsByStudentIdAndLessonId(studentId, lessonId);
+        result["assessmentTests"] = assessmentTests;
+
+        return Promise.resolve(responseUtil.formSuccessResponse('', result));
     }
 
 }

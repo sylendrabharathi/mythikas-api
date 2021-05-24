@@ -40,6 +40,10 @@ class MobileAppCtrl {
 	async getLessonSectionsByLessonIdForStudent(req: Request, res: Response) {
 		appCtrl.renderResponse(res, MobileAppService.getLessonSectionsByLessonIdForStudent(req));
 	}
+
+	async getLessonDetailsByStudentIdAndLessonId(req: Request, res: Response) {
+		appCtrl.renderResponse(res, MobileAppService.getLessonDetailsByStudentIdAndLessonId(req));
+	}
 	
 }
 

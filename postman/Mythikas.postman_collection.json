@@ -1,45 +1,51 @@
 {
-	"variables": [],
 	"info": {
+		"_postman_id": "1845fdc9-0545-44de-8c85-d4cdca92f08f",
 		"name": "Mythikas",
-		"_postman_id": "7f360340-0974-0eda-98fb-9def89471c07",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Subject",
-			"description": "",
 			"item": [
 				{
 					"name": "GetSubjectByID",
 					"request": {
-						"url": "{{apiURL}}subject/1",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}subject/1",
+							"host": [
+								"{{apiURL}}subject"
+							],
+							"path": [
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "ChangeSubjectStatus",
 					"request": {
-						"url": "{{apiURL}}subject/1/true",
 						"method": "PUT",
 						"header": [],
-						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}subject/1/true",
+							"host": [
+								"{{apiURL}}subject"
+							],
+							"path": [
+								"1",
+								"true"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "UpdateSubject",
 					"request": {
-						"url": "{{apiURL}}subject/1",
 						"method": "PUT",
 						"header": [
 							{
@@ -51,42 +57,57 @@
 							"mode": "raw",
 							"raw": "{\n            \"id\": 1,\n            \"name\": \"Maths\",\n            \"description\": \"Maths Subject s\",\n            \"status\": true\n        \n        }"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}subject/1",
+							"host": [
+								"{{apiURL}}subject"
+							],
+							"path": [
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetInActiveSubjects",
 					"request": {
-						"url": "{{apiURL}}subject/list/inactive",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}subject/list/inactive",
+							"host": [
+								"{{apiURL}}subject"
+							],
+							"path": [
+								"list",
+								"inactive"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetActiveSubjects",
 					"request": {
-						"url": "{{apiURL}}subject/list/active",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}subject/list/active",
+							"host": [
+								"{{apiURL}}subject"
+							],
+							"path": [
+								"list",
+								"active"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "SaveSubject",
 					"request": {
-						"url": "{{apiURL}}subject",
 						"method": "POST",
 						"header": [
 							{
@@ -98,7 +119,12 @@
 							"mode": "raw",
 							"raw": "{\n\t\"name\": \"Tamil\",\n\t\"description\": \"Tamil\",\n\t\"createdBy\": 1,\n\t\"updatedBy\": 1\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}subject",
+							"host": [
+								"{{apiURL}}subject"
+							]
+						}
 					},
 					"response": []
 				}
@@ -106,68 +132,80 @@
 		},
 		{
 			"name": "Standard",
-			"description": "",
 			"item": [
 				{
 					"name": "GetStandards",
 					"request": {
-						"url": "{{apiURL}}standard/list",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}standard/list",
+							"host": [
+								"{{apiURL}}standard"
+							],
+							"path": [
+								"list"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetActiveStandards",
 					"request": {
-						"url": "{{apiURL}}standard/list/active",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}standard/list/active",
+							"host": [
+								"{{apiURL}}standard"
+							],
+							"path": [
+								"list",
+								"active"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetInActiveStandards",
 					"request": {
-						"url": "{{apiURL}}standard/list/inactive",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}standard/list/inactive",
+							"host": [
+								"{{apiURL}}standard"
+							],
+							"path": [
+								"list",
+								"inactive"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetStandardById",
 					"request": {
-						"url": "{{apiURL}}standard/1",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}standard/1",
+							"host": [
+								"{{apiURL}}standard"
+							],
+							"path": [
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "SaveStandard",
 					"request": {
-						"url": "{{apiURL}}standard",
 						"method": "POST",
 						"header": [
 							{
@@ -179,14 +217,18 @@
 							"mode": "raw",
 							"raw": "{\n\t\"name\": \"11th\",\n\t\"description\": \"11th\",\n\t\"createdBy\": 1,\n\t\"updatedBy\": 1\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}standard",
+							"host": [
+								"{{apiURL}}standard"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "UpdateStandard",
 					"request": {
-						"url": "{{apiURL}}/standard/1",
 						"method": "PUT",
 						"header": [
 							{
@@ -198,18 +240,34 @@
 							"mode": "raw",
 							"raw": "{\n            \"id\": 1,\n            \"name\": \"1st\",\n            \"description\": \"1st \",\n            \"status\": true\n        \n        }"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/standard/1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"standard",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "ChangeStandardStatus",
 					"request": {
-						"url": "{{apiURL}}standard/1/false",
 						"method": "PUT",
 						"header": [],
-						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}standard/1/false",
+							"host": [
+								"{{apiURL}}standard"
+							],
+							"path": [
+								"1",
+								"false"
+							]
+						}
 					},
 					"response": []
 				}
@@ -217,12 +275,10 @@
 		},
 		{
 			"name": "UserTeacher",
-			"description": "",
 			"item": [
 				{
 					"name": "SaveUserTeacher",
 					"request": {
-						"url": "{{apiURL}}userTeacher",
 						"method": "POST",
 						"header": [
 							{
@@ -234,14 +290,18 @@
 							"mode": "raw",
 							"raw": "{\n\"firstName\": \"Sylendra\", \"lastName\": \"Bharathi\", \"gender\": \"M\",\n                \"phoneNumber\": \"9600534263\", \"emailId\": \"sylendra@mythikas.com\",\n                \"role\": 1\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}userTeacher",
+							"host": [
+								"{{apiURL}}userTeacher"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "UpdateUserTeacher",
 					"request": {
-						"url": "{{apiURL}}userTeacher/2",
 						"method": "PUT",
 						"header": [
 							{
@@ -253,88 +313,122 @@
 							"mode": "raw",
 							"raw": "{\n\t\n\"firstName\": \"Sylendra \", \"lastName\": \"Bharathi\", \"gender\": \"M\",\n                \"phoneNumber\": \"9600534263\", \"emailId\": \"sylendran@mythikas.com\",\n                \"role\": 1\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}userTeacher/2",
+							"host": [
+								"{{apiURL}}userTeacher"
+							],
+							"path": [
+								"2"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetUserTeacherById",
 					"request": {
-						"url": "{{apiURL}}userTeacher/2",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}userTeacher/2",
+							"host": [
+								"{{apiURL}}userTeacher"
+							],
+							"path": [
+								"2"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "ChangeUserTeacherStatus",
 					"request": {
-						"url": "{{apiURL}}userTeacher/2/true",
 						"method": "PUT",
 						"header": [],
-						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}userTeacher/2/true",
+							"host": [
+								"{{apiURL}}userTeacher"
+							],
+							"path": [
+								"2",
+								"true"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetUserTeachers",
 					"request": {
-						"url": "{{apiURL}}userTeacher/list",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}userTeacher/list",
+							"host": [
+								"{{apiURL}}userTeacher"
+							],
+							"path": [
+								"list"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetActiveUserTeachers",
 					"request": {
-						"url": "{{apiURL}}userTeacher/list/active",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}userTeacher/list/active",
+							"host": [
+								"{{apiURL}}userTeacher"
+							],
+							"path": [
+								"list",
+								"active"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetInActiveUserTeacher",
 					"request": {
-						"url": "{{apiURL}}userTeacher/list/inactive",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}userTeacher/list/inactive",
+							"host": [
+								"{{apiURL}}userTeacher"
+							],
+							"path": [
+								"list",
+								"inactive"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetUserTeacherRolePrivileges",
 					"request": {
-						"url": "{{apiURL}}/userTeacher/1/rolePrivileges",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/userTeacher/1/rolePrivileges",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"userTeacher",
+								"1",
+								"rolePrivileges"
+							]
+						}
 					},
 					"response": []
 				}
@@ -342,12 +436,10 @@
 		},
 		{
 			"name": "StudentParent",
-			"description": "",
 			"item": [
 				{
 					"name": "SaveStudentParent",
 					"request": {
-						"url": "{{apiURL}}studentParent",
 						"method": "POST",
 						"header": [
 							{
@@ -359,42 +451,53 @@
 							"mode": "raw",
 							"raw": "{\n    \"firstName\": \"Sylendra\",\n    \"lastName\": \"Bharathi\",\n    \"gender\": \"M\",\n    \"phoneNumber\": \"9600534263\",\n    \"emailId\": \"sylendra@mythikas.com\",\n    \"parentFirstName\": \"ChandraSekaran\",\n    \"parentLastName\": \"Venkatachalam\",\n    \"password\": \"welcome123\",\n    \"standardId\": 1,\n    \"syllabus\": \"CBSC\",\n    \"createdBy\": 1,\n    \"updatedBy\": 1\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}studentParent",
+							"host": [
+								"{{apiURL}}studentParent"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetActiveStudentParents",
 					"request": {
-						"url": "{{apiURL}}studentParent/list/active",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}studentParent/list/active",
+							"host": [
+								"{{apiURL}}studentParent"
+							],
+							"path": [
+								"list",
+								"active"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetStudentParentById",
 					"request": {
-						"url": "{{apiURL}}studentParent/1",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}studentParent/1",
+							"host": [
+								"{{apiURL}}studentParent"
+							],
+							"path": [
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "UpdateStudentParent",
 					"request": {
-						"url": "{{apiURL}}studentParent/1",
 						"method": "PUT",
 						"header": [
 							{
@@ -406,57 +509,87 @@
 							"mode": "raw",
 							"raw": "{\n        \"gender\": \"M\",\n        \"role\": \"STUDENT\",\n        \"password\": \"welcome123\",\n        \"status\": true,\n        \"firstName\": \"Sylendra\",\n        \"lastName\": \"Bharathi\",\n        \"phoneNumber\": \"9600534263\",\n        \"emailId\": \"sylendra@mythikas.com\",\n        \"dateOfBirth\": \"1991-07-30\",\n        \"otherFirstName\": \"ChandraSekaran\",\n        \"otherLastName\": \"Venkatachalam\"\n    }"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}studentParent/1",
+							"host": [
+								"{{apiURL}}studentParent"
+							],
+							"path": [
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetStudentParents",
 					"request": {
-						"url": "{{apiURL}}studentParent/list",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}studentParent/list",
+							"host": [
+								"{{apiURL}}studentParent"
+							],
+							"path": [
+								"list"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetInActiveStudentParents",
 					"request": {
-						"url": "{{apiURL}}studentParent/list/inActive",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}studentParent/list/inActive",
+							"host": [
+								"{{apiURL}}studentParent"
+							],
+							"path": [
+								"list",
+								"inActive"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "ChangeStudentParentStatus",
 					"request": {
-						"url": "{{apiURL}}studentParent/2/true",
 						"method": "PUT",
 						"header": [],
-						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}studentParent/2/true",
+							"host": [
+								"{{apiURL}}studentParent"
+							],
+							"path": [
+								"2",
+								"true"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "ChangeStudentParentApproval",
 					"request": {
-						"url": "{{apiURL}}studentParent/1/approval/true",
 						"method": "PUT",
 						"header": [],
-						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}studentParent/1/approval/true",
+							"host": [
+								"{{apiURL}}studentParent"
+							],
+							"path": [
+								"1",
+								"approval",
+								"true"
+							]
+						}
 					},
 					"response": []
 				}
@@ -464,12 +597,10 @@
 		},
 		{
 			"name": "Lesson",
-			"description": "",
 			"item": [
 				{
 					"name": "SaveLesson",
 					"request": {
-						"url": "{{apiURL}}lesson",
 						"method": "POST",
 						"header": [
 							{
@@ -481,28 +612,36 @@
 							"mode": "raw",
 							"raw": "{\n\t\"name\": \"Lesson 1\",\n\t\"description\": \"New Lesson\",\n\t\"standardId\": 1,\n\t\"subjectId\": 1,\n\t\"syllabus\": \"STATE_BOARD\",\n\t\"createdBy\": 1,\n\t\"updatedBy\": 1\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}lesson",
+							"host": [
+								"{{apiURL}}lesson"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetLessonByID",
 					"request": {
-						"url": "{{apiURL}}/lesson/1",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lesson/1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lesson",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "UpdateLesson",
 					"request": {
-						"url": "{{apiURL}}/lesson/1",
 						"method": "PUT",
 						"header": [
 							{
@@ -514,60 +653,91 @@
 							"mode": "raw",
 							"raw": "{\n\t\"id\": 1,\n\t\"name\": \"Lesson 1\",\n\t\"description\": \"New Lesson1\",\n\t\"standardId\": 1,\n\t\"subjectId\": 1,\n\t\"syllabus\": \"STATE_BOARD\"\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lesson/1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lesson",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "ChangeLessonStatus",
 					"request": {
-						"url": "{{apiURL}}/lesson/1/true",
 						"method": "PUT",
 						"header": [],
-						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lesson/1/true",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lesson",
+								"1",
+								"true"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetLessons",
 					"request": {
-						"url": "{{apiURL}}/lesson/list",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lesson/list",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lesson",
+								"list"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetActiveLessons",
 					"request": {
-						"url": "{{apiURL}}/lesson/list/active",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lesson/list/active",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lesson",
+								"list",
+								"active"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetInActiveLessons",
 					"request": {
-						"url": "{{apiURL}}/lesson/list/inActive",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lesson/list/inActive",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lesson",
+								"list",
+								"inActive"
+							]
+						}
 					},
 					"response": []
 				}
@@ -575,12 +745,10 @@
 		},
 		{
 			"name": "LessonSection",
-			"description": "",
 			"item": [
 				{
 					"name": "SaveLessonSection",
 					"request": {
-						"url": "{{apiURL}}/lessonSection",
 						"method": "POST",
 						"header": [
 							{
@@ -592,28 +760,39 @@
 							"mode": "raw",
 							"raw": "{\n\t\"name\": \"Section 1\",\n\t\"description\": \"Description is the pattern of narrative development that aims to make vivid a place, object, character, or group. Description is one of four rhetorical modes, along with exposition, argumentation, and narration. In practice it would be difficult to write literature that drew on just one of the four basic modes\",\n\t\"url\": \"http://techslides.com/demos/sample-videos/small.mp4\",\n\t\"lessonId\": 1,\n\t\"tag\": \"ll\",\n\t\"label\": \"pop\",\n\t\"createdBy\": 1,\n\t\"updatedBy\": 1\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonSection",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonSection"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetLessonSectionByID",
 					"request": {
-						"url": "{{apiURL}}/lessonSection/1",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonSection/1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonSection",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "UpdateLessonSection",
 					"request": {
-						"url": "{{apiURL}}/lessonSection/1",
 						"method": "PUT",
 						"header": [
 							{
@@ -625,60 +804,91 @@
 							"mode": "raw",
 							"raw": "{\n\t\"name\": \"Section 1\",\n\t\"description\": \"Description is the pattern of narrative development that aims to make vivid a place, object, character, or group. Description is one of four rhetorical modes, along with exposition, argumentation, and narration. In practice it would be difficult to write literature that drew on just one of the four basic modes\",\n\t\"url\": \"http://techslides.com/demos/sample-videos/small.mp4\",\n\t\"lessonId\": 1,\n\t\"tag\": \"ll\",\n\t\"label\": \"pops\",\n\t\"createdBy\": 1,\n\t\"updatedBy\": 1\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonSection/1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonSection",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "ChangeLessonSectionStatus",
 					"request": {
-						"url": "{{apiURL}}/lessonSection/1/true",
 						"method": "PUT",
 						"header": [],
-						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonSection/1/true",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonSection",
+								"1",
+								"true"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetLessonSections",
 					"request": {
-						"url": "{{apiURL}}/lessonSection/list",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonSection/list",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonSection",
+								"list"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetActiveLessonSections",
 					"request": {
-						"url": "{{apiURL}}/lessonSection/list/active",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonSection/list/active",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonSection",
+								"list",
+								"active"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetInActiveLessonSections",
 					"request": {
-						"url": "{{apiURL}}/lessonSection/list/inActive",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonSection/list/inActive",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonSection",
+								"list",
+								"inActive"
+							]
+						}
 					},
 					"response": []
 				}
@@ -686,12 +896,10 @@
 		},
 		{
 			"name": "LessonQuestion",
-			"description": "",
 			"item": [
 				{
 					"name": "SaveLessonQuestion",
 					"request": {
-						"url": "{{apiURL}}/lessonQuestion",
 						"method": "POST",
 						"header": [
 							{
@@ -703,28 +911,39 @@
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"questionaire one\",\n    \"description\": \"questionnaire one\",\n    \"studentId\": 1,\n    \"lessonId\": 1,\n    \"lessonSectionId\": 1,\n    \"questions\": [\n        {\n            \"question\": \"What is your name ?\",\n            \"optionA\": \"SB\",\n            \"optionB\": \"SC\",\n            \"optionC\": \"CSB\",\n            \"optionD\": \"All the above\",\n            \"answer\": \"optionA\"\n        }\n    ],\n    \"createdBy\": 1,\n    \"updatedBy\": 1\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonQuestion",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonQuestion"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetLessonQuestionByID",
 					"request": {
-						"url": "{{apiURL}}/lessonQuestion/1",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonQuestion/1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonQuestion",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "UpdateLessonQuestion",
 					"request": {
-						"url": "{{apiURL}}/lessonQuestion/1",
 						"method": "PUT",
 						"header": [
 							{
@@ -736,74 +955,110 @@
 							"mode": "raw",
 							"raw": "{\n\t\"name\": \"Test 1\",\n\t\"description\": \"DESCRI\",\n\t\"lessonSectionId\": 1,\n\t\"questions\": [\n\t\t{\n\t\t\t\"question\": \"What is your name ?\",\n\t\t\t\"optionA\": \"SB\",\n\t\t\t\"optionB\": \"SC\",\n\t\t\t\"optionC\": \"CSB\",\n\t\t\t\"optionD\": \"All the above\",\n\t\t\t\"answer\": \"optionA\"\n\t\t}],\n\t\t\"createdBy\": 1,\n\t\t\"updatedBy\": 1\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonQuestion/1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonQuestion",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetLessonQuestions",
 					"request": {
-						"url": "{{apiURL}}/lessonQuestion/list",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonQuestion/list",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonQuestion",
+								"list"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetActiveLessonQuestions",
 					"request": {
-						"url": "{{apiURL}}/lessonQuestion/list/active",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonQuestion/list/active",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonQuestion",
+								"list",
+								"active"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetInActiveLessonQuestions",
 					"request": {
-						"url": "{{apiURL}}/lessonQuestion/list/inActive",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonQuestion/list/inActive",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonQuestion",
+								"list",
+								"inActive"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "ChangeLessonQuestionStatus",
 					"request": {
-						"url": "{{apiURL}}/lessonQuestion/1/true",
 						"method": "PUT",
 						"header": [],
-						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonQuestion/1/true",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonQuestion",
+								"1",
+								"true"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get Active Lesson Questions BY Section Id",
 					"request": {
-						"url": "{{apiURL}}/lessonQuestion/2/list",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonQuestion/2/list",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonQuestion",
+								"2",
+								"list"
+							]
+						}
 					},
 					"response": []
 				}
@@ -811,12 +1066,10 @@
 		},
 		{
 			"name": "Login",
-			"description": "",
 			"item": [
 				{
 					"name": "UserLogin",
 					"request": {
-						"url": "{{apiURL}}/userLogin",
 						"method": "POST",
 						"header": [
 							{
@@ -828,7 +1081,15 @@
 							"mode": "raw",
 							"raw": "{\n\t\"username\": \"9597035766\",\n\t\"password\": \"Welcome@321\"\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/userLogin",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"userLogin"
+							]
+						}
 					},
 					"response": []
 				}
@@ -836,12 +1097,10 @@
 		},
 		{
 			"name": "Role",
-			"description": "",
 			"item": [
 				{
 					"name": "Update Role Privilege",
 					"request": {
-						"url": "{{apiURL}}rolePrivilege",
 						"method": "PUT",
 						"header": [
 							{
@@ -853,35 +1112,50 @@
 							"mode": "raw",
 							"raw": "[\n\t{\n\t\t\"createdAt\": \"2021-03-04T06:05:02.280Z\",\n\"createdBy\": 1,\n\"privilegeId\": 3,\n\"roleId\": 2,\n\"status\": true,\n\"updatedAt\": \"2021-03-04T06:05:02.280Z\",\n\"updatedBy\": 1\n\t}\n]"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}rolePrivilege",
+							"host": [
+								"{{apiURL}}rolePrivilege"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get Active Roles",
 					"request": {
-						"url": "{{apiURL}}/role/list/active",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/role/list/active",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"role",
+								"list",
+								"active"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "Get RolePrivileges By RoleID",
 					"request": {
-						"url": "{{apiURL}}/role/1/rolePrivileges",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/role/1/rolePrivileges",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"role",
+								"1",
+								"rolePrivileges"
+							]
+						}
 					},
 					"response": []
 				}
@@ -889,12 +1163,10 @@
 		},
 		{
 			"name": "Mobile",
-			"description": "",
 			"item": [
 				{
 					"name": "StudentLogin",
 					"request": {
-						"url": "http://localhost:8081/api/v1/mobile/studentLogin",
 						"method": "POST",
 						"header": [
 							{
@@ -910,14 +1182,26 @@
 							"mode": "raw",
 							"raw": "{\n\t\"phoneNumber\": \"9600534263\",\n\t\"password\": \"welcome123\"\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:8081/api/v1/mobile/studentLogin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"mobile",
+								"studentLogin"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "StudentSignUp",
 					"request": {
-						"url": "http://localhost:8081/api/v1/mobile/studentSignUp",
 						"method": "POST",
 						"header": [
 							{
@@ -933,15 +1217,30 @@
 							"mode": "raw",
 							"raw": "{\n    \"firstName\": \"Sylendran\",\n    \"lastName\": \"Bharathi\",\n    \"gender\": \"M\",\n    \"phoneNumber\": \"8600534263\",\n    \"emailId\": \"sylendran@mythikas.com\",\n    \"parentFirstName\": \"ChandraSekaran\",\n    \"parentLastName\": \"Venkatachalam\",\n    \"password\": \"welcome123\",\n    \"standardId\": 1,\n    \"syllabus\": \"CBSC\"\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:8081/api/v1/mobile/studentSignUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"mobile",
+								"studentSignUp"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetLessonListBasedOnStudent",
 					"request": {
+						"method": "GET",
+						"header": [],
 						"url": {
-							"raw": "{{apiURL}}mobile/student/2/lessons?",
+							"raw": "{{apiURL}}mobile/student/2/lessons",
 							"host": [
 								"{{apiURL}}mobile"
 							],
@@ -956,54 +1255,58 @@
 									"value": "2",
 									"disabled": true
 								}
-							],
-							"variable": []
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetSectionDetailBySectionId",
 					"request": {
-						"url": "{{apiURL}}mobile/section/9/detail",
 						"method": "GET",
 						"header": [
 							{
 								"key": "userid",
-								"value": "3",
-								"description": ""
+								"value": "3"
 							}
 						],
-						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}mobile/section/9/detail",
+							"host": [
+								"{{apiURL}}mobile"
+							],
+							"path": [
+								"section",
+								"9",
+								"detail"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetRelatedLessonsBySubjectIdLessonId",
 					"request": {
-						"url": "{{apiURL}}mobile/student/2/3/relatedLessons",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}mobile/student/2/3/relatedLessons",
+							"host": [
+								"{{apiURL}}mobile"
+							],
+							"path": [
+								"student",
+								"2",
+								"3",
+								"relatedLessons"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetLastWatchingByStudent",
 					"request": {
-						"url": "{{apiURL}}mobile/student/3/lastWatching",
 						"method": "GET",
 						"header": [
 							{
@@ -1011,18 +1314,23 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}mobile/student/3/lastWatching",
+							"host": [
+								"{{apiURL}}mobile"
+							],
+							"path": [
+								"student",
+								"3",
+								"lastWatching"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetLessonWatchingHistoryByStudent",
 					"request": {
-						"url": "{{apiURL}}mobile/student/1/watchHistory",
 						"method": "GET",
 						"header": [
 							{
@@ -1030,53 +1338,103 @@
 								"value": "application/json"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}mobile/student/1/watchHistory",
+							"host": [
+								"{{apiURL}}mobile"
+							],
+							"path": [
+								"student",
+								"1",
+								"watchHistory"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "UpsertLastWatchingOfStudent",
 					"request": {
-						"url": "{{apiURL}}mobile/lesson/watching",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							},
 							{
 								"key": "userid",
-								"value": "2",
-								"description": ""
+								"value": "2"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"studentId\": 3,\n\t\"lessonId\": 5,\n\t\"sectionId\": 8,\n\t\"status\": \"IN-PROGRESS\",\n    \"watchedSeconds\": 45\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}mobile/lesson/watching",
+							"host": [
+								"{{apiURL}}mobile"
+							],
+							"path": [
+								"lesson",
+								"watching"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetLessonSectionsByLesson",
 					"request": {
-						"url": "http://localhost:8081/api/v1/mobile/lessonSection/5/list",
 						"method": "GET",
 						"header": [
 							{
 								"key": "userid",
-								"value": "3",
-								"description": ""
+								"value": "3"
 							}
 						],
-						"body": {},
-						"description": ""
+						"url": {
+							"raw": "http://localhost:8081/api/v1/mobile/lessonSection/5/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"v1",
+								"mobile",
+								"lessonSection",
+								"5",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetLessonDetailsByStudentAndLesson",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{apiURL}}mobile/student/1/lesson/1/details",
+							"host": [
+								"{{apiURL}}mobile"
+							],
+							"path": [
+								"student",
+								"1",
+								"lesson",
+								"1",
+								"details"
+							]
+						}
 					},
 					"response": []
 				}
@@ -1084,12 +1442,10 @@
 		},
 		{
 			"name": "LessonAssessment",
-			"description": "",
 			"item": [
 				{
 					"name": "SaveLessonAssessment",
 					"request": {
-						"url": "{{apiURL}}/lessonAssessment",
 						"method": "POST",
 						"header": [
 							{
@@ -1101,81 +1457,114 @@
 							"mode": "raw",
 							"raw": "{\n    \"name\": \"Assessment Test 1\",\n    \"description\": \"DESC\",\n    \"lessonId\": 1,\n    \"assessmentType\": \"pre\",\n    \"questions\": [\n        {\n            \"question\": \"Question One?\",\n            \"optionA\": \"a\",\n            \"optionB\": \"b\",\n            \"optionC\": \"c\",\n            \"optionD\": \"All the above\",\n            \"answer\": \"a\",\n            \"studentAnswer\": \"a\",\n            \"mark\": 2\n        },\n        {\n            \"question\": \"Question Two?\",\n            \"optionA\": \"a\",\n            \"optionB\": \"b\",\n            \"optionC\": \"c\",\n            \"optionD\": \"d\",\n            \"answer\": \"b\",\n            \"studentAnswer\": \"b\"\n        }\n    ],\n    \"createdBy\": 1,\n    \"updatedBy\": 1\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonAssessment",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonAssessment"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "LessonAssessmentList",
 					"request": {
-						"url": "{{apiURL}}/lessonAssessment/list",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonAssessment/list",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonAssessment",
+								"list"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetLessonAssessmentById",
 					"request": {
-						"url": "{{apiURL}}/lessonAssessment/2",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonAssessment/2",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonAssessment",
+								"2"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetInActiveLessonAssessment",
 					"request": {
-						"url": "{{apiURL}}/lessonAssessment/list/inactive",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonAssessment/list/inactive",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonAssessment",
+								"list",
+								"inactive"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "GetActiveLessonAssessments",
 					"request": {
-						"url": "{{apiURL}}/lessonAssessment/list/active",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonAssessment/list/active",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonAssessment",
+								"list",
+								"active"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "ChangeLessonAssessmentStatus",
 					"request": {
-						"url": "{{apiURL}}/lessonAssessment/2/false",
 						"method": "PUT",
 						"header": [],
-						"body": {},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonAssessment/2/false",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonAssessment",
+								"2",
+								"false"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "UpdateLessonAssessment",
 					"request": {
-						"url": "{{apiURL}}/lessonAssessment/4",
 						"method": "PUT",
 						"header": [
 							{
@@ -1187,21 +1576,35 @@
 							"mode": "raw",
 							"raw": "{\n\t\"name\": \"Test 98\",\n\t\"description\": \"DESC\",\n\t\"lessonId\": 3,\n\t\"questions\": [\n\t\t{\n\t\t\t\"question\": \"What is your name ?\",\n\t\t\t\"optionA\": \"SB\",\n\t\t\t\"optionB\": \"SC\",\n\t\t\t\"optionC\": \"CSB\",\n\t\t\t\"optionD\": \"All the above\",\n\t\t\t\"answer\": \"optionA\"\n\t\t}],\n\t\t\"createdBy\": 1,\n\t\t\"updatedBy\": 1,\n\t\t\"assessmentType\": \"pre\"\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonAssessment/4",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonAssessment",
+								"4"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "LessonAssessmentsByLessonId",
 					"request": {
-						"url": "{{apiURL}}/lessonAssessment/3/list",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/lessonAssessment/3/list",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"lessonAssessment",
+								"3",
+								"list"
+							]
+						}
 					},
 					"response": []
 				}
@@ -1209,81 +1612,108 @@
 		},
 		{
 			"name": "SectionTest",
-			"description": "",
 			"item": [
 				{
 					"name": "saveSectionTest",
 					"request": {
-						"url": "{{apiURL}}/sectionTest",
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"studentId\": 1,\r\n    \"lessonId\": 1,\r\n    \"lessonSectionId\": 1,\r\n    \"questionAnswers\": [\r\n        {\r\n            \"question\": \"Question One?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"All the above\",\r\n            \"answer\": \"a\",\r\n            \"studentAnswer\": \"a\",\r\n            \"mark\": 2\r\n        },\r\n        {\r\n            \"question\": \"Question Two?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"d\",\r\n            \"answer\": \"b\",\r\n            \"studentAnswer\": \"b\"\r\n        }\r\n    ]\r\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/sectionTest",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"sectionTest"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "getSectionTests",
 					"request": {
-						"url": "{{apiURL}}/sectionTest/list",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"studentId\": 1,\r\n    \"lessonId\": 1,\r\n    \"lessonSectionId\": 1,\r\n    \"questionAnswers\": [\r\n        {\r\n            \"question\": \"Question One?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"All the above\",\r\n            \"answer\": \"a\",\r\n            \"studentAnswer\": \"a\",\r\n            \"mark\": 2\r\n        },\r\n        {\r\n            \"question\": \"Question Two?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"d\",\r\n            \"answer\": \"b\",\r\n            \"studentAnswer\": \"b\"\r\n        }\r\n    ]\r\n}"
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/sectionTest/list",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"sectionTest",
+								"list"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "getSectionTestsByStudentId",
 					"request": {
-						"url": "{{apiURL}}/sectionTest/student/1",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"studentId\": 1,\r\n    \"lessonId\": 1,\r\n    \"lessonSectionId\": 1,\r\n    \"questionAnswers\": [\r\n        {\r\n            \"question\": \"Question One?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"All the above\",\r\n            \"answer\": \"a\",\r\n            \"studentAnswer\": \"a\",\r\n            \"mark\": 2\r\n        },\r\n        {\r\n            \"question\": \"Question Two?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"d\",\r\n            \"answer\": \"b\",\r\n            \"studentAnswer\": \"b\"\r\n        }\r\n    ]\r\n}"
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/sectionTest/student/1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"sectionTest",
+								"student",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "getSectionTestsByLessonSectionId",
 					"request": {
-						"url": "{{apiURL}}/sectionTest/lessonSection/1",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"studentId\": 1,\r\n    \"lessonId\": 1,\r\n    \"lessonSectionId\": 1,\r\n    \"questionAnswers\": [\r\n        {\r\n            \"question\": \"Question One?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"All the above\",\r\n            \"answer\": \"a\",\r\n            \"studentAnswer\": \"a\",\r\n            \"mark\": 2\r\n        },\r\n        {\r\n            \"question\": \"Question Two?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"d\",\r\n            \"answer\": \"b\",\r\n            \"studentAnswer\": \"b\"\r\n        }\r\n    ]\r\n}"
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/sectionTest/lessonSection/1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"sectionTest",
+								"lessonSection",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "getSectionTestsByLessonId",
 					"request": {
-						"url": "{{apiURL}}/sectionTest/lesson/1",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"studentId\": 1,\r\n    \"lessonId\": 1,\r\n    \"lessonSectionId\": 1,\r\n    \"questionAnswers\": [\r\n        {\r\n            \"question\": \"Question One?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"All the above\",\r\n            \"answer\": \"a\",\r\n            \"studentAnswer\": \"a\",\r\n            \"mark\": 2\r\n        },\r\n        {\r\n            \"question\": \"Question Two?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"d\",\r\n            \"answer\": \"b\",\r\n            \"studentAnswer\": \"b\"\r\n        }\r\n    ]\r\n}"
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/sectionTest/lesson/1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"sectionTest",
+								"lesson",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "getSectionTestByStudentIdAndLessonSectionIdAndLessonId",
 					"request": {
+						"method": "GET",
+						"header": [],
 						"url": {
 							"raw": "{{apiURL}}/sectionTest/get?studentId=1&lessonSectionId=1&lessonId=1",
 							"host": [
@@ -1306,16 +1736,8 @@
 									"key": "lessonId",
 									"value": "1"
 								}
-							],
-							"variable": []
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"studentId\": 1,\r\n    \"lessonId\": 1,\r\n    \"lessonSectionId\": 1,\r\n    \"questionAnswers\": [\r\n        {\r\n            \"question\": \"Question One?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"All the above\",\r\n            \"answer\": \"a\",\r\n            \"studentAnswer\": \"a\",\r\n            \"mark\": 2\r\n        },\r\n        {\r\n            \"question\": \"Question Two?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"d\",\r\n            \"answer\": \"b\",\r\n            \"studentAnswer\": \"b\"\r\n        }\r\n    ]\r\n}"
-						},
-						"description": ""
+							]
+						}
 					},
 					"response": []
 				}
@@ -1323,67 +1745,89 @@
 		},
 		{
 			"name": "AssessmentTest",
-			"description": "",
 			"item": [
 				{
 					"name": "saveAssessmentTest",
 					"request": {
-						"url": "{{apiURL}}/assessmentTest",
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"studentId\": 1,\r\n    \"lessonAssessmentId\": 1,\r\n    \"questionAnswers\": [\r\n        {\r\n            \"question\": \"Question One?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"All the above\",\r\n            \"answer\": \"a\",\r\n            \"studentAnswer\": \"a\",\r\n            \"mark\": 2\r\n        },\r\n        {\r\n            \"question\": \"Question Two?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"d\",\r\n            \"answer\": \"b\",\r\n            \"studentAnswer\": \"b\"\r\n        }\r\n    ]\r\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/assessmentTest",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"assessmentTest"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "getAssessmentTests",
 					"request": {
-						"url": "{{apiURL}}/assessmentTest/list",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/assessmentTest/list",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"assessmentTest",
+								"list"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "getAssessmentTestsByStudentId",
 					"request": {
-						"url": "{{apiURL}}/assessmentTest/student/1",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/assessmentTest/student/1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"assessmentTest",
+								"student",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "getAssessmentTestsByLessonAssessmentId",
 					"request": {
-						"url": "{{apiURL}}/assessmentTest/lessonAssessment/1",
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+						"url": {
+							"raw": "{{apiURL}}/assessmentTest/lessonAssessment/1",
+							"host": [
+								"{{apiURL}}"
+							],
+							"path": [
+								"assessmentTest",
+								"lessonAssessment",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "getAssessmentTestByStudentIdAndLessonAssessmentId",
 					"request": {
+						"method": "GET",
+						"header": [],
 						"url": {
 							"raw": "{{apiURL}}/assessmentTest/get?studentId=1&lessonAssessmentId=1",
 							"host": [
@@ -1402,16 +1846,8 @@
 									"key": "lessonAssessmentId",
 									"value": "1"
 								}
-							],
-							"variable": []
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+							]
+						}
 					},
 					"response": []
 				}
