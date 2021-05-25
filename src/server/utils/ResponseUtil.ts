@@ -29,6 +29,10 @@ export class AppResponse {
         return new AppResponse(404, 0, error, message, data);
     }
     
+    formInternalErrorResponse(error) {
+        return new AppResponse(500, 0, error, "Something went wrong", null);
+    }
+
 }
 
 const response = new AppResponse();

@@ -1,6 +1,6 @@
 import { Response } from "express";
 
-import {AppResponse} from './../utils/ResponseUtil';
+import responseUtil, {AppResponse} from './../utils/ResponseUtil';
 
 class AppCtrl {
 
@@ -12,9 +12,10 @@ class AppCtrl {
             }
             this.renderError(res, obj.status, obj);
         }).catch(err => {
-            this.renderError(res, err.status, err);
+            console.log("[ERROR]", err);
+            var internalError = responseUtil.formInternalErrorResponse(err.toString());
+            this.renderError(res, internalError.status, internalError);
         });
-
     }
 
     renderJSON(res: Response, obj: any) {
