@@ -13,7 +13,9 @@ class AppCtrl {
             this.renderError(res, obj.status, obj);
         }).catch(err => {
             console.log("[ERROR]", err);
-            var internalError = responseUtil.formInternalErrorResponse(err.toString());
+            var e = err.toString();
+            if ((typeof err) === "object") e = err;
+            var internalError = responseUtil.formInternalErrorResponse(e);
             this.renderError(res, internalError.status, internalError);
         });
     }
