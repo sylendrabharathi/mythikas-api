@@ -10,7 +10,9 @@ class AppCtrl {
                 this.renderJSON(res, obj);
                 return;
             }
-            this.renderError(res, obj.status, obj);
+        }, (e) => {
+            this.renderError(res, e.status, e);
+
         }).catch(err => {
             console.log("[ERROR]", err);
             var e = err.toString();
