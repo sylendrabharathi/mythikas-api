@@ -14,7 +14,7 @@ class AppCtrl {
         }).catch(err => {
             console.log("[ERROR]", err);
             var e = err.toString();
-            if ((typeof err) === "object") e = err;
+            if ((typeof err) === "object") e = JSON.stringify(err);
             var internalError = responseUtil.formInternalErrorResponse(e);
             this.renderError(res, internalError.status, internalError);
         });
