@@ -449,7 +449,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"firstName\": \"Sylendra\",\n    \"lastName\": \"Bharathi\",\n    \"gender\": \"M\",\n    \"phoneNumber\": \"9600534263\",\n    \"emailId\": \"sylendra@mythikas.com\",\n    \"parentFirstName\": \"ChandraSekaran\",\n    \"parentLastName\": \"Venkatachalam\",\n    \"password\": \"welcome123\",\n    \"standardId\": 1,\n    \"syllabus\": \"CBSC\",\n    \"createdBy\": 1,\n    \"updatedBy\": 1\n}"
+							"raw": "{\n    \"firstName\": \"Sylendra\",\n    \"lastName\": \"Bharathi\",\n    \"gender\": \"M\",\n    \"phoneNumber\": \"9600534263\",\n    \"emailId\": \"sylendra@mythikas.com\",\n    \"parentFirstName\": \"ChandraSekaran\",\n    \"parentLastName\": \"Venkatachalam\",\n    \"password\": \"welcome123\",\n    \"standardId\": 1,\n    \"syllabus\": \"CBSE\",\n    \"createdBy\": 1,\n    \"updatedBy\": 1\n}"
 						},
 						"url": {
 							"raw": "{{apiURL}}studentParent",
@@ -610,7 +610,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Lesson 1\",\n\t\"description\": \"New Lesson\",\n\t\"standardId\": 1,\n\t\"subjectId\": 1,\n\t\"syllabus\": \"STATE_BOARD\",\n\t\"createdBy\": 1,\n\t\"updatedBy\": 1\n}"
+							"raw": "{\n\t\"name\": \"Lesson 1\",\n\t\"description\": \"New Lesson\",\n\t\"standardId\": 1,\n\t\"subjectId\": 1,\n\t\"syllabus\": \"CBSE\",\n\t\"createdBy\": 1,\n\t\"updatedBy\": 1\n}"
 						},
 						"url": {
 							"raw": "{{apiURL}}lesson",

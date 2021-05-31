@@ -11,7 +11,7 @@ class AppCtrl {
                 return;
             }
         }, (e) => {
-            this.renderError(res, e.status, e);
+            this.renderError(res, e.status || 400, e);
 
         }).catch(err => {
             console.log("[ERROR]", err);

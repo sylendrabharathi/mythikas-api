@@ -12,16 +12,6 @@ CREATE TYPE enum_student_parent_gender AS ENUM (
 	'M',
 	'F');
 
-CREATE TYPE enum_lesson_syllabus AS ENUM (
-	'CBSE',
-	'ICSE',
-	'STATE_BOARD');
-
-	
-CREATE TYPE enum_student_parent_gender AS ENUM (
-	'M',
-	'F');
-
 CREATE TYPE enum_student_parent_registration_type AS ENUM('ADMIN', 'SELF');
 
 -- Role Table
