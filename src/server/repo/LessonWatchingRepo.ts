@@ -18,13 +18,14 @@ class LessonWatchingRepo {
                 'url', ls."url",
                 'tag', ls."tag",
                 'label', ls."label",
-                'description', ls."description"
+                'description', ls."description",
+                'watchedSeconds', lw."watched_seconds"
                 )
             ) as sections,
             count(distinct(lw.section_id, lw.status)) filter (where lw.status = 'DONE') as doneCount
             from ${table.lessonWatching} lw
-            left join ${table.lessonSection} ls on ls.lesson_id = lw.lesson_id
-            left join ${table.lesson} les on les.id = lw.lesson_id
+            inner join ${table.lessonSection} ls on ls.lesson_id = lw.lesson_id and ls.id = lw.section_id
+            inner join ${table.lesson} les on les.id = lw.lesson_id
             where lw.student_id = :studentId 
             group by lw.lesson_id, les.name) as history
             group by lessonId, lessonName, sections, doneCount;`, {
