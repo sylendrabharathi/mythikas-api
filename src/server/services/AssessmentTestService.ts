@@ -11,7 +11,7 @@ class AssessmentTestService {
         return assessmentTestRepo.getAssessmentTests().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Assessment Tests', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Assessment Tests', utils.formErrorObj(err)));
         })
     }
 
@@ -24,7 +24,7 @@ class AssessmentTestService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Assessment Tests by studentId', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Assessment Tests by studentId', utils.formErrorObj(err)));
         })
     }
 
@@ -37,7 +37,7 @@ class AssessmentTestService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Assessment Tests by lessonSectionId', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Assessment Tests by lessonSectionId', utils.formErrorObj(err)));
         })
     }
 
@@ -47,7 +47,7 @@ class AssessmentTestService {
         return assessmentTestRepo.getAssessmentTestByStudentIdAndLessonAssessmentId(studentId, lessonAssessmentId).then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in Assessment Tests by studentId, lessonAssessmentId', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in Assessment Tests by studentId, lessonAssessmentId', err));
         })
     }
 
@@ -79,7 +79,7 @@ class AssessmentTestService {
             if (err.toString().includes("SequelizeUniqueConstraintError")) {
                 return this.updateAssessmentTest(req);
             }
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Assessment Test saving', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Assessment Test saving', utils.formErrorObj(err)))
         })
     }
    
@@ -91,7 +91,7 @@ class AssessmentTestService {
             return responseUtil.formSuccessResponse('Assessment Test saved successfully', res);
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Assessment Test saving', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Assessment Test saving', utils.formErrorObj(err)))
         })
     }
 

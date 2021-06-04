@@ -11,7 +11,7 @@ class StudentParentService {
         return studentParentRepo.getStudentParents().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Students', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Students', utils.formErrorObj(err)));
         })
     }
 
@@ -24,7 +24,7 @@ class StudentParentService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Student by id', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Student by id', utils.formErrorObj(err)));
         })
     }
 
@@ -51,11 +51,11 @@ class StudentParentService {
                 return responseUtil.formSuccessResponse('Student updated successfully', res);
             }).catch(err => {
                 console.log('err = ', err);
-                return responseUtil.formBadRequestResponse(err.toString(), 'Error in Student updating', utils.formErrorObj(err))
+                return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Student updating', utils.formErrorObj(err)))
             })
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Student by id', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Student by id', utils.formErrorObj(err)));
         })
     }
 
@@ -67,7 +67,7 @@ class StudentParentService {
             return responseUtil.formSuccessResponse(`Student ${req.params.status !== 'false' ? 'activated' : 'deleted'} successfully`, res);
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Student status updating', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Student status updating', utils.formErrorObj(err)))
         })
     }
 
@@ -75,7 +75,7 @@ class StudentParentService {
         return studentParentRepo.getActiveStudentParents().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active Students', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get active Students', err));
         })
     }
 
@@ -83,7 +83,7 @@ class StudentParentService {
         return studentParentRepo.getInActiveStudentParents().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive Students', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive Students', err));
         })
     }
 
@@ -95,7 +95,7 @@ class StudentParentService {
             return responseUtil.formSuccessResponse(`Student registration ${req.params.isApproved !== 'false' ? 'Approved' : 'Denied'} successfully`, res);
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Student approval updating', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Student approval updating', utils.formErrorObj(err)))
         })
     }
 
@@ -113,7 +113,7 @@ class StudentParentService {
             return responseUtil.formSuccessResponse('Student registered successfully', val.toJSON());
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Student sign-up', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Student sign-up', utils.formErrorObj(err)))
         })
     }
 }

@@ -13,7 +13,7 @@ class LessonWatchingService {
         return lessonWatchingRepo.getLastWatchingHistoryByStudentId(studentId).then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in fetch Lesson Watching history', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in fetch Lesson Watching history', utils.formErrorObj(err)));
         })
     }
 }

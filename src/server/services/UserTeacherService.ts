@@ -12,7 +12,7 @@ class UserTeacherService {
         return userTeacherRepo.getUserTeachers().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get users', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get users', utils.formErrorObj(err)));
         })
     }
 
@@ -25,7 +25,7 @@ class UserTeacherService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get user by id', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get user by id', utils.formErrorObj(err)));
         })
     }
 
@@ -37,7 +37,7 @@ class UserTeacherService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in user saving', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in user saving', utils.formErrorObj(err)))
         })
     }
 
@@ -61,11 +61,11 @@ class UserTeacherService {
                 return responseUtil.formSuccessResponse('User updated successfully', res);
             }).catch(err => {
                 console.log('err = ', err);
-                return responseUtil.formBadRequestResponse(err.toString(), 'Error in user updating', utils.formErrorObj(err))
+                return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in user updating', utils.formErrorObj(err)))
             })
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get user by id', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get user by id', utils.formErrorObj(err)));
         })
     }
 
@@ -77,7 +77,7 @@ class UserTeacherService {
             return responseUtil.formSuccessResponse(`User ${req.params.status !== 'false' ? 'activated' : 'deleted'} successfully`, res);
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in userTeacher status updating', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in userTeacher status updating', utils.formErrorObj(err)))
         })
     }
 
@@ -85,7 +85,7 @@ class UserTeacherService {
         return userTeacherRepo.getActiveUserTeachers().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active userTeachers', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get active userTeachers', err));
         })
     }
 
@@ -93,7 +93,7 @@ class UserTeacherService {
         return userTeacherRepo.getInActiveUserTeachers().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive userTeachers', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive userTeachers', err));
         })
     }
 

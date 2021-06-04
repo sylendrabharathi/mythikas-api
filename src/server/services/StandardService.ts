@@ -11,7 +11,7 @@ class StandardService {
         return standardRepo.getStandards().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Standards', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Standards', utils.formErrorObj(err)));
         })
     }
 
@@ -24,7 +24,7 @@ class StandardService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Standard by id', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Standard by id', utils.formErrorObj(err)));
         })
     }
 
@@ -33,7 +33,7 @@ class StandardService {
         return standard.save().then(val => {
             return responseUtil.formSuccessResponse('Standard saved successfully', val.toJSON());
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Standard saving', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Standard saving', utils.formErrorObj(err)))
         })
     }
 
@@ -46,11 +46,11 @@ class StandardService {
                 return responseUtil.formSuccessResponse('Standard updated successfully', res);
             }).catch(err => {
                 console.log('err = ', err);
-                return responseUtil.formBadRequestResponse(err.toString(), 'Error in Standard updating', utils.formErrorObj(err))
+                return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Standard updating', utils.formErrorObj(err)))
             })
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Standard by id', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Standard by id', utils.formErrorObj(err)));
         })
     }
 
@@ -62,7 +62,7 @@ class StandardService {
             return responseUtil.formSuccessResponse(`Standard ${req.params.status !== 'false' ? 'activated': 'deleted'} successfully`, res);
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Standard status updating', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Standard status updating', utils.formErrorObj(err)))
         })
     }
 
@@ -70,7 +70,7 @@ class StandardService {
         return standardRepo.getActiveStandards().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active Standards', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get active Standards', err));
         })
     }
 
@@ -78,7 +78,7 @@ class StandardService {
         return standardRepo.getInActiveStandards().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive Standards', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive Standards', err));
         })
     }
 }

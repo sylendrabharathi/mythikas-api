@@ -15,7 +15,7 @@ class LoginService {
             }
             return responseUtil.formSuccessResponse('LoggedIn Successfully', val[0]);
         }).catch(err => {            
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in login', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in login', utils.formErrorObj(err)));
         });
     }
 }

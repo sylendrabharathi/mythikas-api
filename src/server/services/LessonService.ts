@@ -11,7 +11,7 @@ class LessonService {
         return lessonRepo.getLessons().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Lessons', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Lessons', utils.formErrorObj(err)));
         })
     }
 
@@ -24,7 +24,7 @@ class LessonService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Lesson by id', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Lesson by id', utils.formErrorObj(err)));
         })
     }
 
@@ -33,7 +33,7 @@ class LessonService {
         return lesson.save().then(val => {
             return responseUtil.formSuccessResponse('Lesson saved successfully', val.toJSON());
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Lesson saving', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Lesson saving', utils.formErrorObj(err)))
         })
     }
 
@@ -46,11 +46,11 @@ class LessonService {
                 return responseUtil.formSuccessResponse('Lesson updated successfully', res);
             }).catch(err => {
                 console.log('err = ', err);
-                return responseUtil.formBadRequestResponse(err.toString(), 'Error in Lesson updating', utils.formErrorObj(err))
+                return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Lesson updating', utils.formErrorObj(err)))
             })
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Lesson by id', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Lesson by id', utils.formErrorObj(err)));
         })
     }
 
@@ -62,7 +62,7 @@ class LessonService {
             return responseUtil.formSuccessResponse(`Lesson ${req.params.status !== 'false' ? 'activated' : 'deleted'} successfully`, res);
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Lesson status updating', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Lesson status updating', utils.formErrorObj(err)))
         })
     }
 
@@ -70,7 +70,7 @@ class LessonService {
         return lessonRepo.getActiveLessons().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active Lessons', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get active Lessons', err));
         })
     }
 
@@ -78,7 +78,7 @@ class LessonService {
         return lessonRepo.getInActiveLessons().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive Lessons', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive Lessons', err));
         })
     }
 
@@ -94,7 +94,7 @@ class LessonService {
         return lessonRepo.filterLessonList(filterObj).then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive Lessons', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive Lessons', err));
         })
     }
 }

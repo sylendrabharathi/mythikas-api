@@ -68,5 +68,10 @@ const UserTeacher: ModelCtor<any> = sequelize.define('UserTeacher', {
 
 UserTeacher.belongsTo(Role, {as: 'role', foreignKey: 'role_id'});
 
+UserTeacher.prototype.toJSON =  function () {
+    var values = Object.assign({}, this.get());
+    delete values.password;
+    return values;
+}
 
 export default UserTeacher;

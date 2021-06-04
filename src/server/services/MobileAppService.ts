@@ -20,9 +20,10 @@ class MobileAppService {
             }
             return responseUtil.formSuccessResponse('LoggedIn Successfully', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in login', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in login', utils.formErrorObj(err)));
         });
     }
+    
     async getLessonsByStudentAndStandard(req: Request): Promise<AppResponse> {
         const students = await studentRepo.findStudentParentById(req.params.studentId);
         if (!students || !students.length) {
@@ -72,7 +73,7 @@ class MobileAppService {
         ).then(val => {
             return responseUtil.formSuccessResponse('Lesson saved successfully', val[0]);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Lesson saving', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Lesson saving', utils.formErrorObj(err)))
         })
     }
 

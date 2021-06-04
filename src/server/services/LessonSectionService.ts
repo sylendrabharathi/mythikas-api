@@ -12,7 +12,7 @@ class LessonSectionService {
         return lessonSectionRepo.getLessonSections().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Sections', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Sections', utils.formErrorObj(err)));
         })
     }
 
@@ -25,7 +25,7 @@ class LessonSectionService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Section by id', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Section by id', utils.formErrorObj(err)));
         })
     }
 
@@ -34,7 +34,7 @@ class LessonSectionService {
         return lessonSection.save().then(val => {
             return responseUtil.formSuccessResponse('Section saved successfully', val.toJSON());
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Section saving', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Section saving', utils.formErrorObj(err)))
         })
     }
 
@@ -47,11 +47,11 @@ class LessonSectionService {
                 return responseUtil.formSuccessResponse('Section updated successfully', res);
             }).catch(err => {
                 console.log('err = ', err);
-                return responseUtil.formBadRequestResponse(err.toString(), 'Error in Section updating', utils.formErrorObj(err))
+                return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Section updating', utils.formErrorObj(err)))
             })
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Section by id', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Section by id', utils.formErrorObj(err)));
         })
     }
 
@@ -63,7 +63,7 @@ class LessonSectionService {
             return responseUtil.formSuccessResponse(`Section ${req.params.status !== 'false' ? 'activated' : 'deleted'} successfully`, res);
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Section status updating', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Section status updating', utils.formErrorObj(err)))
         })
     }
 
@@ -71,7 +71,7 @@ class LessonSectionService {
         return lessonSectionRepo.getActiveLessonSections().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active Sections', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get active Sections', err));
         })
     }
 
@@ -79,7 +79,7 @@ class LessonSectionService {
         return lessonSectionRepo.getInActiveLessonSections().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive LessonSections', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive LessonSections', err));
         })
     }
 
@@ -87,7 +87,7 @@ class LessonSectionService {
         return lessonSectionRepo.findAllByActiveAndLessonId(parseInt(req.params.lessonId)).then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active LessonSections', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get active LessonSections', err));
         })
     }
 }

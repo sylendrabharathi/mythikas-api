@@ -11,7 +11,7 @@ class LessonAssessmentService {
         return LessonAssessmentRepo.getLessonAssessments().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Questions', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Questions', utils.formErrorObj(err)));
         })
     }
 
@@ -24,7 +24,7 @@ class LessonAssessmentService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Question by id', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Question by id', utils.formErrorObj(err)));
         })
     }
 
@@ -33,7 +33,7 @@ class LessonAssessmentService {
         return lessonAssessment.save().then(val => {
             return responseUtil.formSuccessResponse('Question saved successfully', val.toJSON());
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Question saving', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Question saving', utils.formErrorObj(err)))
         })
     }
 
@@ -46,11 +46,11 @@ class LessonAssessmentService {
                 return responseUtil.formSuccessResponse('Question updated successfully', res);
             }).catch(err => {
                 console.log('err = ', err);
-                return responseUtil.formBadRequestResponse(err.toString(), 'Error in Question updating', utils.formErrorObj(err))
+                return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Question updating', utils.formErrorObj(err)))
             })
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Question by id', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Question by id', utils.formErrorObj(err)));
         })
     }
 
@@ -62,7 +62,7 @@ class LessonAssessmentService {
             return responseUtil.formSuccessResponse(`Question ${req.params.status !== 'false' ? 'activated' : 'deleted'} successfully`, res);
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Question status updating', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Question status updating', utils.formErrorObj(err)))
         })
     }
 
@@ -70,7 +70,7 @@ class LessonAssessmentService {
         return LessonAssessmentRepo.getActiveLessonAssessments().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active Questions', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get active Questions', err));
         })
     }
 
@@ -78,7 +78,7 @@ class LessonAssessmentService {
         return LessonAssessmentRepo.getInActiveLessonAssessments().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive LessonAssessments', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive LessonAssessments', err));
         })
     }
 
@@ -86,7 +86,7 @@ class LessonAssessmentService {
         return LessonAssessmentRepo.getActiveLessonAssessmentsByLessonId(req.params.lessonId).then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active Questions', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get active Questions', err));
         })
     }
 }

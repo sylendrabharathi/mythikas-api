@@ -11,7 +11,7 @@ class SectionTestService {
         return sectionTestRepo.getSectionTests().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Section Tests', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Section Tests', utils.formErrorObj(err)));
         })
     }
 
@@ -24,7 +24,7 @@ class SectionTestService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Section Tests by studentId', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Section Tests by studentId', utils.formErrorObj(err)));
         })
     }
 
@@ -37,7 +37,7 @@ class SectionTestService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get Section Tests by lessonSectionId', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Section Tests by lessonSectionId', utils.formErrorObj(err)));
         })
     }
 
@@ -45,7 +45,7 @@ class SectionTestService {
         return sectionTestRepo.getSectionTestsByLessonId(parseInt(req.params.lessonId)).then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in Section Tests by lessonId', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in Section Tests by lessonId', err));
         })
     }
 
@@ -56,7 +56,7 @@ class SectionTestService {
         return sectionTestRepo.getSectionTestByStudentIdAndLessonSectionIdAndLessonId(studentId, lessonSectionId, lessonId).then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in Section Tests by studentId, lessonSectionId, lessonId', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in Section Tests by studentId, lessonSectionId, lessonId', err));
         })
     }
 
@@ -88,7 +88,7 @@ class SectionTestService {
             if (err.toString().includes("SequelizeUniqueConstraintError")) {
                 return this.updateSectionTest(req);
             }
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Section Test saving', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Section Test saving', utils.formErrorObj(err)))
         })
     }
    
@@ -100,7 +100,7 @@ class SectionTestService {
             return responseUtil.formSuccessResponse('Section Test saved successfully', res);
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Section Test saving', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Section Test saving', utils.formErrorObj(err)))
         })
     }
 

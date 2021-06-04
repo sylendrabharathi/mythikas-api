@@ -23,7 +23,7 @@ class UploadFileService {
             // console.log('data = ', data);
             return responseUtil.formSuccessResponse('', data);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in file uploading', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in file uploading', err));
         });
         // console.log('resp = ', resp);
         // if(!resp) {
@@ -37,7 +37,7 @@ class UploadFileService {
         return awsUtils.getFiles().promise().then((data) => {
             return responseUtil.formSuccessResponse('', data);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in file uploading', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in file uploading', err));
         });
     }
 

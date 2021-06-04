@@ -13,7 +13,7 @@ class RoleService {
         return roleRepo.getRoles().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get roles', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get roles', utils.formErrorObj(err)));
         })
     }
 
@@ -21,7 +21,7 @@ class RoleService {
         return roleRepo.getRoleById(req.params.id).then(val => {
             return responseUtil.formSuccessResponse('', val[0]);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get role by id', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get role by id', utils.formErrorObj(err)));
         })
     }
 
@@ -30,7 +30,7 @@ class RoleService {
         return role.save().then(val => {
             return responseUtil.formSuccessResponse('Role saved successfully', val.toJSON());
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in role saving', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in role saving', utils.formErrorObj(err)))
         })
     }
 
@@ -43,11 +43,11 @@ class RoleService {
                 return responseUtil.formSuccessResponse('Role updated successfully', res);
             }).catch(err => {
                 console.log('err = ', err);
-                return responseUtil.formBadRequestResponse(err.toString(), 'Error in role updating', utils.formErrorObj(err))
+                return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in role updating', utils.formErrorObj(err)))
             })
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get role by id', utils.formErrorObj(err));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get role by id', utils.formErrorObj(err)));
         })
     }
 
@@ -59,7 +59,7 @@ class RoleService {
             return responseUtil.formSuccessResponse('Role status updated successfully', res);
         }).catch(err => {
             console.log('err = ', err);
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in role status updating', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in role status updating', utils.formErrorObj(err)))
         })
     }
 
@@ -67,7 +67,7 @@ class RoleService {
         return roleRepo.getActiveRoles().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get active roles', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get active roles', err));
         })
     }
 
@@ -75,7 +75,7 @@ class RoleService {
         return roleRepo.getInActiveRoles().then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive roles', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get inactive roles', err));
         })
     }
 
@@ -83,7 +83,7 @@ class RoleService {
         return rolePrivilegeRepo.getRolePrivilegeByRoleId(req.params.roleId).then(val => {
             return responseUtil.formSuccessResponse('', val);
         }).catch(err => {
-            return responseUtil.formBadRequestResponse(err.toString(), 'error in get getRolePriviligesByRoleId', err);
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get getRolePriviligesByRoleId', err));
         })
     }
 
