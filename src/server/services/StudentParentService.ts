@@ -38,7 +38,7 @@ class StudentParentService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return responseUtil.formBadRequestResponse(err.toString(), 'Error in Student saving', utils.formErrorObj(err))
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'Error in Student saving', utils.formErrorObj(err)))
         })
     }
 

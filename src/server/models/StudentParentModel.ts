@@ -18,11 +18,13 @@ const StudentParent = sequelize.define('StudentParent', {
     },
     firstName: {
         type: DataTypes.STRING,
-        allowNull: false  
+        allowNull: false,
+        unique: 'student_fname_lname_phone_number_unique'  
     },
     lastName: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: 'student_fname_lname_phone_number_unique'
     },
     gender: {
         type: DataTypes.ENUM('M', 'F'),
@@ -32,7 +34,7 @@ const StudentParent = sequelize.define('StudentParent', {
     phoneNumber: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: 'student_parent_unique'
+        unique: 'student_fname_lname_phone_number_unique'
     },
     emailId: {
         type: DataTypes.STRING,

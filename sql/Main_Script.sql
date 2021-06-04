@@ -117,7 +117,7 @@ ALTER TABLE public.subject ADD CONSTRAINT subject_created_by_fkey FOREIGN KEY (c
 ALTER TABLE public.subject ADD CONSTRAINT subject_updated_by_fkey FOREIGN KEY (updated_by) REFERENCES user_teacher(id);
 
 -- Student_parent definition
-CREATE TABLE IF NOT EXISTS public.student_parent (
+CREATE TABLE public.student_parent (
 	id serial NOT NULL,
 	first_name varchar(255) NOT NULL,
 	last_name varchar(255) NOT NULL,
@@ -129,17 +129,17 @@ CREATE TABLE IF NOT EXISTS public.student_parent (
 	parent_first_name varchar(255) NOT NULL,
 	parent_last_name varchar(255) NOT NULL,
 	status bool NOT NULL DEFAULT true,
-	is_approved bool NOT NULL DEFAULT false,
 	standard_id int4 NOT NULL,
 	promo_code varchar(255) NULL,
 	syllabus varchar(255) NOT NULL,
 	address text NULL,
-	registration_type enum_student_parent_registration_type NOT NULL DEFAULT 'ADMIN',
 	created_by int4 NOT NULL,
 	updated_by int4 NOT NULL,
 	created_at timestamptz NOT NULL,
 	updated_at timestamptz NOT NULL,
-	CONSTRAINT student_parent_phone_number_key UNIQUE (phone_number),
+	is_approved bool NOT NULL DEFAULT false,
+	registration_type enum_student_parent_registration_type NOT NULL DEFAULT 'ADMIN'::enum_student_parent_registration_type,
+	CONSTRAINT student_fname_lname_phone_number_unique UNIQUE (first_name, last_name, phone_number),
 	CONSTRAINT student_parent_pkey PRIMARY KEY (id)
 );
 
