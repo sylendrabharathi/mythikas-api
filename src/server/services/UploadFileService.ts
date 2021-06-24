@@ -50,6 +50,8 @@ class UploadFileService {
         console.log("Standards = ", standards);
 
         for (let i = 0; i < r.SheetNames.length; i++) {
+            if (i == 1) break; // single sheet
+
             const sheet = xlsx.utils.sheet_to_json(r.Sheets[r.SheetNames[i]]);
 
             for (let rowIdx = 0; rowIdx < sheet.length; rowIdx++) {
