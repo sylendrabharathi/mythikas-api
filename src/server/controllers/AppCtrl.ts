@@ -10,6 +10,7 @@ class AppCtrl {
                 this.renderJSON(res, obj);
                 return;
             }
+            this.renderError(res, obj.status || 400, obj);
         }, (e) => {
             this.renderError(res, e.status || 400, e);
 
