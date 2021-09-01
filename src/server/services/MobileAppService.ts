@@ -120,6 +120,22 @@ class MobileAppService {
         return Promise.resolve(responseUtil.formSuccessResponse('', result));
     }
 
+    getAssessmentTestsByStudentIdAndLessonId(req: Request) {
+        let studentId = parseInt(req.headers.userid.toString());
+        let assessmentType = req.params.assessmentType;
+        let lessonId = req.params.lessonId;
+        return assessmentTestRepo.getAssessmentTestsByTypeAndStudentIdAndLessonId(assessmentType, studentId, lessonId).then(val => {
+            if(!val[0]) {
+                return responseUtil.formNotFoundResponse('not found', 'record not found', null);
+            }
+            return responseUtil.formSuccessResponse('', val[0]);
+        }).catch(err => {
+            console.log('err = ', err);
+            
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Assessment Tests by studentId', utils.formErrorObj(err)));
+        })
+    }
+
 }
 
 export default new MobileAppService();

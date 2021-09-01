@@ -331,12 +331,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{apiURL}}userTeacher/2",
+							"raw": "{{apiURL}}userTeacher/1",
 							"host": [
 								"{{apiURL}}userTeacher"
 							],
 							"path": [
-								"2"
+								"1"
 							]
 						}
 					},
@@ -588,6 +588,33 @@
 								"1",
 								"approval",
 								"true"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UploadStudents",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "student_excel",
+									"type": "file",
+									"src": "/C:/Users/Lenovo/Desktop/student.xlsx"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiURL}}uploadFile/student",
+							"host": [
+								"{{apiURL}}uploadFile"
+							],
+							"path": [
+								"student"
 							]
 						}
 					},
@@ -1240,13 +1267,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{apiURL}}mobile/student/2/lessons",
+							"raw": "{{apiURL}}mobile/student/1/lessons",
 							"host": [
 								"{{apiURL}}mobile"
 							],
 							"path": [
 								"student",
-								"2",
+								"1",
 								"lessons"
 							],
 							"query": [
@@ -1290,13 +1317,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{apiURL}}mobile/student/2/3/relatedLessons",
+							"raw": "{{apiURL}}mobile/student/1/3/relatedLessons",
 							"host": [
 								"{{apiURL}}mobile"
 							],
 							"path": [
 								"student",
-								"2",
+								"1",
 								"3",
 								"relatedLessons"
 							]
@@ -1390,22 +1417,17 @@
 						"header": [
 							{
 								"key": "userid",
-								"value": "3"
+								"value": "1"
 							}
 						],
 						"url": {
-							"raw": "http://localhost:8081/api/v1/mobile/lessonSection/5/list",
-							"protocol": "http",
+							"raw": "{{apiURL}}mobile/lessonSection/1/list",
 							"host": [
-								"localhost"
+								"{{apiURL}}mobile"
 							],
-							"port": "8081",
 							"path": [
-								"api",
-								"v1",
-								"mobile",
 								"lessonSection",
-								"5",
+								"1",
 								"list"
 							]
 						}
@@ -1433,6 +1455,36 @@
 								"lesson",
 								"1",
 								"details"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAssessmentTestsByStudentIdAndLessonId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "userid",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{apiURL}}mobile/lesson/1/assessment/pre",
+							"host": [
+								"{{apiURL}}mobile"
+							],
+							"path": [
+								"lesson",
+								"1",
+								"assessment",
+								"pre"
 							]
 						}
 					},
@@ -1493,13 +1545,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{apiURL}}/lessonAssessment/2",
+							"raw": "{{apiURL}}/lessonAssessment/1",
 							"host": [
 								"{{apiURL}}"
 							],
 							"path": [
 								"lessonAssessment",
-								"2"
+								"1"
 							]
 						}
 					},
