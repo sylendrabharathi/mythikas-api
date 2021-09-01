@@ -17,7 +17,12 @@ class StudentParentRepo {
     }
 
     async getStudentParentById(id) {
-        const records = sequelize.query(`select * from ${table.studentParent} where id = :id`, {
+        const records = sequelize.query(`select sp.*,
+            s.name as standard_name
+            from ${table.studentParent} sp
+            inner join ${table.standard} s on s.id = sp.standard_id 
+            where sp.id = :id
+            group by sp.id, s.name`, {
             replacements: { id },
             type: QueryTypes.SELECT,
             mapToModel: true,
@@ -48,8 +53,12 @@ class StudentParentRepo {
     }
 
     async login(phoneNumber: string, password: string) {
-        const records = sequelize.query(`select * from ${table.studentParent} where status = true and is_approved = true and phone_number = :phoneNumber and 
-                    password = :password`, {
+        const records = sequelize.query(`select sp.*,
+            s.name as standard_name
+            from ${table.studentParent} sp
+            inner join ${table.standard} s on s.id = sp.standard_id 
+            where sp.status = true and sp.is_approved = true and sp.phone_number = :phoneNumber and password = :password
+            group by sp.id, s.name`, {
             type: QueryTypes.SELECT,
             replacements: { phoneNumber, password },
             mapToModel: true,
