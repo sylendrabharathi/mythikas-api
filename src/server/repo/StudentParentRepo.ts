@@ -18,7 +18,7 @@ class StudentParentRepo {
 
     async getStudentParentById(id) {
         const records = sequelize.query(`select sp.*,
-            s.name as standardName
+            s.name as "standardName"
             from ${table.studentParent} sp
             inner join ${table.standard} s on s.id = sp.standard_id 
             where sp.id = :id
@@ -54,7 +54,7 @@ class StudentParentRepo {
 
     async login(phoneNumber: string, password: string) {
         const records = sequelize.query(`select sp.*,
-            s.name as standardName
+            s.name as "standardName"
             from ${table.studentParent} sp
             inner join ${table.standard} s on s.id = sp.standard_id 
             where sp.status = true and sp.is_approved = true and sp.phone_number = :phoneNumber and password = :password
