@@ -59,6 +59,37 @@ class SectionTestRepo {
 
         return records;
     }
+
+    async getSectionTestsByTypeAndStudentIdAndLessonId(studentId, lessonId) {
+        const records = sequelize.query(`select id, name, description, questions, sectionTests,
+            case 
+             when jsonb_array_length(sectionTests) > 0 then 'DONE'
+             else 'NOT DONE'
+            end as status
+            from (select ls.id as id, ls.name as name, 
+            ls.description as description,
+            lq.id as lessonQuestionId,
+            lq.questions as questions,
+            COALESCE(
+                jsonb_agg(distinct jsonb_build_object(
+                    'date', st."date",
+                    'questionAnswers', st."question_answers",
+                    'totalMarks', st."total_marks",
+                    'studentMarks', st."student_marks"
+                    )
+                ) FILTER (WHERE st."date" IS NOT NULL), '[]'
+            ) as sectionTests
+            from ${table.lessonSection} ls
+            left join ${table.lessonQuestion} lq on lq.lesson_section_id = ls.id
+            left join ${table.sectionTest} st on st.lesson_section_id = ls.id and st.student_id = :studentId
+            where ls.lesson_id = :lessonId
+            group by ls.id, lq.id) as section;`, {
+            type: QueryTypes.SELECT,
+            replacements: {studentId, lessonId}
+        });
+
+        return records;
+    }
 }
 
 const sectionTestRepo = new SectionTestRepo();

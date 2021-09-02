@@ -10,6 +10,7 @@ import LessonWatching from "../models/LessonWatchingModel";
 import LessonSectionRepo from "../repo/LessonSectionRepo";
 import LessonWatchingRepo from "../repo/LessonWatchingRepo";
 import assessmentTestRepo from "../repo/AssessmentTestRepo";
+import sectionTestRepo from "../repo/SectionTestRepo";
 
 class MobileAppService {
 
@@ -132,7 +133,22 @@ class MobileAppService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Assessment Tests by studentId', utils.formErrorObj(err)));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Assessment Tests by studentId and lessonId', utils.formErrorObj(err)));
+        })
+    }
+
+    getSectionTestsByStudentIdAndLessonId(req: Request) {
+        let studentId = parseInt(req.headers.userid.toString());
+        let lessonId = req.params.lessonId;
+        return sectionTestRepo.getSectionTestsByTypeAndStudentIdAndLessonId(studentId, lessonId).then(val => {
+            if(!val[0]) {
+                return responseUtil.formNotFoundResponse('not found', 'record not found', null);
+            }
+            return responseUtil.formSuccessResponse('', val[0]);
+        }).catch(err => {
+            console.log('err = ', err);
+            
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Section Tests by studentId and lessonId', utils.formErrorObj(err)));
         })
     }
 
