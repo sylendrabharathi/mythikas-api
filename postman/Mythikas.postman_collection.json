@@ -1489,6 +1489,35 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getSectionTestsByStudentIdAndLessonId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "userid",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{apiURL}}mobile/lesson/1/sections",
+							"host": [
+								"{{apiURL}}mobile"
+							],
+							"path": [
+								"lesson",
+								"1",
+								"sections"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
