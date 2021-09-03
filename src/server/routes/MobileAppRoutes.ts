@@ -24,7 +24,7 @@ class MobileAppRoutes {
         router.get('/student/:studentId/watchHistory', MobileAppCtrl.getLastWatchingHistoryByStudentId);
         router.get('/student/:studentId/lesson/:lessonId/details', MobileAppCtrl.getLessonDetailsByStudentIdAndLessonId);
         router.get('/lesson/:lessonId/assessment/:assessmentType', MobileAppCtrl.getAssessmentTestsByStudentIdAndLessonId);
-        router.get('/lesson/:lessonId/sections', MobileAppCtrl.getSectionTestsByStudentIdAndLessonId);
+        router.get('/lesson/:lessonId/section/:sectionId', MobileAppCtrl.getSectionTestByIdAndStudentIdAndLessonId);
     }
 
     getSectionRoutes() {

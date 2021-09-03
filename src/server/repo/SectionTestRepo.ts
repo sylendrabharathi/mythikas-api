@@ -60,7 +60,7 @@ class SectionTestRepo {
         return records;
     }
 
-    async getSectionTestsByTypeAndStudentIdAndLessonId(studentId, lessonId) {
+    async getSectionTestByIdAndStudentIdAndLessonId(studentId, lessonId, sectionId) {
         const records = sequelize.query(`select id, name, description, questions, sectionTests,
             case 
              when jsonb_array_length(sectionTests) > 0 then 'DONE'
@@ -82,10 +82,10 @@ class SectionTestRepo {
             from ${table.lessonSection} ls
             left join ${table.lessonQuestion} lq on lq.lesson_section_id = ls.id
             left join ${table.sectionTest} st on st.lesson_section_id = ls.id and st.student_id = :studentId
-            where ls.lesson_id = :lessonId
+            where ls.id = :sectionId and ls.lesson_id = :lessonId
             group by ls.id, lq.id) as section;`, {
             type: QueryTypes.SELECT,
-            replacements: {studentId, lessonId}
+            replacements: {studentId, lessonId, sectionId}
         });
 
         return records;

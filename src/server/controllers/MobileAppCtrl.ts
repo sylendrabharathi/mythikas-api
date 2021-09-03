@@ -49,8 +49,8 @@ class MobileAppCtrl {
 		appCtrl.renderResponse(res, MobileAppService.getAssessmentTestsByStudentIdAndLessonId(req));
 	}
 
-	async getSectionTestsByStudentIdAndLessonId(req: Request, res: Response) {
-		appCtrl.renderResponse(res, MobileAppService.getSectionTestsByStudentIdAndLessonId(req));
+	async getSectionTestByIdAndStudentIdAndLessonId(req: Request, res: Response) {
+		appCtrl.renderResponse(res, MobileAppService.getSectionTestByIdAndStudentIdAndLessonId(req));
 	}
 	
 }

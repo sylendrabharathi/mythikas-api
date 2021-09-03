@@ -137,10 +137,11 @@ class MobileAppService {
         })
     }
 
-    getSectionTestsByStudentIdAndLessonId(req: Request) {
+    getSectionTestByIdAndStudentIdAndLessonId(req: Request) {
         let studentId = parseInt(req.headers.userid.toString());
         let lessonId = req.params.lessonId;
-        return sectionTestRepo.getSectionTestsByTypeAndStudentIdAndLessonId(studentId, lessonId).then(val => {
+        let sectionId = req.params.sectionId;
+        return sectionTestRepo.getSectionTestByIdAndStudentIdAndLessonId(studentId, lessonId, sectionId).then(val => {
             if(!val[0]) {
                 return responseUtil.formNotFoundResponse('not found', 'record not found', null);
             }
@@ -148,7 +149,7 @@ class MobileAppService {
         }).catch(err => {
             console.log('err = ', err);
             
-            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Section Tests by studentId and lessonId', utils.formErrorObj(err)));
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get Section Test by Id and studentId and lessonId', utils.formErrorObj(err)));
         })
     }
 
