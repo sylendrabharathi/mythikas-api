@@ -1491,7 +1491,7 @@
 					"response": []
 				},
 				{
-					"name": "getSectionTestsByStudentIdAndLessonId",
+					"name": "getSectionTestByIdAndStudentIdAndLessonId",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1506,14 +1506,15 @@
 							}
 						],
 						"url": {
-							"raw": "{{apiURL}}mobile/lesson/1/sections",
+							"raw": "{{apiURL}}mobile/lesson/1/section/1",
 							"host": [
 								"{{apiURL}}mobile"
 							],
 							"path": [
 								"lesson",
 								"1",
-								"sections"
+								"section",
+								"1"
 							]
 						}
 					},
