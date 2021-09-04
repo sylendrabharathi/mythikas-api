@@ -936,7 +936,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"questionaire one\",\n    \"description\": \"questionnaire one\",\n    \"studentId\": 1,\n    \"lessonId\": 1,\n    \"lessonSectionId\": 1,\n    \"questions\": [\n        {\n            \"question\": \"What is your name ?\",\n            \"optionA\": \"SB\",\n            \"optionB\": \"SC\",\n            \"optionC\": \"CSB\",\n            \"optionD\": \"All the above\",\n            \"answer\": \"optionA\"\n        }\n    ],\n    \"createdBy\": 1,\n    \"updatedBy\": 1\n}"
+							"raw": "{\n    \"name\": \"questionaire three\",\n    \"description\": \"questionnaire three\",\n    \"studentId\": 1,\n    \"lessonId\": 1,\n    \"lessonSectionId\": 3,\n    \"questions\": [\n        {\n            \"question\": \"Who wrote Thirukural ?\",\n            \"optionA\": \"Valluvar\",\n            \"optionB\": \"Kabilar\",\n            \"optionC\": \"Kambar\",\n            \"optionD\": \"All the above\",\n            \"answer\": \"optionA\"\n        }\n    ],\n    \"createdBy\": 1,\n    \"updatedBy\": 1\n}"
 						},
 						"url": {
 							"raw": "{{apiURL}}/lessonQuestion",
@@ -1519,6 +1519,35 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getAchievementsByStudentId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "userid",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{apiURL}}mobile/student/1/achievements",
+							"host": [
+								"{{apiURL}}mobile"
+							],
+							"path": [
+								"student",
+								"1",
+								"achievements"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1702,7 +1731,12 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"studentId\": 1,\r\n    \"lessonId\": 1,\r\n    \"lessonSectionId\": 1,\r\n    \"questionAnswers\": [\r\n        {\r\n            \"question\": \"Question One?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"All the above\",\r\n            \"answer\": \"a\",\r\n            \"studentAnswer\": \"a\",\r\n            \"mark\": 2\r\n        },\r\n        {\r\n            \"question\": \"Question Two?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"d\",\r\n            \"answer\": \"b\",\r\n            \"studentAnswer\": \"b\"\r\n        }\r\n    ]\r\n}"
+							"raw": "{\r\n    \"studentId\": 1,\r\n    \"lessonId\": 1,\r\n    \"lessonSectionId\": 3,\r\n    \"questionAnswers\": [\r\n        {\r\n            \"question\": \"Question One?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"All the above\",\r\n            \"answer\": \"a\",\r\n            \"studentAnswer\": \"a\",\r\n            \"mark\": 3\r\n        },\r\n        {\r\n            \"question\": \"Question Two?\",\r\n            \"optionA\": \"a\",\r\n            \"optionB\": \"b\",\r\n            \"optionC\": \"c\",\r\n            \"optionD\": \"d\",\r\n            \"answer\": \"b\",\r\n            \"studentAnswer\": \"b\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
 							"raw": "{{apiURL}}/sectionTest",
