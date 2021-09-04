@@ -53,6 +53,10 @@ class MobileAppCtrl {
 		appCtrl.renderResponse(res, MobileAppService.getSectionTestByIdAndStudentIdAndLessonId(req));
 	}
 	
+	async getAchievementsByStudentId(req: Request, res: Response) {
+		appCtrl.renderResponse(res, MobileAppService.getAchievementsByStudentId(req));
+	}
+
 }
 
 export default new MobileAppCtrl();

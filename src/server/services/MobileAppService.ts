@@ -11,6 +11,7 @@ import LessonSectionRepo from "../repo/LessonSectionRepo";
 import LessonWatchingRepo from "../repo/LessonWatchingRepo";
 import assessmentTestRepo from "../repo/AssessmentTestRepo";
 import sectionTestRepo from "../repo/SectionTestRepo";
+import { any } from "sequelize/types/lib/operators";
 
 class MobileAppService {
 
@@ -153,6 +154,61 @@ class MobileAppService {
         })
     }
 
+    getAchievementsByStudentId(req: Request) {
+        let studentId = req.params.studentId;
+        return LessonWatchingRepo.getAchievementsByStudentId(studentId).then(vals => {
+            if(!vals) {
+                return responseUtil.formNotFoundResponse('not found', 'record not found', null);
+            }
+
+            let results = [];
+
+            for (let i = 0; i < vals.length; i++) {
+                const val = vals[i];
+                
+                let stpTotal = 0;
+                const stLen = val['sectionTests'].length
+                for (let j = 0; j < stLen; j++) {
+                    const st = val['sectionTests'][j];
+                    
+                    const p = (st['studentMarks'] / st['totalMarks']) * 100;
+                    stpTotal = stpTotal + p;
+                }
+
+                if (stLen) val['sectionTestsPercentage'] = stpTotal / stLen;
+
+                let preAssTotal = 0;
+                const ptLen = val['preAssessmentTests'].length
+                for (let k = 0; k < ptLen; k++) {
+                    const pt = val['preAssessmentTests'][k];
+                    
+                    const p = (pt['studentMarks'] / pt['totalMarks']) * 100;
+                    preAssTotal = preAssTotal + p;
+                }
+
+                let postAssTotal = 0;
+                const potLen = val['postAssessmentTests'].length
+                for (let l = 0; l < potLen; l++) {
+                    const pot = val['postAssessmentTests'][l];
+                    
+                    const p = (pot['studentMarks'] / pot['totalMarks']) * 100;
+                    postAssTotal = postAssTotal + p;
+                }
+
+                val['sectionTestsPercentage'] = (stLen) ? stpTotal / stLen : 0;
+                val['preAssessmentTestsPercentage'] = (ptLen) ? preAssTotal / ptLen : 0;
+                val['postAssessmentTestsPercentage'] = (potLen) ? postAssTotal / potLen : 0;
+
+                results.push(val);
+            }
+
+            return responseUtil.formSuccessResponse('', results);
+        }).catch(err => {
+            console.log('err = ', err);
+            
+            return Promise.reject(responseUtil.formBadRequestResponse(err.toString(), 'error in get achievements studentId', utils.formErrorObj(err)));
+        })
+    }
 }
 
 export default new MobileAppService();
